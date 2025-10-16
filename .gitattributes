@@ -1,0 +1,27 @@
+# Các loại tệp asset phổ biến trong Unity
+*.aif LFS
+*.asset LFS
+*.bmp LFS
+*.fbx LFS
+*.gif LFS
+*.jpeg LFS
+*.jpg LFS
+*.mp3 LFS
+*.ogg LFS
+*.otf LFS
+*.png LFS
+*.psd LFS
+*.tga LFS
+*.tif LFS
+*.tiff LFS
+*.ttf LFS
+*.wav LFS
+*.unity LFS
+*.prefab LFS
+*.mat LFS
+*.anim LFS
+*.controller LFS
+*.overrideController LFS
+*.physicMaterial LFS
+*.physicsMaterial2D LFS
+*.fontsettings LFS
