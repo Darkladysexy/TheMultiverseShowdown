@@ -1,21 +1,27 @@
 using System;
 using System.Collections;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instant;
     public float speed = 2f;
     public float dashSpeed = 5f;
     public float runSpeed = 2f;
     public float height = 5f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator animator;
     private bool isFacingRight = true;
     private bool isStun = false;
     private bool isDash = false;
     public float time = 0.25f;
-        // Start is called once before   the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        instant = this;
+    }
+    // Start is called once before   the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         speed = runSpeed;
@@ -26,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isStun);
         if (!isStun)
             Jump();
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && Input.GetKeyDown(KeyCode.L) && !isDash) animator.SetTrigger("Dash");
@@ -89,6 +94,14 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator StunDuration(float time)
     {
         yield return new WaitForSeconds(time);
+        isStun = false;
+    }
+    public void StartStun()
+    {
+        isStun = true;
+    }
+    public void EndStun()
+    {
         isStun = false;
     }
     public void StartDash()
