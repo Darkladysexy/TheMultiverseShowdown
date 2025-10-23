@@ -8,14 +8,11 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instant;
     public float speed = 2f;
-    public float dashSpeed = 5f;
-    public float runSpeed = 2f;
     public float height = 5f;
     public Rigidbody2D rb;
-    private Animator animator;
-    private bool isFacingRight = true;
+    public Animator animator;
+    public bool isFacingRight = true;
     private bool isStun = false;
-    private bool isDash = false;
     public float time = 0.25f;
     void Awake()
     {
@@ -24,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before   the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = runSpeed;
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
     }
@@ -34,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isStun)
             Jump();
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && Input.GetKeyDown(KeyCode.L) && !isDash) animator.SetTrigger("Dash");
         animator.SetBool("isGrounded", LegPlayer.instant.isGrounded);
         animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
         animator.SetFloat("VerticalSpeed", rb.linearVelocity.y);
@@ -104,15 +99,4 @@ public class PlayerMovement : MonoBehaviour
     {
         isStun = false;
     }
-    public void StartDash()
-    {
-        speed = dashSpeed;
-        isDash = true;
-    }
-    public void EndDash()
-    {
-        speed = runSpeed;
-        isDash = false;
-    }
-
 }
