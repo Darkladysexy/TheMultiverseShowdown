@@ -14,9 +14,15 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
     private bool isStun = false;
     public float time = 0.25f;
+    private KeyCode keyCodeLeft;
+    private KeyCode keyCodeRight;
+    private KeyCode keyCodeJump;
     void Awake()
     {
         instant = this;
+        keyCodeLeft = (this.gameObject.CompareTag("P1")) ? KeyCode.A : KeyCode.LeftArrow;
+        keyCodeRight = (this.gameObject.CompareTag("P1")) ? KeyCode.D : KeyCode.RightArrow;
+        keyCodeJump = (this.gameObject.CompareTag("P1")) ? KeyCode.K : KeyCode.Alpha2;
     }
     // Start is called once before   the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(keyCodeRight))
         {
             
             rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
@@ -55,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
                 isFacingRight = true;
             }
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(keyCodeLeft))
         {
             rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
             animator.SetFloat("Speed", 2f);
@@ -75,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && LegPlayer.instant.isGrounded)
+        if (Input.GetKeyDown(keyCodeJump) && LegPlayer.instant.isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, height);
         }   

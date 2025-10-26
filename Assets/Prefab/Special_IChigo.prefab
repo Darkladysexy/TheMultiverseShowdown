@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8804207405399697925}
   - component: {fileID: 1868415645194224679}
   m_Layer: 0
-  m_Name: OSkill_IChigo
+  m_Name: Special_IChigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
