@@ -358,22 +358,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3133258264693771643, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: iSkillObj
-      value: 
-      objectReference: {fileID: 8540717241970735543, guid: 8beefac87ce4f7d46b934f56a64c1792, type: 3}
-    - target: {fileID: 3133258264693771643, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: iSkillPos
-      value: 
-      objectReference: {fileID: 2017681464}
-    - target: {fileID: 3133258264693771643, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: oSkillObj
-      value: 
-      objectReference: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
-    - target: {fileID: 3133258264693771643, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: oSkillPos
-      value: 
-      objectReference: {fileID: 1956002738}
     - target: {fileID: 3436352336244433881, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
       propertyPath: m_Name
       value: Ichigo
@@ -432,6 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
+<<<<<<< Updated upstream
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
       insertIndex: -1
@@ -556,6 +541,11 @@ MonoBehaviour:
   iSkillPos: {fileID: 2017681464}
   oSkillObj: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
   oSkillPos: {fileID: 1956002738}
+=======
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
+>>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

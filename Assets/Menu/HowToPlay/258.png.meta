@@ -20,15 +20,6 @@ TextureImporter:
   - first:
       213: -4687279248410416777
     second: 258_5
-  - first:
-      213: -4506855543626772536
-    second: 258_6
-  - first:
-      213: -7111619364882893202
-    second: 258_7
-  - first:
-      213: 6310705948318607167
-    second: 258_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +144,10 @@ TextureImporter:
       name: 258_0
       rect:
         serializedVersion: 2
-        x: 731
-        y: 565
-        width: 12
-        height: 19
+        x: 0
+        y: 103
+        width: 101
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,9 +166,9 @@ TextureImporter:
       name: 258_1
       rect:
         serializedVersion: 2
-        x: 743
-        y: 565
-        width: 18
+        x: 99
+        y: 110
+        width: 9
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -197,10 +188,10 @@ TextureImporter:
       name: 258_2
       rect:
         serializedVersion: 2
-        x: 762
-        y: 565
-        width: 12
-        height: 18
+        x: 111
+        y: 104
+        width: 93
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +210,10 @@ TextureImporter:
       name: 258_3
       rect:
         serializedVersion: 2
-        x: 76
-        y: 412
-        width: 172
-        height: 109
+        x: 35
+        y: 96
+        width: 67
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +232,10 @@ TextureImporter:
       name: 258_4
       rect:
         serializedVersion: 2
-        x: 254
-        y: 412
-        width: 108
-        height: 109
+        x: 48
+        y: 7
+        width: 59
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,10 +254,10 @@ TextureImporter:
       name: 258_5
       rect:
         serializedVersion: 2
-        x: 365
-        y: 412
-        width: 167
-        height: 111
+        x: 110
+        y: 12
+        width: 87
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,77 +272,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 258_6
-      rect:
-        serializedVersion: 2
-        x: 430
-        y: 276
-        width: 74
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8cf402ce2ce6471c0800000000000000
-      internalID: -4506855543626772536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 258_7
-      rect:
-        serializedVersion: 2
-        x: 535
-        y: 270
-        width: 58
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e66bd5addd37e4d90800000000000000
-      internalID: -7111619364882893202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 258_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 802
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f37a97bdf91249750800000000000000
-      internalID: 6310705948318607167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -367,9 +292,6 @@ TextureImporter:
       258_3: 8808748126713560226
       258_4: 5269032569034507463
       258_5: -4687279248410416777
-      258_6: -4506855543626772536
-      258_7: -7111619364882893202
-      258_8: 6310705948318607167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

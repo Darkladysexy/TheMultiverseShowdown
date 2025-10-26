@@ -20,15 +20,6 @@ TextureImporter:
   - first:
       213: 3947400925794769843
     second: 300_5
-  - first:
-      213: 3054647206835087194
-    second: 300_6
-  - first:
-      213: 3187663968596576020
-    second: 300_7
-  - first:
-      213: 131898761923138909
-    second: 300_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +144,10 @@ TextureImporter:
       name: 300_0
       rect:
         serializedVersion: 2
-        x: 731
-        y: 565
-        width: 12
-        height: 19
+        x: 2
+        y: 81
+        width: 57
+        height: 67
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +166,10 @@ TextureImporter:
       name: 300_1
       rect:
         serializedVersion: 2
-        x: 743
-        y: 565
-        width: 18
-        height: 18
+        x: 18
+        y: 18
+        width: 86
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +188,10 @@ TextureImporter:
       name: 300_2
       rect:
         serializedVersion: 2
-        x: 762
-        y: 565
-        width: 12
-        height: 18
+        x: 59
+        y: 95
+        width: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +210,10 @@ TextureImporter:
       name: 300_3
       rect:
         serializedVersion: 2
-        x: 76
-        y: 412
-        width: 172
-        height: 109
+        x: 97
+        y: 73
+        width: 12
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +232,10 @@ TextureImporter:
       name: 300_4
       rect:
         serializedVersion: 2
-        x: 254
-        y: 412
-        width: 108
-        height: 109
+        x: 4
+        y: 70
+        width: 34
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,10 +254,10 @@ TextureImporter:
       name: 300_5
       rect:
         serializedVersion: 2
-        x: 365
-        y: 412
-        width: 167
-        height: 111
+        x: 2
+        y: 34
+        width: 17
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,77 +272,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 300_6
-      rect:
-        serializedVersion: 2
-        x: 411
-        y: 272
-        width: 111
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a576b8d4379446a20800000000000000
-      internalID: 3054647206835087194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 300_7
-      rect:
-        serializedVersion: 2
-        x: 535
-        y: 270
-        width: 61
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 417c28f8d7bdc3c20800000000000000
-      internalID: 3187663968596576020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 300_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 802
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d551eb2a93994d100800000000000000
-      internalID: 131898761923138909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -367,9 +292,6 @@ TextureImporter:
       300_3: -102080236562345487
       300_4: -5404029552194639788
       300_5: 3947400925794769843
-      300_6: 3054647206835087194
-      300_7: 3187663968596576020
-      300_8: 131898761923138909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

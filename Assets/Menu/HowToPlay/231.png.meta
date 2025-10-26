@@ -8,27 +8,6 @@ TextureImporter:
   - first:
       213: -8985139424301060846
     second: 231_1
-  - first:
-      213: -7875591975914011260
-    second: 231_2
-  - first:
-      213: 5542477527482484393
-    second: 231_3
-  - first:
-      213: -1904535708497281390
-    second: 231_4
-  - first:
-      213: 5923399407623329977
-    second: 231_5
-  - first:
-      213: 8123817352150815284
-    second: 231_6
-  - first:
-      213: 4474114865885801654
-    second: 231_7
-  - first:
-      213: 4235960582335780178
-    second: 231_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +132,10 @@ TextureImporter:
       name: 231_0
       rect:
         serializedVersion: 2
-        x: 731
-        y: 565
-        width: 12
-        height: 19
+        x: 0
+        y: 10
+        width: 67
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +154,10 @@ TextureImporter:
       name: 231_1
       rect:
         serializedVersion: 2
-        x: 743
-        y: 565
-        width: 18
-        height: 18
+        x: 103
+        y: 0
+        width: 57
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,165 +172,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 231_2
-      rect:
-        serializedVersion: 2
-        x: 762
-        y: 565
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4858ab713d644b290800000000000000
-      internalID: -7875591975914011260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 231_3
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 412
-        width: 172
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9a6cd2922f5daec40800000000000000
-      internalID: 5542477527482484393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 231_4
-      rect:
-        serializedVersion: 2
-        x: 254
-        y: 412
-        width: 108
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 29ef8f02ddab195e0800000000000000
-      internalID: -1904535708497281390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 231_5
-      rect:
-        serializedVersion: 2
-        x: 365
-        y: 412
-        width: 167
-        height: 111
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b8d522b064243250800000000000000
-      internalID: 5923399407623329977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 231_6
-      rect:
-        serializedVersion: 2
-        x: 430
-        y: 276
-        width: 74
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4329a1707d89db070800000000000000
-      internalID: 8123817352150815284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 231_7
-      rect:
-        serializedVersion: 2
-        x: 535
-        y: 270
-        width: 58
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6bcea6104cf371e30800000000000000
-      internalID: 4474114865885801654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 231_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 802
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2555ea0e4b729ca30800000000000000
-      internalID: 4235960582335780178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -363,13 +188,6 @@ TextureImporter:
     nameFileIdTable:
       231_0: 2355475221416841579
       231_1: -8985139424301060846
-      231_2: -7875591975914011260
-      231_3: 5542477527482484393
-      231_4: -1904535708497281390
-      231_5: 5923399407623329977
-      231_6: 8123817352150815284
-      231_7: 4474114865885801654
-      231_8: 4235960582335780178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

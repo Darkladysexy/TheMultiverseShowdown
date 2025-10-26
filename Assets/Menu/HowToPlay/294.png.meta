@@ -8,27 +8,6 @@ TextureImporter:
   - first:
       213: -5791658798970242721
     second: 294_1
-  - first:
-      213: 8802707362896163803
-    second: 294_2
-  - first:
-      213: -3979962962765436508
-    second: 294_3
-  - first:
-      213: -6451303543023330471
-    second: 294_4
-  - first:
-      213: 7820745391313249869
-    second: 294_5
-  - first:
-      213: -5250135671783225688
-    second: 294_6
-  - first:
-      213: 7808252650043314617
-    second: 294_7
-  - first:
-      213: -5035774964666408744
-    second: 294_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +132,10 @@ TextureImporter:
       name: 294_0
       rect:
         serializedVersion: 2
-        x: 731
-        y: 565
-        width: 12
-        height: 19
+        x: 5
+        y: 11
+        width: 120
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +154,10 @@ TextureImporter:
       name: 294_1
       rect:
         serializedVersion: 2
-        x: 743
-        y: 565
-        width: 18
-        height: 18
+        x: 116
+        y: 31
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,165 +172,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 294_2
-      rect:
-        serializedVersion: 2
-        x: 762
-        y: 565
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bd3342335bf792a70800000000000000
-      internalID: 8802707362896163803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 294_3
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 412
-        width: 172
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4a9a729a5c454c8c0800000000000000
-      internalID: -3979962962765436508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 294_4
-      rect:
-        serializedVersion: 2
-        x: 254
-        y: 412
-        width: 108
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95b10ebab9d5876a0800000000000000
-      internalID: -6451303543023330471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 294_5
-      rect:
-        serializedVersion: 2
-        x: 365
-        y: 412
-        width: 167
-        height: 111
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d46efff4f7ed88c60800000000000000
-      internalID: 7820745391313249869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 294_6
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 272
-        width: 113
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a601c44c65c327b0800000000000000
-      internalID: -5250135671783225688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 294_7
-      rect:
-        serializedVersion: 2
-        x: 535
-        y: 270
-        width: 60
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b195525a6c7c5c60800000000000000
-      internalID: 7808252650043314617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 294_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 802
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8d0e04ea9555d1ab0800000000000000
-      internalID: -5035774964666408744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -363,13 +188,6 @@ TextureImporter:
     nameFileIdTable:
       294_0: 5122573240516172043
       294_1: -5791658798970242721
-      294_2: 8802707362896163803
-      294_3: -3979962962765436508
-      294_4: -6451303543023330471
-      294_5: 7820745391313249869
-      294_6: -5250135671783225688
-      294_7: 7808252650043314617
-      294_8: -5035774964666408744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -36,6 +36,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2567514871711379190}
+  - {fileID: 1478613420171215717}
+  - {fileID: 8927686196371422879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7959258557138284864
@@ -204,6 +206,7 @@ MonoBehaviour:
   dashSpeed: 5
   runSpeed: 2
   height: 5
+  rb: {fileID: 0}
   time: 0.25
 --- !u!114 &3133258264693771643
 MonoBehaviour:
@@ -217,6 +220,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7208c2c38d2e00d428bb73a5525d775b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iSkillObj: {fileID: 8540717241970735543, guid: 8beefac87ce4f7d46b934f56a64c1792, type: 3}
+  iSkillPos: {fileID: 4383338813699630552}
+  oSkillObj: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
+  oSkillPos: {fileID: 6191864532193771343}
+--- !u!1 &4383338813699630552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1478613420171215717}
+  - component: {fileID: 5537370846813510740}
+  m_Layer: 0
+  m_Name: ISkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1478613420171215717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383338813699630552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5746211264391667359}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5537370846813510740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383338813699630552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27146a96ad011ef44a94f4cbd0a59771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6191864532193771343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8927686196371422879}
+  m_Layer: 0
+  m_Name: OSkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8927686196371422879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191864532193771343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5746211264391667359}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8519354015004461987
 GameObject:
   m_ObjectHideFlags: 0

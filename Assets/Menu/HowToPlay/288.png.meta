@@ -8,27 +8,6 @@ TextureImporter:
   - first:
       213: 8784977998022983829
     second: 288_1
-  - first:
-      213: -628389400916506258
-    second: 288_2
-  - first:
-      213: 956216862648692094
-    second: 288_3
-  - first:
-      213: -2903783033024893081
-    second: 288_4
-  - first:
-      213: -2177928766375056204
-    second: 288_5
-  - first:
-      213: -7835018534123946751
-    second: 288_6
-  - first:
-      213: -2114613034837219462
-    second: 288_7
-  - first:
-      213: -4092745512550979889
-    second: 288_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +132,10 @@ TextureImporter:
       name: 288_0
       rect:
         serializedVersion: 2
-        x: 731
-        y: 565
-        width: 12
-        height: 19
+        x: 33
+        y: 14
+        width: 77
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +154,10 @@ TextureImporter:
       name: 288_1
       rect:
         serializedVersion: 2
-        x: 743
-        y: 565
-        width: 18
-        height: 18
+        x: 191
+        y: 5
+        width: 50
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,165 +172,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 288_2
-      rect:
-        serializedVersion: 2
-        x: 762
-        y: 565
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6940c15b238747f0800000000000000
-      internalID: -628389400916506258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 288_3
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 412
-        width: 172
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e7de96a9b2a254d00800000000000000
-      internalID: 956216862648692094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 288_4
-      rect:
-        serializedVersion: 2
-        x: 254
-        y: 412
-        width: 108
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 76faeb367b0b3b7d0800000000000000
-      internalID: -2903783033024893081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 288_5
-      rect:
-        serializedVersion: 2
-        x: 365
-        y: 412
-        width: 167
-        height: 111
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4bc2c1e735176c1e0800000000000000
-      internalID: -2177928766375056204
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 288_6
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 272
-        width: 111
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10db0f8a72c644390800000000000000
-      internalID: -7835018534123946751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 288_7
-      rect:
-        serializedVersion: 2
-        x: 535
-        y: 270
-        width: 58
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a77ed1506a267a2e0800000000000000
-      internalID: -2114613034837219462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 288_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 802
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc6235004a5a337c0800000000000000
-      internalID: -4092745512550979889
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -363,13 +188,6 @@ TextureImporter:
     nameFileIdTable:
       288_0: -3345456260043167216
       288_1: 8784977998022983829
-      288_2: -628389400916506258
-      288_3: 956216862648692094
-      288_4: -2903783033024893081
-      288_5: -2177928766375056204
-      288_6: -7835018534123946751
-      288_7: -2114613034837219462
-      288_8: -4092745512550979889
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
