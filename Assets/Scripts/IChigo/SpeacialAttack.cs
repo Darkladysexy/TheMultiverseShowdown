@@ -1,16 +1,42 @@
 using UnityEngine;
 
-public class SpeacialAttack : MonoBehaviour
+public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static SpeacialAttack instant;
+    public float coolDownTime { get; set; }
+    public int damage { get; set; }
+    public KeyCode KeyCode { get; set; }
+    public GameObject specialSkillObj;
+    public GameObject specialSkillPos;
+
+    void Awake()
+    {
+        instant = this;
+        KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Alpha5;
+    }
+
+    public void Attack()
+    {
+        if (LegPlayer.instant.isGrounded && Input.GetKeyDown(KeyCode))
+        {
+            IChigoSkill.instant.animator.SetTrigger("SpecialAttack");
+        }
+    }
+
+    public void CoolDown()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndSkill()
+    {
+        Instantiate(specialSkillObj, specialSkillPos.gameObject.transform.position, Quaternion.identity);
+    }
+
+    public void StartSkill()
     {
         
     }
+
+    
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3058880841445621324}
   - component: {fileID: 222654017894203532}
   m_Layer: 0
-  m_Name: ISkill_Ichigo
+  m_Name: HeavyAttack_Ichigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

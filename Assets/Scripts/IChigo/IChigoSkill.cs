@@ -1,19 +1,31 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class IChigoSkill : MonoBehaviour
 {
+    public static IChigoSkill instant;
     private int actionLayerIndex;
-    private Animator animator;
-    private bool isJumpAttack = false;
-    public GameObject iSkillObj;
-    public GameObject iSkillPos;
-    public GameObject oSkillObj;
-    public GameObject oSkillPos;
+    private HeavyAttack heavyAttack;
+    private SpeacialAttack speacialAttack;
+    public Animator animator;
+    // private KeyCode heavyAttackKey;
+    // private KeyCode specialAttackKey;
+    
+    void Awake()
+    {
+        instant = this;
+        heavyAttack = this.GetComponent<HeavyAttack>();
+        speacialAttack = this.GetComponent<SpeacialAttack>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = this.GetComponent<Animator>();
         actionLayerIndex = animator.GetLayerIndex("Attack Layer");
+
+        // heavyAttackKey = (this.gameObject.tag == "P1") ? KeyCode.U : KeyCode.Alpha4;
+        // specialAttackKey = (this.gameObject.tag == "P1") ? KeyCode.I : KeyCode.Alpha5;
+
     }
 
     // Update is called once per frame
@@ -23,34 +35,32 @@ public class IChigoSkill : MonoBehaviour
         bool isReadyForAction = stateInfo.IsTag("NoAction");
         if (isReadyForAction)
         {
-            JumpAttack();
-            OSkill();
+            heavyAttack.Attack();
+            speacialAttack.Attack();
         }
     }
-    public void JumpAttack()
+    public void TriggerHeavyAttackStart()
     {
-        if (PlayerMovement.instant.rb.linearVelocity.y > 0.1 && Input.GetKeyDown(KeyCode.I) && !isJumpAttack)
-        {
-            animator.SetBool("JumpAttack", true);
-            isJumpAttack = true;
-        }
+        heavyAttack.StartSkill();
     }
-    public void EndJumpAttack()
+    public void TriggerHeavyAttackEnd()
     {
-        animator.SetBool("JumpAttack", false);
-        isJumpAttack = false;
-        Instantiate(iSkillObj, iSkillPos.gameObject.transform.position, Quaternion.identity);
+        heavyAttack.EndSkill();
     }
-    public void OSkill()
+    public void TriggerHeavyAttackCoolDown()
     {
-        if (Input.GetKeyDown(KeyCode.O) && LegPlayer.instant.isGrounded)
-        {
-            animator.SetTrigger("OSkill");
-        }
+        heavyAttack.CoolDown();
     }
-    
-    public void EndOSkill()
+    public void TriggerSpecialAttackStart()
     {
-        Instantiate(oSkillObj, oSkillPos.gameObject.transform.position, Quaternion.identity);
+        speacialAttack.StartSkill();
+    }
+    public void TriggerSpecialAttackEnd()
+    {
+        speacialAttack.EndSkill();
+    }
+    public void TriggerSpecialAttackCoolDown()
+    {
+        speacialAttack.CoolDown();
     }
 }
