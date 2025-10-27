@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] public Slider slider;
+    [SerializeField] public int level;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(loading(1));
+        StartCoroutine(loading(level));
     }
 
     // Update is called once per frame
@@ -27,5 +28,10 @@ public class ProgressBar : MonoBehaviour
             slider.value = asyncOperation.progress;
             yield return null;
         }
+    }
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
     }
 }

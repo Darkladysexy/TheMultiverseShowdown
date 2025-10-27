@@ -15,13 +15,9 @@ GameObject:
   - component: {fileID: 6159378572478007462}
   - component: {fileID: 6446325737498674511}
   - component: {fileID: 3133258264693771643}
-  - component: {fileID: 8038232249711173237}
-  - component: {fileID: 8083733118273999417}
-  - component: {fileID: 1047995719720497439}
-  - component: {fileID: 8193449413732083521}
   m_Layer: 0
   m_Name: Ichigo
-  m_TagString: P1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,8 +36,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2567514871711379190}
-  - {fileID: 5255871395195725151}
-  - {fileID: 2893270440650064804}
+  - {fileID: 1478613420171215717}
+  - {fileID: 8927686196371422879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7959258557138284864
@@ -207,10 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  dashSpeed: 5
+  runSpeed: 2
   height: 5
   rb: {fileID: 0}
-  animator: {fileID: 0}
-  isFacingRight: 1
   time: 0.25
 --- !u!114 &3133258264693771643
 MonoBehaviour:
@@ -224,7 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7208c2c38d2e00d428bb73a5525d775b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comboResetTime: 1.5
 --- !u!114 &8038232249711173237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,45 +286,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2893270440650064804}
-  - component: {fileID: 6173822051943487521}
+  - component: {fileID: 1478613420171215717}
+  - component: {fileID: 5537370846813510740}
   m_Layer: 0
-  m_Name: SpecialAttackPos
+  m_Name: ISkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2893270440650064804
+--- !u!4 &1478613420171215717
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863367638450643062}
+  m_GameObject: {fileID: 4383338813699630552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5746211264391667359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6173822051943487521
+--- !u!114 &5537370846813510740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863367638450643062}
+  m_GameObject: {fileID: 4383338813699630552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d80f4d8b0a5b6524ea74def0d045b2e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 27146a96ad011ef44a94f4cbd0a59771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialSkillObj: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
-  specialSkillPos: {fileID: 6863367638450643062}
---- !u!1 &7577936711557357689
+--- !u!1 &6191864532193771343
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,24 +330,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5255871395195725151}
+  - component: {fileID: 8927686196371422879}
   m_Layer: 0
-  m_Name: HeavyAttackPos
+  m_Name: OSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5255871395195725151
+--- !u!4 &8927686196371422879
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7577936711557357689}
+  m_GameObject: {fileID: 6191864532193771343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.03, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

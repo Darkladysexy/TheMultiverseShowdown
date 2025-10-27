@@ -26,9 +26,6 @@ TextureImporter:
   - first:
       213: 318440865544223673
     second: 374_7
-  - first:
-      213: 1565631452144043923
-    second: 374_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +150,10 @@ TextureImporter:
       name: 374_0
       rect:
         serializedVersion: 2
-        x: 731
-        y: 565
+        x: 19
+        y: 82
         width: 12
-        height: 19
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,10 +172,10 @@ TextureImporter:
       name: 374_1
       rect:
         serializedVersion: 2
-        x: 743
-        y: 565
-        width: 18
-        height: 18
+        x: 36
+        y: 79
+        width: 32
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +194,10 @@ TextureImporter:
       name: 374_2
       rect:
         serializedVersion: 2
-        x: 762
-        y: 565
-        width: 12
-        height: 18
+        x: 74
+        y: 76
+        width: 18
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +216,10 @@ TextureImporter:
       name: 374_3
       rect:
         serializedVersion: 2
-        x: 76
-        y: 412
-        width: 172
-        height: 109
+        x: 6
+        y: 48
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +238,10 @@ TextureImporter:
       name: 374_4
       rect:
         serializedVersion: 2
-        x: 254
-        y: 412
-        width: 108
-        height: 109
+        x: 7
+        y: 71
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,10 +260,10 @@ TextureImporter:
       name: 374_5
       rect:
         serializedVersion: 2
-        x: 365
-        y: 412
-        width: 167
-        height: 111
+        x: 78
+        y: 58
+        width: 27
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,10 +282,10 @@ TextureImporter:
       name: 374_6
       rect:
         serializedVersion: 2
-        x: 371
-        y: 272
-        width: 136
-        height: 71
+        x: 98
+        y: 36
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,10 +304,10 @@ TextureImporter:
       name: 374_7
       rect:
         serializedVersion: 2
-        x: 535
-        y: 270
-        width: 60
-        height: 83
+        x: 28
+        y: 8
+        width: 44
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,33 +322,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 374_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 802
-        height: 249
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 397893ab28d3ab510800000000000000
-      internalID: 1565631452144043923
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -369,7 +344,6 @@ TextureImporter:
       374_5: 1783021820152891370
       374_6: 5700064764852771699
       374_7: 318440865544223673
-      374_8: 1565631452144043923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
