@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dash
+  m_Name: HeavyAttackDownForward
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,21 +21,25 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -30749221642623036, guid: c4a5c2b7024682a43a443a36c907faf0, type: 3}
-    - time: 0.06666667
-      value: {fileID: -4093987921198194536, guid: eb2839b805b63db4d8567b55c8e446b2, type: 3}
-    - time: 0.13333334
-      value: {fileID: -30749221642623036, guid: c4a5c2b7024682a43a443a36c907faf0, type: 3}
+      value: {fileID: 6810289884213664739, guid: 05de9a84fce3a8d4f841d9613629a5d5, type: 3}
+    - time: 0.1
+      value: {fileID: -105497433518616501, guid: 18cc7a46d05e41249828137eff6d3c57, type: 3}
     - time: 0.2
-      value: {fileID: -4093987921198194536, guid: eb2839b805b63db4d8567b55c8e446b2, type: 3}
-    - time: 0.26666668
-      value: {fileID: -30749221642623036, guid: c4a5c2b7024682a43a443a36c907faf0, type: 3}
+      value: {fileID: -8868653072870737037, guid: 4148bf165e01e7546b5db92c780b49b8, type: 3}
+    - time: 0.3
+      value: {fileID: 9125048449310441231, guid: 11d76983ce650f64aa64039a3af4830a, type: 3}
+    - time: 0.4
+      value: {fileID: 916090261725292327, guid: f7b1854da4e84184aa8cd0aaa52ee04f, type: 3}
+    - time: 0.5
+      value: {fileID: 1339047737661862774, guid: 050fa3e840b43904dafe9aa203dfcaf0, type: 3}
+    - time: 0.6
+      value: {fileID: 8975557439242265801, guid: c1ca0fa6e7fcd154f9dbdf6b6df054ba, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 15
+  m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -52,22 +56,24 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -30749221642623036, guid: c4a5c2b7024682a43a443a36c907faf0, type: 3}
-    - {fileID: -4093987921198194536, guid: eb2839b805b63db4d8567b55c8e446b2, type: 3}
-    - {fileID: -30749221642623036, guid: c4a5c2b7024682a43a443a36c907faf0, type: 3}
-    - {fileID: -4093987921198194536, guid: eb2839b805b63db4d8567b55c8e446b2, type: 3}
-    - {fileID: -30749221642623036, guid: c4a5c2b7024682a43a443a36c907faf0, type: 3}
+    - {fileID: 6810289884213664739, guid: 05de9a84fce3a8d4f841d9613629a5d5, type: 3}
+    - {fileID: -105497433518616501, guid: 18cc7a46d05e41249828137eff6d3c57, type: 3}
+    - {fileID: -8868653072870737037, guid: 4148bf165e01e7546b5db92c780b49b8, type: 3}
+    - {fileID: 9125048449310441231, guid: 11d76983ce650f64aa64039a3af4830a, type: 3}
+    - {fileID: 916090261725292327, guid: f7b1854da4e84184aa8cd0aaa52ee04f, type: 3}
+    - {fileID: 1339047737661862774, guid: 050fa3e840b43904dafe9aa203dfcaf0, type: 3}
+    - {fileID: 8975557439242265801, guid: c1ca0fa6e7fcd154f9dbdf6b6df054ba, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.70000005
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -83,27 +89,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: Stun
+    functionName: StartStun
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
-    functionName: StartSkill
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.26666668
-    functionName: CoolDown
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.26666668
+  - time: 0.6
     functionName: EndStun
     data: 
     objectReferenceParameter: {fileID: 0}
