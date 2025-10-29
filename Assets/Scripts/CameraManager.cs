@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
     // Hàm này của bạn dùng để di chuyển camera đến 1 vị trí cố định MỚI
     public void ChangePostionCamera(Vector3 position)
     {
-        myCamera.transform.position = position;
+        myCamera.transform.position = new Vector3(position.x, position.y, -10);
         // originalPosition = position; // Cập nhật lại vị trí gốc mới
     }
 

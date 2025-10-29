@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class SendDamageNormalAttack : MonoBehaviour
 {
-    private string tagGameObject;
     private string tagEnemy;
     private GameObject parent;
     private PlayerAttack playerAttack;
     public int attackComboStep;
     private Collider2D hurboxCollider;
-    private float force = 0.05f;
+    private float force = 1.5f;
     void Awake()
     {
-        tagGameObject = transform.parent.gameObject.tag;
         parent = transform.parent.gameObject;
+
         playerAttack = parent.GetComponent<PlayerAttack>();
 
         tagEnemy = (parent.CompareTag("P1")) ? "P2" : "P1";
@@ -48,16 +47,17 @@ public class SendDamageNormalAttack : MonoBehaviour
                 Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
                 if (enemyHealth != null)
                 {
-                    enemyHealth.TakeDamage(damage);
+                    
                     if (attackComboStep == 3)
                     {
                         enemyAnimator.SetTrigger("TakeDamageFall");
-                        StartCoroutine(PauseGame());
+                        // StartCoroutine(PauseGame());
+                        GameManager.instant.PauseGame(this.transform.position);
                         CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
                     }
                     else enemyAnimator.SetTrigger("TakeDamage");
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
-                    enemyRB.AddForce(vector3, ForceMode2D.Impulse);
+                    enemyHealth.TakeDamage(damage, force, vector3);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }

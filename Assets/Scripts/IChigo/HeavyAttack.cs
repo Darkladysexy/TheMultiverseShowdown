@@ -15,9 +15,11 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     public bool isForward = false;
     public bool isUpForward = false;
     public bool isDownForward = false;
+    
     void Awake()
     {
         instant = this;
+        damage = 30;
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Keypad4;
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
     }
@@ -59,6 +61,6 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
             isDownForward = true;
         }
     }
-
     
+
 }

@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NormalEnergy : MonoBehaviour
@@ -10,6 +14,7 @@ public class NormalEnergy : MonoBehaviour
     private Vector2 direction = new Vector2Int(1, 1);
     private GameObject IChigo;
     private PlayerMovement playerMovement;
+    private float force = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,6 +69,19 @@ public class NormalEnergy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("P1") || collision.gameObject.CompareTag("P2"))
+        {
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
+            enemyAnimator.SetTrigger("TakeDamageFall");
+            Vector3 vt = (-this.gameObject.transform.position + collision.gameObject.transform.position).normalized;
+            playerHealth.TakeDamage(HeavyAttack.instant.damage, force, vt);
+            GameManager.instant.PauseGame(collision.gameObject.transform.position);
+        }
+        Destroy(this.gameObject);
     }
 }

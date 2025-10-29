@@ -11,6 +11,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 
     void Awake()
     {
+        damage = 40;
         instant = this;
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
     }
