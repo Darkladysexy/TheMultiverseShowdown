@@ -17,12 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private KeyCode keyCodeLeft;
     private KeyCode keyCodeRight;
     private KeyCode keyCodeJump;
+    private bool isMovement = false;
     void Awake()
     {
         instant = this;
         keyCodeLeft = (this.gameObject.CompareTag("P1")) ? KeyCode.A : KeyCode.LeftArrow;
         keyCodeRight = (this.gameObject.CompareTag("P1")) ? KeyCode.D : KeyCode.RightArrow;
-        keyCodeJump = (this.gameObject.CompareTag("P1")) ? KeyCode.K : KeyCode.Alpha2;
+        keyCodeJump = (this.gameObject.CompareTag("P1")) ? KeyCode.K : KeyCode.Keypad2;
     }
     // Start is called once before   the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isGrounded", LegPlayer.instant.isGrounded);
         animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
         animator.SetFloat("VerticalSpeed", rb.linearVelocity.y);
+        animator.SetBool("isMovement", isMovement);
 
     }
     void FixedUpdate()
@@ -51,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(keyCodeRight))
         {
-            
+            isMovement = true;
             rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
             animator.SetFloat("Speed", 2f);
             // rb.AddForce(moveVector.normalized, ForceMode2D.Impulse);
@@ -63,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(keyCodeLeft))
         {
+            isMovement = true;
             rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
             animator.SetFloat("Speed", 2f);
             // rb.AddForce(moveVector.normalized, ForceMode2D.Impulse);
@@ -74,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            isMovement = false;
             // Khi không nhấn phím nào, đặt vận tốc về 0
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             animator.SetFloat("Speed", 0f);

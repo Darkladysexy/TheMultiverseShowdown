@@ -15,6 +15,16 @@ public class PlayerAttack : MonoBehaviour
     private KeyCode keyCodeAttack;
     private int comboStep = 0;
     private float lastAttackTime = 0f;
+    public int normalAttack1_Damage;
+    public int normalAttack2_Damage;
+    public int normalAttack3_Damage;
+    public GameObject normalAttack1_HurtBox;
+    public GameObject normalAttack2_HurtBox;
+    public GameObject normalAttack3_HurtBox;
+    public bool isNormalAttack1 = false;
+    public bool isNormalAttack2 = false;
+    public bool isNormalAttack3 = false;
+
     
     // 1.5 giây để nhấn đòn tiếp theo, nếu không combo sẽ reset
     public float comboResetTime = 0.5f; 
@@ -25,7 +35,15 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         animator = this.GetComponent<Animator>();
-        keyCodeAttack = (this.gameObject.CompareTag("P1")) ? KeyCode.J : KeyCode.Alpha1;
+        keyCodeAttack = (this.gameObject.CompareTag("P1")) ? KeyCode.J : KeyCode.Keypad1;
+
+        normalAttack1_HurtBox.SetActive(false);
+        normalAttack2_HurtBox.SetActive(false);
+        normalAttack3_HurtBox.SetActive(false);
+
+        normalAttack1_Damage = 10;
+        normalAttack2_Damage = 15;
+        normalAttack3_Damage = 20;
     }
 
     // Update is called once per frame
@@ -47,7 +65,6 @@ public class PlayerAttack : MonoBehaviour
                 HandleAttack();
             }
         }
-        Debug.Log(comboStep);
     }
     private void HandleAttack()
     {
@@ -62,15 +79,17 @@ public class PlayerAttack : MonoBehaviour
         {
             // Đây là đòn đầu tiên (hoặc đòn sau khi bị reset)
             animator.SetTrigger("LightAttack1"); // Kích hoạt animation Attack1
+            isNormalAttack1 = true;
         }
         else if (comboStep == 2)
         {
             animator.SetTrigger("LightAttack2"); // Kích hoạt animation Attack2
+            isNormalAttack2 = true;
         }
         else if (comboStep == 3)
         {
             animator.SetTrigger("LightAttack3"); // Kích hoạt animation Attack3
-
+            isNormalAttack3 = true;
             // Đã hết 3 đòn, reset ngay lập tức về 0
             comboStep = 0;
         }
@@ -82,7 +101,41 @@ public class PlayerAttack : MonoBehaviour
     {
         lastAttackTime = Time.time;
         isAttacking = false;
-        Debug.Log("Test");
+        isNormalAttack1 = false;
+        isNormalAttack2 = false;
+        isNormalAttack3 = false;
+    }
+    public int GetDamageForComboStep(int step)
+    {
+        if (step == 1) return normalAttack1_Damage;
+        if (step == 2) return normalAttack2_Damage;
+        if (step == 3) return normalAttack3_Damage;
+        
+        return 0; 
+    }
+    public void StartNormalAttack1()
+    {
+        normalAttack1_HurtBox.SetActive(true);
+    }
+    public void EndNormalAttack1()
+    {
+        normalAttack1_HurtBox.SetActive(false);
+    }
+    public void StartNormalAttack2()
+    {
+        normalAttack2_HurtBox.SetActive(true);
+    }
+    public void EndNormalAttack2()
+    {
+        normalAttack2_HurtBox.SetActive(false);
+    }
+    public void StartNormalAttack3()
+    {
+        normalAttack3_HurtBox.SetActive(true);
+    }
+    public void EndNormalAttack3()
+    {
+        normalAttack3_HurtBox.SetActive(false);
     }
     
 }

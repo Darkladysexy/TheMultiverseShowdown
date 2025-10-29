@@ -18,7 +18,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     void Awake()
     {
         instant = this;
-        KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Alpha4;
+        KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Keypad4;
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
     }
 
@@ -40,7 +40,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
 
     public void Attack()
     {
-            // Kiểm tra "Đánh lên"
+        // Kiểm tra "Đánh lên"
         if (Input.GetKeyDown(KeyCode) && Input.GetKey(keyCodeDir) && LegPlayer.instant.isGrounded && !isForward && !isUpForward && !isDownForward)
         {
             IChigoSkill.instant.animator.SetBool("HeavyAttack", true);
@@ -59,5 +59,6 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
             isDownForward = true;
         }
     }
+
     
 }
