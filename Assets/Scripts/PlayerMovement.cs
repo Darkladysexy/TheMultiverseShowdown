@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private KeyCode keyCodeRight;
     private KeyCode keyCodeJump;
     private bool isMovement = false;
+    private LegPlayer legPlayer;
     void Awake()
     {
         instant = this;
@@ -30,6 +31,14 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
+
+        foreach(Transform child in this.gameObject.transform)
+        {
+            if(child.gameObject.name == "Leg")
+            {
+                legPlayer = child.gameObject.GetComponent<LegPlayer>();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -37,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isStun)
             Jump();
-        animator.SetBool("isGrounded", LegPlayer.instant.isGrounded);
+        animator.SetBool("isGrounded", legPlayer.isGrounded);
         animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
         animator.SetFloat("VerticalSpeed", rb.linearVelocity.y);
         animator.SetBool("isMovement", isMovement);
@@ -85,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetKeyDown(keyCodeJump) && LegPlayer.instant.isGrounded)
+        if (Input.GetKeyDown(keyCodeJump) && legPlayer.isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, height);
         }   

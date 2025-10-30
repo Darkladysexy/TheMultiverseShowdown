@@ -9,7 +9,7 @@ public class SendDamageNormalAttack : MonoBehaviour
     private PlayerAttack playerAttack;
     public int attackComboStep;
     private Collider2D hurboxCollider;
-    private float force = 1.5f;
+    private float force = 2f;
     void Awake()
     {
         parent = transform.parent.gameObject;
