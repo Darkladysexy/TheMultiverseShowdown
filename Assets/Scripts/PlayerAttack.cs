@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
 
     */
     private Animator animator;
+    private LegPlayer legPlayer;
     private KeyCode keyCodeAttack;
     private int comboStep = 0;
     private float lastAttackTime = 0f;
@@ -35,6 +36,13 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         animator = this.GetComponent<Animator>();
+        foreach(Transform child in this.gameObject.transform)
+        {
+            if(child.gameObject.name == "Leg")
+            {
+                legPlayer = child.gameObject.GetComponent<LegPlayer>();
+            }
+        }
         keyCodeAttack = (this.gameObject.CompareTag("P1")) ? KeyCode.J : KeyCode.Keypad1;
 
         normalAttack1_HurtBox.SetActive(false);
@@ -57,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         // 2. Kiểm tra input
-        if (Input.GetKeyDown(keyCodeAttack) && LegPlayer.instant.isGrounded)
+        if (Input.GetKeyDown(keyCodeAttack) && legPlayer.isGrounded)
         {
             // Chỉ cho phép đánh nếu đòn trước đã kết thúc
             if (!isAttacking)

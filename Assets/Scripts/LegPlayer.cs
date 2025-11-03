@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class LegPlayer : MonoBehaviour
 {
-    public static LegPlayer instant;
     public bool isGrounded = false;
     void Awake()
     {
-        instant = this;
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

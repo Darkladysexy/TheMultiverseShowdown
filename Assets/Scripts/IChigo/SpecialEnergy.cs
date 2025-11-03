@@ -4,11 +4,16 @@ public class SpecialEnergy : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float force = 1f;
+    private PlayerMovement playerMovement;
+    void Awake()
+    {
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
-        if (PlayerMovement.instant.gameObject.transform.rotation.y >= 0) rb.AddForce(new Vector2(1, 0) * 0.001f, ForceMode2D.Impulse);
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        playerMovement = SpeacialAttack.instant.playerMovement;
+        if (playerMovement.isFacingRight) rb.AddForce(new Vector2(1, 0) * 0.001f, ForceMode2D.Impulse);
         else
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);

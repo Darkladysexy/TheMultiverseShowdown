@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SendDamageHeavyAttackSasuke : MonoBehaviour
+public class SendDamageSpecialAttack_Sasuke : MonoBehaviour
 {
-    private string tagEnemy;
+private string tagEnemy;
     private GameObject parent;
-    private HeavyAttackSasuke heavyAttackSasuke;
+    private SpecialAttackSasuke specialAttackSasuke;
     private Collider2D hurboxCollider;
     private float force = 1.5f;
     
@@ -14,7 +13,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
     {
         parent = transform.parent.gameObject;
 
-        heavyAttackSasuke = parent.GetComponent<HeavyAttackSasuke>();
+        specialAttackSasuke = parent.GetComponent<SpecialAttackSasuke>();
 
         tagEnemy = (parent.CompareTag("P1")) ? "P2" : "P1";
         
@@ -35,7 +34,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
 
-        int damage = heavyAttackSasuke.damage;
+        int damage = specialAttackSasuke.damage/2;
 
         foreach (Collider2D collision in results)
         {

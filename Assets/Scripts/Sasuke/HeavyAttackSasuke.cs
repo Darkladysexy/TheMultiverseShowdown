@@ -1,10 +1,11 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
 {
-    public float coolDownTime { get; set; }
-    public int damage { get; set; }
+    public float coolDownTime { get; set; } = 2f;
+    public int damage { get; set; } = 20;
     public KeyCode KeyCode { get; set; }
     private KeyCode keyCodeDir { get; set; }
     private float force;
@@ -14,6 +15,7 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     public GameObject heavyAttackForward_HurtBox;
     public GameObject heavyAttackDownForward_HurtBox;
     public GameObject heavyAttackUpForward_HurtBox;
+    private bool enableAttack = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,22 +49,25 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
 
     public void Attack()
     {
-        if (Input.GetKey(keyCodeDir) && Input.GetKeyDown(KeyCode) && legPlayer.isGrounded)
+        if (Input.GetKey(keyCodeDir) && Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
         {
             SasukeSkill.instant.animator.SetTrigger("HeavyAttackUpforward");
+            enableAttack = false;
             if (playerMovement.isFacingRight)
                 rb.AddForce(new Vector2(1, 1) * force, ForceMode2D.Impulse);
             else
                 rb.AddForce(new Vector2(-1, 1) * force, ForceMode2D.Impulse);
         }
-        else if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode))
+        else if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack)
         {
             SasukeSkill.instant.animator.SetTrigger("HeavyAttackDownforward");
+            enableAttack = false;
             rb.AddForce(new Vector2(0, -1) * force, ForceMode2D.Impulse);
         }
-        else if (legPlayer.isGrounded && !Input.GetKeyDown(keyCodeDir) && Input.GetKeyDown(KeyCode))
+        else if (legPlayer.isGrounded && !Input.GetKeyDown(keyCodeDir) && Input.GetKeyDown(KeyCode) && enableAttack)
         {
-            SasukeSkill.instant.animator.SetTrigger("HeavyAttackforward");            
+            SasukeSkill.instant.animator.SetTrigger("HeavyAttackforward"); 
+            enableAttack = false;
         }
     }
     
@@ -76,7 +81,12 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
 
     public void CoolDown()
     {
-        
+        StartCoroutine(CoolDownCount(coolDownTime));
+    }
+    private IEnumerator CoolDownCount(float time)
+    {
+        yield return new WaitForSeconds(time);
+        enableAttack = true;
     }
 
     public void EndSkill()

@@ -12,19 +12,23 @@ public class NormalEnergy : MonoBehaviour
     private readonly Vector2 LEFTDOWN = new Vector2Int(-1, -1);
     private readonly Vector2 RIGHTDOWN = new Vector2Int(1, -1);
     private Vector2 direction = new Vector2Int(1, 1);
-    private GameObject IChigo;
     private PlayerMovement playerMovement;
     private float force = 1;
+    void Awake()
+    {
+        
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        playerMovement = HeavyAttack.instant.playerMovement;
         // Danh ngang
         if (HeavyAttack.instant.isForward)
         {
             // sang phai
-            if (PlayerMovement.instant.isFacingRight)
+            if (playerMovement.isFacingRight)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 45);
                 direction = Vector2.right;
@@ -39,7 +43,7 @@ public class NormalEnergy : MonoBehaviour
         // Danh xuong
         else if (HeavyAttack.instant.isDownForward)
         {
-            if (PlayerMovement.instant.isFacingRight) direction = RIGHTDOWN;
+            if (playerMovement.isFacingRight) direction = RIGHTDOWN;
             else
             {
                 direction = LEFTDOWN;
@@ -48,7 +52,7 @@ public class NormalEnergy : MonoBehaviour
         }
         else if (HeavyAttack.instant.isUpForward)
         {
-            if (PlayerMovement.instant.isFacingRight)
+            if (playerMovement.isFacingRight)
             {
                 direction = RIGHTUP;
                 transform.rotation = Quaternion.Euler(0, 0, 90);

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Run
+  m_Name: ProjectTile
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,25 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 6660783624410144326, guid: 2960e2d5547c998449bd6e66bedc2768, type: 3}
-    - time: 0.1
-      value: {fileID: 7157561037332017152, guid: b27cdc57334c01f4e93bef76e54ca2ae, type: 3}
-    - time: 0.2
-      value: {fileID: -5750353039905602045, guid: 055705b559ae15449b3adb4003fce4af, type: 3}
-    - time: 0.3
-      value: {fileID: 2720535173406242035, guid: 4c6470958c025644da267e36428a4f54, type: 3}
-    - time: 0.4
-      value: {fileID: 6894999169920593895, guid: f913391753d0b774190e24b9d40358c2, type: 3}
+      value: {fileID: 3006687461746698009, guid: d241a63ba45e18842831295d3cde73a8, type: 3}
     - time: 0.5
-      value: {fileID: -5622901713081898559, guid: a2e5575cc681f3c4cb358bc85f992312, type: 3}
-    - time: 0.6
-      value: {fileID: 5181654206020448988, guid: aa20f98d5e14d184e80cb3e133030949, type: 3}
+      value: {fileID: -1408151879443751511, guid: 4f055f8cf941a1442a77d54f84dd8de0, type: 3}
+    - time: 1
+      value: {fileID: 2007244111491711004, guid: efb7219a1e2426a44bd0ae25f8295e50, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 10
+  m_SampleRate: 2
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -56,19 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 6660783624410144326, guid: 2960e2d5547c998449bd6e66bedc2768, type: 3}
-    - {fileID: 7157561037332017152, guid: b27cdc57334c01f4e93bef76e54ca2ae, type: 3}
-    - {fileID: -5750353039905602045, guid: 055705b559ae15449b3adb4003fce4af, type: 3}
-    - {fileID: 2720535173406242035, guid: 4c6470958c025644da267e36428a4f54, type: 3}
-    - {fileID: 6894999169920593895, guid: f913391753d0b774190e24b9d40358c2, type: 3}
-    - {fileID: -5622901713081898559, guid: a2e5575cc681f3c4cb358bc85f992312, type: 3}
-    - {fileID: 5181654206020448988, guid: aa20f98d5e14d184e80cb3e133030949, type: 3}
+    - {fileID: 3006687461746698009, guid: d241a63ba45e18842831295d3cde73a8, type: 3}
+    - {fileID: -1408151879443751511, guid: 4f055f8cf941a1442a77d54f84dd8de0, type: 3}
+    - {fileID: 2007244111491711004, guid: efb7219a1e2426a44bd0ae25f8295e50, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.70000005
+    m_StopTime: 1.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,11 +75,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: CoolDownDash
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

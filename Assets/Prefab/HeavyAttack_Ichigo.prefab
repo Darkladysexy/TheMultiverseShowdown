@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6833944501467207929}
   - component: {fileID: 4261127494765142963}
   - component: {fileID: 3058880841445621324}
-  - component: {fileID: 222654017894203532}
   - component: {fileID: 2638738132787715061}
+  - component: {fileID: 2760431788114286547}
   m_Layer: 0
   m_Name: HeavyAttack_Ichigo
   m_TagString: Untagged
@@ -117,18 +117,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &222654017894203532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8540717241970735543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27146a96ad011ef44a94f4cbd0a59771, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &2638738132787715061
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -201,3 +189,16 @@ PolygonCollider2D:
       - {x: 0.1394017, y: -0.15699206}
       - {x: 0.2041279, y: -0.11754611}
   m_UseDelaunayMesh: 0
+--- !u!114 &2760431788114286547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540717241970735543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27146a96ad011ef44a94f4cbd0a59771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IChigo: {fileID: 3436352336244433881, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}

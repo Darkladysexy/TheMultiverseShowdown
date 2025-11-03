@@ -8,20 +8,17 @@ public class PlayerDash : MonoBehaviour
     public float force = 10f;
     private bool enableDash = true;
     private PlayerMovement playerMovement;
-    private BoxCollider2D collder;
-    private LegPlayer legPlayer;
+
     private int playerLayer;
     private int dashingLayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        coolDownTime = 1f;
+        coolDownTime = 2f;
         if (this.gameObject.tag == "P1") keyCode = KeyCode.L;
         else keyCode = KeyCode.Keypad3;
         playerMovement = this.GetComponent<PlayerMovement>();
-        collder = this.GetComponent<BoxCollider2D>();
-        legPlayer = this.GetComponent<LegPlayer>();
 
         playerLayer = LayerMask.NameToLayer("Player");
         dashingLayer = LayerMask.NameToLayer("DashingPlayer");
@@ -31,49 +28,42 @@ public class PlayerDash : MonoBehaviour
     void Update()
     {
         Dash();
-        Debug.Log(this.gameObject.layer);
     }
     
     public void Dash()
     {
         if(Input.GetKeyDown(keyCode) && enableDash)
         {
+            enableDash = false;
             playerMovement.animator.SetTrigger("Dash");
             if (playerMovement.isFacingRight) playerMovement.rb.AddForce(Vector2.right * force, ForceMode2D.Impulse);
             else playerMovement.rb.AddForce(Vector2.left * force, ForceMode2D.Impulse);
         }
     }
 
-    public void CoolDown()
+    public void CoolDownDash()
     {
-        StartCoroutine(Counter(coolDownTime));
-
-    }
-    private IEnumerator Counter(float timeDelay)
-    {
-        yield return new WaitForSeconds(timeDelay);
-
-        enableDash = true;
-    }
-
-    public void StartDash()
-    {
-        enableDash = false;
-        collder.isTrigger = false;
         this.gameObject.layer = dashingLayer;
-        foreach(Transform child in this.gameObject.transform)
+        foreach (Transform child in this.gameObject.transform)
         {
             child.gameObject.layer = dashingLayer;
         }
-    }
-    public void EndSDash()
-    {
-        this.gameObject.layer = playerLayer;  
-        foreach(Transform child in this.gameObject.transform)
+
+        StartCoroutine(Counter(coolDownTime));
+
+        this.gameObject.layer = playerLayer;
+        foreach (Transform child in this.gameObject.transform)
         {
             child.gameObject.layer = playerLayer;
         }
+
     }
+    private IEnumerator Counter(float timeDelay)
+    {   
+        
 
-
+        yield return new WaitForSeconds(timeDelay);
+   
+        enableDash = true;
+    }
 }
