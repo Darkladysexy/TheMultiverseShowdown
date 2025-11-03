@@ -6,27 +6,27 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
     /*
-        - isAttack = false, combostep = 1
-        - khi người chơi bấm phím attack: isAttack = true;
-        - Khi animation normalAttack thực hiện gọi hàm kiểm tra xem người chơi có bấm phím đánh lần nữa không, nếu có thì thì isAttack = true, comboStep +=1
-
+        Normal attck se co 3 dong tac
+        Neu bam lien tiep thi cac don danh se duoc thuc hien lien tiep
+        Neu khong hoac dang o don danh cuoi thi lan tan cong tiep theo se la don danh dau tien
     */
     private Animator animator;
     private LegPlayer legPlayer;
     private KeyCode keyCodeAttack;
-    private int comboStep = 0;
+    private int comboStep = 0; // Luu lai don danh hien tai la don danh nao (toi da la 3)
     private float lastAttackTime = 0f;
+    [Header("Sat thuong cua moi don danh")]
     public int normalAttack1_Damage;
     public int normalAttack2_Damage;
     public int normalAttack3_Damage;
+    [Header("Collider cua cac don danh")]
     public GameObject normalAttack1_HurtBox;
     public GameObject normalAttack2_HurtBox;
     public GameObject normalAttack3_HurtBox;
-    public bool isNormalAttack1 = false;
-    public bool isNormalAttack2 = false;
-    public bool isNormalAttack3 = false;
+    [HideInInspector] public bool isNormalAttack1 = false;
+    [HideInInspector] public bool isNormalAttack2 = false;
+    [HideInInspector] public bool isNormalAttack3 = false;
 
-    
     // 1.5 giây để nhấn đòn tiếp theo, nếu không combo sẽ reset
     public float comboResetTime = 0.5f; 
     
@@ -102,9 +102,9 @@ public class PlayerAttack : MonoBehaviour
             comboStep = 0;
         }
     }
-    // 4. HÀM NÀY RẤT QUAN TRỌNG
-    // Bạn cần gọi hàm này từ Animation Event
-    // khi animation tấn công KẾT THÚC.
+    /// <summary>
+    /// Goi sau moi don danh o Animation Event
+    /// </summary>
     public void AttackFinished()
     {
         lastAttackTime = Time.time;
@@ -113,6 +113,12 @@ public class PlayerAttack : MonoBehaviour
         isNormalAttack2 = false;
         isNormalAttack3 = false;
     }
+    /// <summary>
+    /// Tra ve sat thuong
+    /// Tra ve 0 neu step la 0
+    /// </summary>
+    /// <param name="step">Don danh dang duoc thuc hien</param>
+    /// <returns></returns>
     public int GetDamageForComboStep(int step)
     {
         if (step == 1) return normalAttack1_Damage;

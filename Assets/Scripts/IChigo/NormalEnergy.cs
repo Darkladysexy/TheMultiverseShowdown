@@ -43,20 +43,25 @@ public class NormalEnergy : MonoBehaviour
         // Danh xuong
         else if (HeavyAttack.instant.isDownForward)
         {
+            // Sang phai
             if (playerMovement.isFacingRight) direction = RIGHTDOWN;
+            // Sang trai
             else
             {
                 direction = LEFTDOWN;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
         }
+        // Danh len
         else if (HeavyAttack.instant.isUpForward)
         {
+            // Sang phai
             if (playerMovement.isFacingRight)
             {
                 direction = RIGHTUP;
                 transform.rotation = Quaternion.Euler(0, 0, 90);
             }
+            // Sang trai
             else
             {
                 direction = LEFTUP;
@@ -75,16 +80,25 @@ public class NormalEnergy : MonoBehaviour
     {
 
     }
+    /// <summary>
+    /// Neu va cham voi player thi gay sat thuong dong thoi tao hieu ung rung camera
+    /// Huy game object khi co bat cu va cham nao
+    /// </summary>
+    /// <param name="collision"></param>
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("P1") || collision.gameObject.CompareTag("P2"))
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
+
             enemyAnimator.SetTrigger("TakeDamageFall");
             Vector3 vt = (-this.gameObject.transform.position + collision.gameObject.transform.position).normalized;
             playerHealth.TakeDamage(HeavyAttack.instant.damage, force, vt);
+
             GameManager.instant.PauseGame(collision.gameObject.transform.position);
+            CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
+
         }
         Destroy(this.gameObject);
     }

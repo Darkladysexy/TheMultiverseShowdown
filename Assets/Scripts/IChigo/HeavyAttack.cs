@@ -6,24 +6,25 @@ using UnityEngine.InputSystem.XR;
 
 public class HeavyAttack : MonoBehaviour,InterfaceSkill
 {
-    public static HeavyAttack instant;
+    [HideInInspector] public static HeavyAttack instant;
+    private LegPlayer legPlayer;
+    [HideInInspector] public PlayerMovement playerMovement;
     public float coolDownTime { get; set; } = 2f;
     public int damage { get; set; } = 30;
-    public KeyCode KeyCode { get; set; }
-    public KeyCode keyCodeDir;
+    [HideInInspector] public KeyCode KeyCode { get; set; }
+    [HideInInspector] public KeyCode keyCodeDir;
+    [Header("Vi tri spawn nang luong")]
     public GameObject heavySkillObj;
     public GameObject heavySkillPos;
-    public bool isForward = false;
-    public bool isUpForward = false;
-    public bool isDownForward = false;
+    [Header("Chieu di chuyen cua nang luong")]
+    [HideInInspector] public bool isForward = false;
+    [HideInInspector] public bool isUpForward = false;
+    [HideInInspector] public bool isDownForward = false;
     private bool enableAttack = true;
-    private LegPlayer legPlayer;
-    public PlayerMovement playerMovement;
     
     void Awake()
     {
         instant = this;
-        // damage = 30;
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Keypad4;
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
         foreach (Transform child in this.gameObject.transform)

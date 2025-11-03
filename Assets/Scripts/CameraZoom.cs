@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraZoom : MonoBehaviour
 {
-    public Transform player1;
-    public Transform player2;
+    private Transform player1;
+    private Transform player2;
 
     [Header("Cài đặt")]
     public float minZoom = 5f;     // Mức zoom gần nhất (không cho zoom gần hơn)
@@ -13,22 +13,27 @@ public class CameraZoom : MonoBehaviour
 
     private Camera cam;
     private float zoomVelocity = 0f;         // Biến tạm cho SmoothDamp
-    private Vector3 initialPosition;         // Vị trí camera cố định
-
+    public Vector3 initialPosition;         // Vị trí camera cố định
+    [HideInInspector] public bool isShaking = false; // Ẩn biến này khỏi Inspector
     void Start()
     {
         cam = GetComponent<Camera>();
         // Lưu lại vị trí cố định ban đầu của camera
-        initialPosition = transform.position; 
+        initialPosition = transform.position;
+        player1 = GameObject.FindGameObjectWithTag("P1").transform;
+        player2 = GameObject.FindGameObjectWithTag("P2").transform;
     }
 
     void LateUpdate()
     {
-        if (player1 == null || player2 == null)
+        if (player1 == null || player2 == null || isShaking)
         {
             return;
         }
-
+        // if (!isShaking)
+        // {
+        //     transform.position = initialPosition;
+        // }
         // --- 1. GIỮ VỊ TRÍ CAMERA CỐ ĐỊNH ---
         // Đảm bảo camera không bao giờ di chuyển
         transform.position = initialPosition;

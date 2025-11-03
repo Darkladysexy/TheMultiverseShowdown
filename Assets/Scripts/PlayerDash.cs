@@ -3,25 +3,24 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    public float coolDownTime { get ; set;}
-    public KeyCode keyCode { get; set; }
-    public float force = 10f;
-    private bool enableDash = true;
     private PlayerMovement playerMovement;
-
-    private int playerLayer;
-    private int dashingLayer;
+    public float coolDownTime { get ; set;}
+    [HideInInspector] public KeyCode keyCode { get; set; }
+    public float force = 10f; // Luc day khi dash
+    private bool enableDash = true; // Kiem tra player co the dash hay khong
+    private int playerLayer; // Layer cua player
+    private int dashingLayer; // Layer cua player khi dash
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerMovement = this.GetComponent<PlayerMovement>();
+        playerLayer = LayerMask.NameToLayer("Player");
+        dashingLayer = LayerMask.NameToLayer("DashingPlayer");
+
         coolDownTime = 2f;
         if (this.gameObject.tag == "P1") keyCode = KeyCode.L;
         else keyCode = KeyCode.Keypad3;
-        playerMovement = this.GetComponent<PlayerMovement>();
-
-        playerLayer = LayerMask.NameToLayer("Player");
-        dashingLayer = LayerMask.NameToLayer("DashingPlayer");
     }
 
     // Update is called once per frame
@@ -29,7 +28,9 @@ public class PlayerDash : MonoBehaviour
     {
         Dash();
     }
-    
+    /// <summary>
+    /// Khi player bam phim dash va da cool down xong thi playe duoc dash
+    /// </summary>
     public void Dash()
     {
         if(Input.GetKeyDown(keyCode) && enableDash)
@@ -60,8 +61,6 @@ public class PlayerDash : MonoBehaviour
     }
     private IEnumerator Counter(float timeDelay)
     {   
-        
-
         yield return new WaitForSeconds(timeDelay);
    
         enableDash = true;

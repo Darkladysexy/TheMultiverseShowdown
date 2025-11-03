@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 {
-    public static SpeacialAttack instant;
+    // Singletan cua SpecialAttackIchigo
+    [HideInInspector] public static SpeacialAttack instant;
+    private LegPlayer legPlayer;
+    [HideInInspector] public PlayerMovement playerMovement;
     public float coolDownTime { get; set; } = 4f;
     public int damage { get; set; } = 40;
-    public KeyCode KeyCode { get; set; }
+    [HideInInspector] public KeyCode KeyCode { get; set; }
+    [Header("Vi tri Spawn nang luong")]
     public GameObject specialSkillObj;
     public GameObject specialSkillPos;
+    // Kiem tra xem nguoi choi co the dung Special Attack khong
     private bool isSpecialAttack = false;
-    private LegPlayer legPlayer;
-    public PlayerMovement playerMovement;
 
     void Awake()
     {

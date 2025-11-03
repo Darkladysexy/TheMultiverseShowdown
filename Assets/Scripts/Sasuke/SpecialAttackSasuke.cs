@@ -5,11 +5,12 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
 {
     public float coolDownTime { get; set; } = 4f;
     public int damage { get; set; } = 40;
-    public KeyCode KeyCode { get; set; }
+    [HideInInspector] public KeyCode KeyCode { get; set; }
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
     private LegPlayer legPlayer;
     private bool enableAttack = true;
+    [Header("Collider cua cac don danh")]
     public GameObject specialAttack1_HurtBox;
     public GameObject specialAttack2_HurtBox;
     public GameObject projectTiles;
@@ -27,19 +28,21 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
         }
 
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
-
+        // Tat cac collider ban dau la false
         specialAttack1_HurtBox.SetActive(false);
         specialAttack2_HurtBox.SetActive(false);
         projectTiles.SetActive(false);
-
-        damage = 40;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+    /// <summary>
+    /// Neu nguoi choi bam phim skill, dang o tren mat dat, va da cooldown xong
+    /// 
+    /// </summary>
     public void Attack()
     {
         if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
@@ -48,7 +51,9 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
             enableAttack = false;
         }
     }
-
+    /// <summary>
+    /// Duoc ngay khi thuc hien skill bang Animation event
+    /// </summary>
     public void CoolDown()
     {
         StartCoroutine(CoolDownCount(coolDownTime));
@@ -58,13 +63,15 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
         yield return new WaitForSeconds(time);
         enableAttack = true;
     }
-
     public void EndSkill()
     {
         specialAttack1_HurtBox.SetActive(false);
         specialAttack2_HurtBox.SetActive(false);
     }
-
+    /// <summary>
+    /// Tao luc day khi Sasuke thuc hien skill
+    /// Duoc goi trong animation event
+    /// </summary>
     public void StartSkill()
     {
         if (playerMovement.isFacingRight)

@@ -7,22 +7,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Toc do chay va do cao")]
     public float speed = 2f;
     public float height = 5f;
-    public Rigidbody2D rb;
-    public Animator animator;
-    public bool isFacingRight = true;
-    public bool isStun = false;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Animator animator;
+    private LegPlayer legPlayer;
+    [HideInInspector] public bool isFacingRight = true; // Player dang quay mat huong nao
+    [HideInInspector] public bool isStun = false; // Nguoi choi co dang bi stun hay khong
     public float time = 0.25f;
     private KeyCode keyCodeLeft;
     private KeyCode keyCodeRight;
     private KeyCode keyCodeJump;
     private bool isMovement = false;
-    private LegPlayer legPlayer;
-    private int jumpUsage = 0;
-    private int playerLayer;
-    private int jumpingPlayer;
-    private int dashingLayer;
+    private int jumpUsage = 0; // Dem so lan nhay
+    private int playerLayer; // Layer cua Player
+    private int jumpingPlayer; // Layer cua Player khi nhay
+    private int dashingLayer; // Layer cua Player khi dash
     void Awake()
     {
         keyCodeLeft = (this.gameObject.CompareTag("P1")) ? KeyCode.A : KeyCode.LeftArrow;
@@ -39,16 +40,18 @@ public class PlayerMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
 
-        foreach(Transform child in this.gameObject.transform)
+        foreach (Transform child in this.gameObject.transform)
         {
-            if(child.gameObject.name == "Leg")
+            if (child.gameObject.name == "Leg")
             {
                 legPlayer = child.gameObject.GetComponent<LegPlayer>();
             }
         }
     }
-
-    // Update is called once per frame
+    /// <summary>
+    /// Neu khong bi stun thi player co the nhay
+    /// Set cac dieu kien trong animator
+    /// </summary>
     void Update()
     {
         if (!isStun)
@@ -60,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         ChangeLayerJump();
 
     }
+    // Nguoi choi khong bi stun thi co the di chuyen
     void FixedUpdate()
     {
         if (!isStun)
@@ -68,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Move()
     {
+        // Di chuyen sang phai
         if (Input.GetKey(keyCodeRight))
         {
             isMovement = true;
@@ -80,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
                 isFacingRight = true;
             }
         }
+        // Di chuyen sang trai
         else if (Input.GetKey(keyCodeLeft))
         {
             isMovement = true;
@@ -100,6 +106,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 0f);
         }
     }
+    /// <summary>
+    /// Nguoi choi co the nhay 2 lan
+    /// </summary>
     private void Jump()
     {
         if (Input.GetKeyDown(keyCodeJump) && jumpUsage < 1)
@@ -144,6 +153,10 @@ public class PlayerMovement : MonoBehaviour
             child.gameObject.layer = playerLayer;
         }
     }
+    /// <summary>
+    /// Khi nguoi choi nhay len thi player thi se co layer jumpingPlayer
+    /// Khi roi xuong thi reset ve layer mac dinh cua player
+    /// </summary>
     public void ChangeLayerJump()
     {
         if (rb.linearVelocityY > 0.1)

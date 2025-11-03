@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SasukeSkill : MonoBehaviour
 {
-    public static SasukeSkill instant;
+    [HideInInspector] public static SasukeSkill instant;
+    [HideInInspector] public Animator animator;
     private int actionLayerIndex;
-    public Animator animator;
     private SpecialAttackSasuke specialAttackSasuke;
     private HeavyAttackSasuke heavyAttackSasuke;
     void Awake()
@@ -16,6 +16,7 @@ public class SasukeSkill : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Lay index layer Attack Layer
         animator = this.GetComponent<Animator>();
         actionLayerIndex = animator.GetLayerIndex("Attack Layer");
     }
@@ -23,6 +24,8 @@ public class SasukeSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Kiem tra xem AttackLayer co dang o state NoAction khong
+        // Neu co thi moi thuc hien duoc don danh
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
         bool isReadyForAction = stateInfo.IsTag("NoAction");
         if (isReadyForAction)
@@ -31,6 +34,7 @@ public class SasukeSkill : MonoBehaviour
             heavyAttackSasuke.Attack();
         }
     }
+    // Cac animation event cua skill
     public void TriggerHeavyAttackStart()
     {
         heavyAttackSasuke.StartSkill();

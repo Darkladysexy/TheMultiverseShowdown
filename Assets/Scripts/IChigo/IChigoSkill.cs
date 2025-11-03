@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class IChigoSkill : MonoBehaviour
 {
-    public static IChigoSkill instant;
+    [HideInInspector] public static IChigoSkill instant;
+    [HideInInspector] public Animator animator;
     private int actionLayerIndex;
     private HeavyAttack heavyAttack;
     private SpeacialAttack speacialAttack;
-    public Animator animator;
     // private KeyCode heavyAttackKey;
     // private KeyCode specialAttackKey;
     
@@ -21,16 +21,14 @@ public class IChigoSkill : MonoBehaviour
     void Start()
     {
         animator = this.GetComponent<Animator>();
+        // Lay animator layer (Attack Layer)
         actionLayerIndex = animator.GetLayerIndex("Attack Layer");
-
-        // heavyAttackKey = (this.gameObject.tag == "P1") ? KeyCode.U : KeyCode.Alpha4;
-        // specialAttackKey = (this.gameObject.tag == "P1") ? KeyCode.I : KeyCode.Alpha5;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Kiem tra xem Attack Layer dang o state NoAction khong
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
         bool isReadyForAction = stateInfo.IsTag("NoAction");
         if (isReadyForAction)
@@ -39,6 +37,7 @@ public class IChigoSkill : MonoBehaviour
             speacialAttack.Attack();
         }
     }
+    // Dung de lam Animation event
     public void TriggerHeavyAttackStart()
     {
         heavyAttack.StartSkill();

@@ -25,28 +25,32 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
     {
 
     }
+    /// <summary>
+    /// OnEnable duoc goi ra 1 lan moi khi bat gameOject
+    /// Neu co va cham voi player thi gay sat thuong
+    /// </summary>
     void OnEnable()
     {
+        // Bo loc de loc ra cac doi tuong va cham voi object
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        contactFilter2D.useTriggers = true;
-
+        contactFilter2D.useTriggers = true; // co su dung trigger
+        // Lay ra cac doi tuong da duoc loc va cham voi object nay
         hurboxCollider = this.GetComponent<Collider2D>();
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
 
         int damage = heavyAttackSasuke.damage;
-
+        // Duyet qua cac ket qua kiem tra va cham xem co va cham voi player khong de gay sat thuong
         foreach (Collider2D collision in results)
         {
             if (collision.gameObject.CompareTag(tagEnemy))
             {
                 PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
                 Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
+
                 if (enemyHealth != null)
                 {
-                    
-                    // StartCoroutine(PauseGame());
                     GameManager.instant.PauseGame(this.transform.position);
                     CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
                     enemyAnimator.SetTrigger("TakeDamageFall");

@@ -26,22 +26,24 @@ private string tagEnemy;
     }
     void OnEnable()
     {
+        // Bo loc de loc ra cac doi tuong can thiet
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        contactFilter2D.useTriggers = true;
-
+        contactFilter2D.useTriggers = true; // Co su dung trigger
+        // Lay ket qua cac va cham theo bo loc
         hurboxCollider = this.GetComponent<Collider2D>();
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
 
         int damage = specialAttackSasuke.damage/2;
-
+        // Duyet qua cac va cham xem co phai player khong neu co thi gay sat thuong
         foreach (Collider2D collision in results)
         {
             if (collision.gameObject.CompareTag(tagEnemy))
             {
                 PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
                 Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
+                
                 if (enemyHealth != null)
                 {
                     

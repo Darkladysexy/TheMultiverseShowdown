@@ -24,7 +24,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(PauseGameEnumerator(position));
     }
-    
+    /// <summary>
+    /// Dung scene tam thoi
+    /// </summary>
+    /// <param name="position"> vi tri dung cua camera </param>
+    /// <returns></returns>
     private IEnumerator PauseGameEnumerator(Vector3 position)
     {
         Time.timeScale = 0f;

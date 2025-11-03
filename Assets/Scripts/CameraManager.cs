@@ -5,6 +5,7 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instant;
     public GameObject myCamera;
+    private CameraZoom cameraZoom;
     public Transform transformCamera;
 
     private Vector3 originalPosition; // Dùng để lưu vị trí camera ban đầu
@@ -13,6 +14,7 @@ public class CameraManager : MonoBehaviour
     void Awake()
     {
         instant = this;
+        cameraZoom = myCamera.GetComponent<CameraZoom>();
     }
 
     void Start()
@@ -33,8 +35,6 @@ public class CameraManager : MonoBehaviour
         // originalPosition = position; // Cập nhật lại vị trí gốc mới
     }
 
-    // --- CODE MỚI ĐỂ RUNG CAMERA ---
-
     /// <summary>
     /// Bắt đầu rung camera
     /// </summary>
@@ -48,6 +48,7 @@ public class CameraManager : MonoBehaviour
 
     private IEnumerator Shake(float duration, float magnitude, Transform transform)
     {
+        cameraZoom.isShaking = true;
         float elapsed = 0.0f;
 
         // Lưu lại vị trí camera ngay TRƯỚC khi rung
@@ -68,6 +69,7 @@ public class CameraManager : MonoBehaviour
 
             yield return null; // Chờ đến frame tiếp theo
         }
+        cameraZoom.isShaking = false;
 
         // Hết thời gian rung, trả camera về vị trí ban đầu
         transformCamera.position = new Vector3(0, 0, -10);

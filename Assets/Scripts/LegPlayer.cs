@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LegPlayer : MonoBehaviour
 {
-    public bool isGrounded = false;
+    [HideInInspector] public bool isGrounded = false;
     void Awake()
     {
         
@@ -16,12 +16,14 @@ public class LegPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+    // khi va cham voi mat dat thi isGrounded = true
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground") isGrounded = true;
     }
+    // khi thoat khoai va cham voi mat dat thi isGrounded = false
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground") isGrounded = false;
