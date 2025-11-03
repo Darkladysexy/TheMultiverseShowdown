@@ -1,24 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
 {
-    public float coolDownTime { get; set; } = 4f;
-    public int damage { get; set; } = 40;
-    [HideInInspector] public KeyCode KeyCode { get; set; }
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
     private LegPlayer legPlayer;
+    private PlayableDirector skillTimeLine;
+    public float coolDownTime { get; set; } = 4f;
+    public int damage { get; set; } = 40;
+    [HideInInspector] public KeyCode KeyCode { get; set; }
     private bool enableAttack = true;
     [Header("Collider cua cac don danh")]
     public GameObject specialAttack1_HurtBox;
     public GameObject specialAttack2_HurtBox;
-    public GameObject projectTiles;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         rb = this.GetComponent<Rigidbody2D>();
+        skillTimeLine = this.GetComponent<PlayableDirector>();
         foreach(Transform child in this.gameObject.transform)
         {
             if(child.gameObject.name == "Leg")
@@ -31,7 +33,6 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
         // Tat cac collider ban dau la false
         specialAttack1_HurtBox.SetActive(false);
         specialAttack2_HurtBox.SetActive(false);
-        projectTiles.SetActive(false);
     }
 
     // Update is called once per frame
@@ -88,12 +89,5 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
         specialAttack2_HurtBox.SetActive(true);
 
     }
-    public void EnableProjectTiles()
-    {
-        projectTiles.SetActive(true);
-    }
-    public void DisableProjectTiles()
-    {
-        projectTiles.SetActive(false);
-    }
+    
 }

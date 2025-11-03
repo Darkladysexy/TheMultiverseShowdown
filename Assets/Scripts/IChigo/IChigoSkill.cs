@@ -1,10 +1,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class IChigoSkill : MonoBehaviour
 {
     [HideInInspector] public static IChigoSkill instant;
     [HideInInspector] public Animator animator;
+    private PlayableDirector skillTimeLine;
     private int actionLayerIndex;
     private HeavyAttack heavyAttack;
     private SpeacialAttack speacialAttack;
@@ -21,6 +23,7 @@ public class IChigoSkill : MonoBehaviour
     void Start()
     {
         animator = this.GetComponent<Animator>();
+        skillTimeLine = this.gameObject.GetComponent<PlayableDirector>();
         // Lay animator layer (Attack Layer)
         actionLayerIndex = animator.GetLayerIndex("Attack Layer");
     }
@@ -61,5 +64,20 @@ public class IChigoSkill : MonoBehaviour
     public void TriggerSpecialAttackCoolDown()
     {
         speacialAttack.CoolDown();
+    }
+    public void PlayProjectTile()
+    {
+        // 1. DỪNG CẢ SCENE LẠI
+        Time.timeScale = 0f;
+        // 2. BẬT TIMELINE (Timeline này sẽ phớt lờ lệnh dừng)
+        if (skillTimeLine != null)
+        {
+            skillTimeLine.Play();
+        }
+    }
+    public void ResumeGameTime()
+    {
+
+        Time.timeScale = 1f;
     }
 }

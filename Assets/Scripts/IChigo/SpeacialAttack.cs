@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 {
@@ -8,6 +9,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     [HideInInspector] public static SpeacialAttack instant;
     private LegPlayer legPlayer;
     [HideInInspector] public PlayerMovement playerMovement;
+    
     public float coolDownTime { get; set; } = 4f;
     public int damage { get; set; } = 40;
     [HideInInspector] public KeyCode KeyCode { get; set; }
@@ -23,6 +25,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
         instant = this;
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        
         foreach(Transform child in this.gameObject.transform)
         {
             if(child.gameObject.name == "Leg")
@@ -59,7 +62,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 
     public void StartSkill()
     {
-        
+
     }
 
     
