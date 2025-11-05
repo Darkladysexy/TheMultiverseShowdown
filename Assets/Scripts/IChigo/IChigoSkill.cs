@@ -67,17 +67,16 @@ public class IChigoSkill : MonoBehaviour
     }
     public void PlayProjectTile()
     {
-        // 1. DỪNG CẢ SCENE LẠI
         Time.timeScale = 0f;
-        // 2. BẬT TIMELINE (Timeline này sẽ phớt lờ lệnh dừng)
-        if (skillTimeLine != null)
-        {
-            skillTimeLine.Play();
-        }
+        skillTimeLine.Play();
     }
     public void ResumeGameTime()
     {
-
         Time.timeScale = 1f;
     }
+    public void PlaySpecialAttackAudio()
+    {
+        speacialAttack.PlayAudio();
+    }
+
 }

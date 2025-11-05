@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float height = 5f;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Animator animator;
+    
     private LegPlayer legPlayer;
     [HideInInspector] public bool isFacingRight = true; // Player dang quay mat huong nao
     [HideInInspector] public bool isStun = false; // Nguoi choi co dang bi stun hay khong
@@ -113,8 +114,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(keyCodeJump) && jumpUsage < 1)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, height);
-            jumpUsage++;
+            if(legPlayer.isGrounded || rb.linearVelocityY < -0.1)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, height);
+                jumpUsage++;
+            }
         }
         if (legPlayer.isGrounded) jumpUsage = 0;
     }

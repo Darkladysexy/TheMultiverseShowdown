@@ -9,6 +9,8 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     [HideInInspector] public static HeavyAttack instant;
     private LegPlayer legPlayer;
     [HideInInspector] public PlayerMovement playerMovement;
+    private AudioSource audioSource;
+    public AudioClip heavyAttackAudio;
     public float coolDownTime { get; set; } = 2f;
     public int damage { get; set; } = 30;
     [HideInInspector] public KeyCode KeyCode { get; set; }
@@ -27,6 +29,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
         instant = this;
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Keypad4;
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         foreach (Transform child in this.gameObject.transform)
         {
             if (child.gameObject.name == "Leg")
@@ -83,6 +86,13 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
         {
             IChigoSkill.instant.animator.SetBool("HeavyAttack", true);
             isDownForward = true;
+        }
+    }
+    public void PlayHeavyAttackAudio()
+    {
+        if(heavyAttackAudio != null)
+        {
+            audioSource.PlayOneShot(heavyAttackAudio);
         }
     }
     

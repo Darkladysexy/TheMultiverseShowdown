@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -8,6 +9,7 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     private PlayerMovement playerMovement;
     private LegPlayer legPlayer;
     private PlayableDirector skillTimeLine;
+    private AudioSource audioSource;
     public float coolDownTime { get; set; } = 4f;
     public int damage { get; set; } = 40;
     [HideInInspector] public KeyCode KeyCode { get; set; }
@@ -15,12 +17,17 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     [Header("Collider cua cac don danh")]
     public GameObject specialAttack1_HurtBox;
     public GameObject specialAttack2_HurtBox;
+    [Header("Audio Clip")]
+    public AudioClip specialAttackAudio1;
+    public AudioClip specialAttackAudio2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         rb = this.GetComponent<Rigidbody2D>();
         skillTimeLine = this.GetComponent<PlayableDirector>();
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+
         foreach(Transform child in this.gameObject.transform)
         {
             if(child.gameObject.name == "Leg")
@@ -88,6 +95,34 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     {
         specialAttack2_HurtBox.SetActive(true);
 
+    }
+    public void PlayProjectTile()
+    {
+        // 1. DỪNG CẢ SCENE LẠI
+        Time.timeScale = 0f;
+        // 2. BẬT TIMELINE (Timeline này sẽ phớt lờ lệnh dừng)
+        if (skillTimeLine != null)
+        {
+            skillTimeLine.Play();
+        }
+    }
+    public void ResumeGameTime()
+    {
+        Time.timeScale = 1f;
+    }
+    public void PlaySpecialAudio1()
+    {
+        if (specialAttackAudio1 != null)
+        {
+            audioSource.PlayOneShot(specialAttackAudio1);
+        }
+    }
+    public void PlaySpecialAudio2()
+    {
+        if(specialAttackAudio2 != null)
+        {
+            audioSource.PlayOneShot(specialAttackAudio2);
+        }
     }
     
 }

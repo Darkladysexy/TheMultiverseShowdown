@@ -1,12 +1,14 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
 {
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
     private LegPlayer legPlayer;
+    private AudioSource audioSource;
     public float coolDownTime { get; set; } = 2f;
     public int damage { get; set; } = 30;
     [HideInInspector] public KeyCode KeyCode { get; set; }
@@ -16,6 +18,11 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     public GameObject heavyAttackForward_HurtBox;
     public GameObject heavyAttackDownForward_HurtBox;
     public GameObject heavyAttackUpForward_HurtBox;
+    [Header("AudioClip")]
+    public AudioClip heavyAttackForwardAudio;
+    public AudioClip heavyAttackDownForwardAudio;
+    public AudioClip heavyAttackUpForward1Audio;
+    public AudioClip heavyAttackUpForward2Audio;
     // Kiem tra nguoi choi co the su dung Heavy Attack hay khong
     private bool enableAttack = true;
 
@@ -24,6 +31,8 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         rb = this.GetComponent<Rigidbody2D>();
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Keypad4;
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
         force = 5f;
@@ -117,5 +126,33 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     public void StartHeavyDownAttackForward()
     {
         heavyAttackDownForward_HurtBox.SetActive(true);
+    }
+    public void PlayHeavyAttackForwardAudio()
+    {
+        if (heavyAttackForwardAudio)
+        {
+            audioSource.PlayOneShot(heavyAttackForwardAudio);
+        }
+    }
+    public void PlayHeavyAttackDownForwardAudio()
+    {
+        if (heavyAttackDownForwardAudio)
+        {
+            audioSource.PlayOneShot(heavyAttackDownForwardAudio);
+        }
+    }
+    public void PlayHeavyAttackUpForward1Audio()
+    {
+        if (heavyAttackUpForward1Audio)
+        {
+            audioSource.PlayOneShot(heavyAttackUpForward1Audio);
+        }
+    }
+    public void PlayHeavyAttackUpForward2Audio()
+    {
+        if(heavyAttackUpForward2Audio)
+        {
+            audioSource.PlayOneShot(heavyAttackUpForward2Audio);
+        }
     }
 }

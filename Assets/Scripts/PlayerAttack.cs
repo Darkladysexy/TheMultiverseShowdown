@@ -102,16 +102,25 @@ public class PlayerAttack : MonoBehaviour
             comboStep = 0;
         }
     }
+    public void ResetAttackState()
+    {
+        isAttacking = false;
+        isNormalAttack1 = false;
+        isNormalAttack2 = false;
+        isNormalAttack3 = false;
+
+        // Tắt tất cả hurtbox để đề phòng trường hợp chúng bị kẹt
+        EndNormalAttack1();
+        EndNormalAttack2();
+        EndNormalAttack3();
+    }
     /// <summary>
     /// Goi sau moi don danh o Animation Event
     /// </summary>
     public void AttackFinished()
     {
         lastAttackTime = Time.time;
-        isAttacking = false;
-        isNormalAttack1 = false;
-        isNormalAttack2 = false;
-        isNormalAttack3 = false;
+        ResetAttackState();
     }
     /// <summary>
     /// Tra ve sat thuong
