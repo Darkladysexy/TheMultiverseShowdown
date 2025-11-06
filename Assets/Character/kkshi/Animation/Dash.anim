@@ -21,9 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -8712778243190278716, guid: 73671831cc061364eb6059ae1b3d387a, type: 3}
+      value: {fileID: -164082725380277428, guid: 9e84988991819c84fa22647490f096d8, type: 3}
     - time: 0.1
+      value: {fileID: -8712778243190278716, guid: 73671831cc061364eb6059ae1b3d387a, type: 3}
+    - time: 0.2
+      value: {fileID: -8712778243190278716, guid: 73671831cc061364eb6059ae1b3d387a, type: 3}
+    - time: 0.3
       value: {fileID: -3180619178420385107, guid: d6ce09ca28d6fed4dbc1f0a01eb51452, type: 3}
+    - time: 0.4
+      value: {fileID: -5099292496197868168, guid: f975951a7359d2f4fa52e4c3f686cb6e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,14 +52,17 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+    - {fileID: -164082725380277428, guid: 9e84988991819c84fa22647490f096d8, type: 3}
+    - {fileID: -8712778243190278716, guid: 73671831cc061364eb6059ae1b3d387a, type: 3}
     - {fileID: -8712778243190278716, guid: 73671831cc061364eb6059ae1b3d387a, type: 3}
     - {fileID: -3180619178420385107, guid: d6ce09ca28d6fed4dbc1f0a01eb51452, type: 3}
+    - {fileID: -5099292496197868168, guid: f975951a7359d2f4fa52e4c3f686cb6e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.2
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -72,4 +81,25 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: StartStun
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: CoolDownDash
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.4
+    functionName: EndStun
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
