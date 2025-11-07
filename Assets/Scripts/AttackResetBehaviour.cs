@@ -18,10 +18,8 @@ public class AttackResetBehaviour : StateMachineBehaviour
     {
         // Lấy script PlayerAttack từ đối tượng cha (Player)
         PlayerAttack playerAttack = animator.gameObject.GetComponent<PlayerAttack>();
-        
         if (playerAttack != null)
-
-            playerAttack.ResetAttackState();
+            playerAttack.AttackFinished();
     }
 }
 

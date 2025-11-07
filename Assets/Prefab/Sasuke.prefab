@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8455146588214244674}
   - component: {fileID: 5994165827041413827}
   - component: {fileID: 7906270291296315808}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: normalAttack2_HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,6 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7208c2c38d2e00d428bb73a5525d775b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboResetTime: 0.5
   normalAttack1_Damage: 0
   normalAttack2_Damage: 0
   normalAttack3_Damage: 0
@@ -379,7 +380,6 @@ MonoBehaviour:
   isNormalAttack1: 0
   isNormalAttack2: 0
   isNormalAttack3: 0
-  comboResetTime: 0.5
 --- !u!114 &3461580595761718138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 4394038039480875185}
   - component: {fileID: 8516641935466155277}
   - component: {fileID: 8080992973831688398}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: normalAttack1_HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1320,7 @@ GameObject:
   - component: {fileID: 5691550108308746045}
   - component: {fileID: 7258428462524892012}
   - component: {fileID: 8477423636489338799}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: normalAttack3_HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
