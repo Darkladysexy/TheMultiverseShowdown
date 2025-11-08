@@ -10,11 +10,13 @@ public class CharacterState : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject[] prefabs;
+    public Sprite[] sprites;
     public GameObject maps;
     public TextMeshProUGUI textMeshPro;
     public GameObject buttons;
+    public Image image1;
+    public Image image2;
     private bool IsPlayer1;
-    
     void Start()
     {
         IsPlayer1 = true;
@@ -26,11 +28,15 @@ public class CharacterState : MonoBehaviour
         if (IsPlayer1)
         {
             CharacterData.prefabs1 = prefabs[index];
+            image1.sprite = sprites[index] ;
+            image1.color = Color.white;
             Debug.Log(prefabs[index]);
         }
         else
         {
             CharacterData.prefabs2 = prefabs[index];
+            image2.sprite = sprites[index] ;
+            image2.color = Color.white;
             Debug.Log(prefabs[index]);
         }
         buttons.SetActive(true);
