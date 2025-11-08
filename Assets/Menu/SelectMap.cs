@@ -20,7 +20,7 @@ public class SelectMap : MonoBehaviour
     public void previousMap()
     {
         Maps[selectedMap].SetActive(false);
-        selectedMap += 1;
+        selectedMap -= 1;
         if (selectedMap < 0)
         {
             selectedMap = Maps.Length - 1;

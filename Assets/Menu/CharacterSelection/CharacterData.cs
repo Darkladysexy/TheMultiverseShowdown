@@ -1,0 +1,7 @@
+using UnityEngine;
+
+public class CharacterData : MonoBehaviour
+{
+    public static GameObject prefabs1;
+    public static GameObject prefabs2;
+}
