@@ -16,6 +16,7 @@ public class PlayerAudio : MonoBehaviour
     void Start()
     {
         audioSource = this.gameObject.GetComponent<AudioSource>();
+        audioSource.volume = StaticData.vol;
     }
     // Update is called once per frame
     void Update()
