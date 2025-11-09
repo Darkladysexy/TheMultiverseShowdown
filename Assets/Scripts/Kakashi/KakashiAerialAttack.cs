@@ -7,7 +7,7 @@ public class KakashiAerialAttack : MonoBehaviour, InterfaceSkill
 
     public float coolDownTime { get; set; }
     public int damage { get; set; }
-    public KeyCode KeyCode { get; set; }
+    public KeyCode KeyCode { get; set; } // Không dùng
 
     public GameObject kunaiPrefab;
     public Transform kunaiSpawnPoint;
@@ -26,9 +26,16 @@ public class KakashiAerialAttack : MonoBehaviour, InterfaceSkill
         instance = this;
         damage = 12;
         coolDownTime = 2f;
-        KeyCode = gameObject.CompareTag("P1") ? KeyCode.O : KeyCode.Keypad6;
+        // KHÔNG CẦN GÁN KEYCODE Ở ĐÂY NỮA (Phím O/Keypad6 đã sai)
+        // KeyCode = gameObject.CompareTag("P1") ? KeyCode.O : KeyCode.Keypad6; 
         
-        legPlayer = GetComponent<LegPlayer>();
+        foreach(Transform child in this.gameObject.transform)
+        {
+            if(child.gameObject.name == "Leg")
+            {
+                legPlayer = child.gameObject.GetComponent<LegPlayer>();
+            }
+        }
         playerMovement = GetComponent<PlayerMovement>();
     }
 
@@ -43,11 +50,11 @@ public class KakashiAerialAttack : MonoBehaviour, InterfaceSkill
             currentCooldown -= Time.deltaTime;
     }
 
+    // Hàm Attack này đã được sửa, không kiểm tra input
     public void Attack()
     {
-        bool isGrounded = legPlayer != null ? legPlayer.isGrounded : false;
-        
-        if (Input.GetKeyDown(KeyCode) && !isGrounded && !isAerialAttacking && currentCooldown <= 0)
+        // SkillManager đã kiểm tra input và !isGrounded
+        if (!isAerialAttacking && currentCooldown <= 0)
         {
             animator.SetTrigger("AerialAttack");
             isAerialAttacking = true;

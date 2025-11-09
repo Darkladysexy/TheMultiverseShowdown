@@ -6,37 +6,47 @@ public class KakashiNormalAttack : MonoBehaviour
 
     private Animator animator;
     private KeyCode keyCodeAttack;
+    private LegPlayer legPlayer;
 
+    // Combo system
     private int comboStep = 0;
     private float lastAttackTime = 0f;
     public float comboResetTime = 0.5f;
     private bool isAttacking = false;
 
+    // Damage values
     public int normalAttack1_Damage = 10;
     public int normalAttack2_Damage = 15;
     public int normalAttack3_Damage = 20;
 
+    // HurtBoxes
     public GameObject normalAttack1_HurtBox;
     public GameObject normalAttack2_HurtBox;
     public GameObject normalAttack3_HurtBox;
 
+    // Attack flags
     public bool isNormalAttack1 = false;
     public bool isNormalAttack2 = false;
     public bool isNormalAttack3 = false;
-    
-    private LegPlayer legPlayer;
 
     void Awake()
     {
         instance = this;
-        legPlayer = GetComponent<LegPlayer>();
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
         keyCodeAttack = gameObject.CompareTag("P1") ? KeyCode.J : KeyCode.Keypad1;
+        foreach(Transform child in this.gameObject.transform)
+        {
+            if(child.gameObject.name == "Leg")
+            {
+                legPlayer = child.gameObject.GetComponent<LegPlayer>();
+            }
+        }
 
+        // Disable all hurtboxes at start
         if (normalAttack1_HurtBox != null) normalAttack1_HurtBox.SetActive(false);
         if (normalAttack2_HurtBox != null) normalAttack2_HurtBox.SetActive(false);
         if (normalAttack3_HurtBox != null) normalAttack3_HurtBox.SetActive(false);
@@ -44,13 +54,15 @@ public class KakashiNormalAttack : MonoBehaviour
 
     void Update()
     {
+        // Auto reset combo if waited too long
         if (Time.time - lastAttackTime > comboResetTime && !isAttacking)
         {
             comboStep = 0;
         }
 
+        // Check for normal attack input (ground only)
         bool isGrounded = legPlayer != null ? legPlayer.isGrounded : false;
-
+        
         if (Input.GetKeyDown(keyCodeAttack) && isGrounded)
         {
             if (!isAttacking)
@@ -79,10 +91,11 @@ public class KakashiNormalAttack : MonoBehaviour
         {
             animator.SetTrigger("NormalAttack3");
             isNormalAttack3 = true;
-            comboStep = 0;
+            comboStep = 0; // Reset after 3rd attack
         }
     }
 
+    // Called from Animation Event when attack finishes
     public void AttackFinished()
     {
         lastAttackTime = Time.time;
@@ -100,6 +113,7 @@ public class KakashiNormalAttack : MonoBehaviour
         return 0;
     }
 
+    // Animation Event functions for hurtboxes
     public void StartNormalAttack1()
     {
         if (normalAttack1_HurtBox != null) normalAttack1_HurtBox.SetActive(true);

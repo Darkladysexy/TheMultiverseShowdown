@@ -7,8 +7,9 @@ public class KakashiLightAttack : MonoBehaviour, InterfaceSkill
 
     public float coolDownTime { get; set; }
     public int damage { get; set; }
-    public KeyCode KeyCode { get; set; }
+    public KeyCode KeyCode { get; set; } // Thuộc tính này vẫn tồn tại do Interface, nhưng chúng ta không dùng
 
+    // Kunai projectile settings
     public GameObject kunaiPrefab;
     public Transform kunaiSpawnPoint;
     public int kunaiCount = 4;
@@ -17,6 +18,7 @@ public class KakashiLightAttack : MonoBehaviour, InterfaceSkill
     private Animator animator;
     private bool isLightAttacking = false;
     private float currentCooldown = 0f;
+    
     private LegPlayer legPlayer;
     private PlayerMovement playerMovement;
 
@@ -25,15 +27,21 @@ public class KakashiLightAttack : MonoBehaviour, InterfaceSkill
         instance = this;
         damage = 8;
         coolDownTime = 1.5f;
-        KeyCode = gameObject.CompareTag("P1") ? KeyCode.U : KeyCode.Keypad4;
-        
-        legPlayer = GetComponent<LegPlayer>();
-        playerMovement = GetComponent<PlayerMovement>();
+        // KHÔNG CẦN GÁN KEYCODE Ở ĐÂY NỮA
+        // KeyCode = gameObject.CompareTag("P1") ? KeyCode.U : KeyCode.Keypad4; 
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        foreach(Transform child in this.gameObject.transform)
+        {
+            if(child.gameObject.name == "Leg")
+            {
+                legPlayer = child.gameObject.GetComponent<LegPlayer>();
+            }
+        }
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -42,11 +50,11 @@ public class KakashiLightAttack : MonoBehaviour, InterfaceSkill
             currentCooldown -= Time.deltaTime;
     }
 
+    // Hàm Attack này đã được sửa, không kiểm tra input
     public void Attack()
     {
-        bool isGrounded = legPlayer != null ? legPlayer.isGrounded : false;
-        
-        if (Input.GetKeyDown(KeyCode) && isGrounded && !isLightAttacking && currentCooldown <= 0)
+        // SkillManager đã kiểm tra input và isGrounded
+        if (!isLightAttacking && currentCooldown <= 0)
         {
             animator.SetTrigger("LightAttack");
             isLightAttacking = true;
@@ -75,13 +83,13 @@ public class KakashiLightAttack : MonoBehaviour, InterfaceSkill
         {
             GameObject kunai = Instantiate(kunaiPrefab, kunaiSpawnPoint.position, Quaternion.identity);
 
+            // Set tag
             if (gameObject.CompareTag("P1"))
                 kunai.tag = "P1Projectile";
             else if (gameObject.CompareTag("P2"))
                 kunai.tag = "P2Projectile";
 
             KakashiKunai kunaiScript = kunai.GetComponent<KakashiKunai>();
-
             if (kunaiScript != null)
             {
                 bool facingRight = playerMovement != null ? playerMovement.isFacingRight : true;

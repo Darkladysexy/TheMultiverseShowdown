@@ -59,12 +59,12 @@ public class KakashiKunai : MonoBehaviour
         if (facingRight)
         {
             direction = new Vector2(1, -1).normalized;
-            transform.rotation = Quaternion.Euler(0, 0, -45);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
             direction = new Vector2(-1, -1).normalized;
-            transform.rotation = Quaternion.Euler(0, 180, 45);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         
         rb.linearVelocity = direction * speed;

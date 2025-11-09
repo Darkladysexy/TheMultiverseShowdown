@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - P1
   - P2
+  - P1Projectile
+  - P2Projectile
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Ground
   - Jumping_Player
   - Special_Energy_IChigo
-  - 
+  - hurtbox
   - 
   - 
   - 

@@ -192,21 +192,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.7
-    functionName: StartDash
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.2
-    functionName: EndSDash
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.4
     functionName: TriggerHeavyAttackStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 3
+    functionName: TriggerChidoriEndDash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

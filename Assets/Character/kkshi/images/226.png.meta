@@ -222,6 +222,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: 226_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 83
+        height: 45
+      alignment: 9
+      pivot: {x: 0.22617264, y: 0.2917282}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4456747fc73c05545aef99b66b4b48c4
+      internalID: -49003425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -240,6 +262,7 @@ TextureImporter:
       226_1: -8486605211974570190
       226_2: 6377340291680508432
       226_3: -9039628783603766923
+      226_4: -49003425
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

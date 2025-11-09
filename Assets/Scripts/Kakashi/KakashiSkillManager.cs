@@ -4,105 +4,136 @@ public class KakashiSkillManager : MonoBehaviour
 {
     public static KakashiSkillManager instance;
 
-    private Animator animator;
     private int actionLayerIndex;
+    public Animator animator;
 
-    private KakashiNormalAttack normalAttack;
     private KakashiLightAttack lightAttack;
-    private KakashiAerialAttack aerialAttack;
     private KakashiHeavyAttack heavyAttack;
+    private KakashiAerialAttack aerialAttack;
+    
+    private LegPlayer legPlayer;
+
+    // Biến để lưu trữ phím bấm cho P1 hoặc P2
+    private KeyCode keyLight; // Phím U hoặc Keypad4
+    private KeyCode keyHeavy; // Phím I hoặc Keypad5
 
     void Awake()
     {
         instance = this;
-        
-        normalAttack = GetComponent<KakashiNormalAttack>();
         lightAttack = GetComponent<KakashiLightAttack>();
-        aerialAttack = GetComponent<KakashiAerialAttack>();
         heavyAttack = GetComponent<KakashiHeavyAttack>();
+        aerialAttack = GetComponent<KakashiAerialAttack>();
+        foreach(Transform child in this.gameObject.transform)
+        {
+            if(child.gameObject.name == "Leg")
+            {
+                legPlayer = child.gameObject.GetComponent<LegPlayer>();
+            }
+        }
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        if (animator != null)
-            actionLayerIndex = animator.GetLayerIndex("Attack Layer");
+        actionLayerIndex = animator.GetLayerIndex("Attack Layer");
+
+        // === GÁN PHÍM DỰA TRÊN TAG ===
+        if (gameObject.CompareTag("P1"))
+        {
+            keyLight = KeyCode.U;
+            keyHeavy = KeyCode.I;
+        }
+        else if (gameObject.CompareTag("P2"))
+        {
+            keyLight = KeyCode.Keypad4;
+            keyHeavy = KeyCode.Keypad5;
+        }
     }
 
     void Update()
     {
-        // ✅ ALWAYS call Attack() methods - họ sẽ check điều kiện bên trong
-        if (lightAttack != null)
-        {
-            lightAttack.Attack(); // Check U + ground
-        }
+        bool isGrounded = legPlayer != null ? legPlayer.isGrounded : false;
 
-        if (aerialAttack != null)
-        {
-            aerialAttack.Attack(); // Check U + air
-        }
+        // Kiểm tra input bằng các biến đã gán
+        bool isLightPressed = Input.GetKeyDown(keyLight);
+        bool isHeavyPressed = Input.GetKeyDown(keyHeavy);
 
-        if (heavyAttack != null)
+        // GROUND + U/4: Light Attack
+        if (isLightPressed && isGrounded)
         {
-            heavyAttack.Attack(); // Check I
+            if (lightAttack != null)
+            {
+                lightAttack.Attack(); 
+                Debug.Log("[SKILL MANAGER] ✓ Light Attack triggered!");
+            }
         }
-
-        // NormalAttack tự Update() internal - không cần gọi từ đây
+        // AIR + U/4: Aerial Attack
+        else if (isLightPressed && !isGrounded)
+        {
+            if (aerialAttack != null)
+            {
+                aerialAttack.Attack(); 
+                Debug.Log("[SKILL MANAGER] ✓ Aerial Attack triggered!");
+            }
+        }
+        // GROUND + I/5: Heavy Attack
+        else if (isHeavyPressed && isGrounded) 
+        {
+            if (heavyAttack != null)
+            {
+                heavyAttack.Attack(); 
+                Debug.Log("[SKILL MANAGER] ✓ Heavy Attack triggered!");
+            }
+        }
     }
 
-    // ============ ANIMATION EVENTS - Gọi từ Animator ============
+    // =========================================================
+    // HỆ THỐNG ANIMATION EVENT (ĐÃ ĐƯỢC CẬP NHẬT)
+    // =========================================================
 
+    // === Light Attack Events ===
     public void TriggerLightAttackStart()
     {
-        Debug.Log("[EVENT] TriggerLightAttackStart");
-        if (lightAttack != null) lightAttack.StartSkill();
+        Debug.Log("[SKILL MANAGER EVENT] ✓ TriggerLightAttackStart called!");
+        lightAttack?.StartSkill();
     }
+    public void TriggerLightAttackEnd() => lightAttack?.EndSkill();
+    public void TriggerLightAttackCoolDown() => lightAttack?.CoolDown();
 
-    public void TriggerLightAttackEnd()
-    {
-        Debug.Log("[EVENT] TriggerLightAttackEnd");
-        if (lightAttack != null) lightAttack.EndSkill();
-    }
-
-    public void TriggerLightAttackCoolDown()
-    {
-        Debug.Log("[EVENT] TriggerLightAttackCoolDown");
-        if (lightAttack != null) lightAttack.CoolDown();
-    }
-
-    public void TriggerAerialAttackStart()
-    {
-        Debug.Log("[EVENT] TriggerAerialAttackStart");
-        if (aerialAttack != null) aerialAttack.StartSkill();
-    }
-
-    public void TriggerAerialAttackEnd()
-    {
-        Debug.Log("[EVENT] TriggerAerialAttackEnd");
-        if (aerialAttack != null) aerialAttack.EndSkill();
-    }
-
-    public void TriggerAerialAttackCoolDown()
-    {
-        Debug.Log("[EVENT] TriggerAerialAttackCoolDown");
-        if (aerialAttack != null) aerialAttack.CoolDown();
-    }
-
+    // === Heavy Attack Events ===
     public void TriggerHeavyAttackStart()
     {
-        Debug.Log("[EVENT] TriggerHeavyAttackStart");
-        if (heavyAttack != null) heavyAttack.StartSkill();
+        Debug.Log("[SKILL MANAGER EVENT] ✓ TriggerHeavyAttackStart called!");
+        heavyAttack?.StartSkill();
+    }
+    
+    // HÀM ĐƯỢC THÊM VÀO ĐỂ DỪNG LƯỚT
+    public void TriggerChidoriEndDash()
+    {
+        Debug.Log("[SKILL MANAGER EVENT] ✓ TriggerChidoriEndDash called!");
+        heavyAttack?.TriggerChidoriEndDash();
+    }
+
+    // HÀM ĐƯỢC THÊM VÀO ĐỂ SPAWN
+    public void TriggerSpawnChidori()
+    {
+        Debug.Log("[SKILL MANAGER EVENT] ✓ TriggerSpawnChidori called!");
+        heavyAttack?.TriggerSpawnChidori();
     }
 
     public void TriggerHeavyAttackEnd()
     {
-        Debug.Log("[EVENT] TriggerHeavyAttackEnd");
-        if (heavyAttack != null) heavyAttack.EndSkill();
+        Debug.Log("[SKILL MANAGER EVENT] ✓ TriggerHeavyAttackEnd called!");
+        heavyAttack?.EndSkill();
     }
+    public void TriggerHeavyAttackCoolDown() => heavyAttack?.CoolDown();
 
-    public void TriggerHeavyAttackCoolDown()
+    // === Aerial Attack Events ===
+    public void TriggerAerialAttackStart()
     {
-        Debug.Log("[EVENT] TriggerHeavyAttackCoolDown");
-        if (heavyAttack != null) heavyAttack.CoolDown();
+        Debug.Log("[SKILL MANAGER EVENT] ✓ TriggerAerialAttackStart called!");
+        aerialAttack?.StartSkill();
     }
+    public void TriggerAerialAttackEnd() => aerialAttack?.EndSkill();
+    public void TriggerAerialAttackCoolDown() => aerialAttack?.CoolDown();
 }
