@@ -517,7 +517,7 @@ MonoBehaviour:
   cutInDuration: 1.5
   holdDuration: 2
   tickRate: 0.2
-  finalKnockback: 1
+  finalKnockback: 3
 --- !u!114 &3914380437643270353
 MonoBehaviour:
   m_ObjectHideFlags: 0

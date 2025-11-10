@@ -184,13 +184,6 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: StartStun
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.7
     functionName: TriggerHeavyAttackStart
     data: 
@@ -198,8 +191,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3
-    functionName: TriggerChidoriEndDash
+  - time: 3.5
+    functionName: TriggerSpawnChidori
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -207,13 +200,6 @@ AnimationClip:
     messageOptions: 0
   - time: 3.8
     functionName: TriggerHeavyAttackEnd
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.8
-    functionName: EndStun
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
