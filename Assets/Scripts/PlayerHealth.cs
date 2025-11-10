@@ -1,68 +1,88 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour, ITakeDamage
 {
-    public int health = 100; // Mau cua player
+    public int health = 100; 
     private Rigidbody2D rb;
     
-    // --- THÊM CÁC BIẾN SAU ---
     private Animator animator;
     private PlayerMovement playerMovement;
     [HideInInspector] public bool isBlocking = false; 
-    // --- KẾT THÚC THÊM BIẾN ---
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Knockback Settings")]
+    public float heavyKnockbackUpwardForce = 1.2f; 
+    public float heavyKnockbackDelay = 0.1f; 
+
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
-        
-        // --- THÊM CÁC DÒNG SAU ---
         animator = this.gameObject.GetComponent<Animator>();
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
-        // --- KẾT THÚC THÊM DÒNG ---
     }
 
-    /// <summary>
-    /// khi nhan sat thuong thi health bi tru di va bi day ve sau
-    /// </summary>
-    /// <param name="damage">Sat thuong nhan vao</param>
-    /// <param name="force">Luc day</param>
-    /// <param name="dirForce">Huong bi day</param>
-    /// <param name="isHeavyHit">Đây là đòn đánh ngã?</param>
-    public void TakeDamage(int damage, float force, Vector3 dirForce, bool isHeavyHit) // <-- Sửa hàm này
+    public void TakeDamage(int damage, float force, Vector3 dirForce, bool isHeavyHit)
     {
-        // Nếu đang thủ (blocking) thì không làm gì cả
         if (isBlocking)
         {
-            // TODO: Chơi âm thanh/hiệu ứng đỡ đòn
-            rb.AddForce(dirForce * (force * 0.5f), ForceMode2D.Impulse); // Vẫn bị đẩy lùi 1 chút
+            rb.AddForce(dirForce * (force * 0.5f), ForceMode2D.Impulse); 
             return;
         }
 
-        rb.AddForce(dirForce * force, ForceMode2D.Impulse);
-        health -= damage;
-
-        // --- THÊM LOGIC ANIMATION VÀ STUN ---
-        if (playerMovement != null)
-        {
-            playerMovement.StartStun(); // Bắt đầu STUN
-        }
-
-        if (animator != null)
+        health -= damage; 
+        
+        if (force > 0)
         {
             if (isHeavyHit)
             {
-                animator.SetTrigger("TakeDamageFall"); // Kích hoạt animation đánh ngã
+                StartCoroutine(ApplyDelayedKnockback(force, dirForce));
             }
             else
             {
-                animator.SetTrigger("TakeDamage"); // Kích hoạt animation thường
+                rb.AddForce(dirForce * force, ForceMode2D.Impulse);
             }
         }
-        // --- KẾT THÚC THÊM LOGIC ---
+
+        // === LOGIC STUN MỚI (KIỂM TRA ANIMATOR) ===
+        
+        // Lấy State hiện tại của Attack Layer (Layer 1)
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(1); 
+        bool isAlreadyInHeavyStun = stateInfo.IsName("TakeDamageFall") || stateInfo.IsName("GetUp");
+
+        if (playerMovement != null)
+        {
+            if (isHeavyHit)
+            {
+                // 1. Nếu là đòn nặng: Luôn luôn kích hoạt Stun(true) (để ngắt Coroutine cũ)
+                playerMovement.Stun(true); 
+                animator.SetTrigger("TakeDamageFall"); 
+            }
+            else if (!isAlreadyInHeavyStun)
+            {
+                // 2. Nếu là đòn nhẹ (DOT) VÀ KHÔNG ĐANG TRONG TRẠNG THÁI NGÃ:
+                // Mới kích hoạt Stun(false) (bật Coroutine 0.25s) và anim giật mình
+                playerMovement.Stun(false);
+                animator.SetTrigger("TakeDamage"); 
+            }
+            // 3. (Trường hợp 3): Nếu là đòn nhẹ (DOT) VÀ ĐANG NGÃ (isAlreadyInHeavyStun = true)
+            // -> KHÔNG LÀM GÌ CẢ. 
+            //    Không gọi Stun(false), không chạy timer 0.25s.
+            //    Không gọi SetTrigger("TakeDamage").
+            //    Chỉ để cho anim ngã tiếp tục.
+        }
     }
 
-    // Update is called once per frame
+    private IEnumerator ApplyDelayedKnockback(float force, Vector3 dirForce)
+    {
+        yield return new WaitForSeconds(heavyKnockbackDelay);
+        if (this != null && rb != null)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
+            Vector2 knockbackVector = new Vector2(dirForce.x, heavyKnockbackUpwardForce).normalized; 
+            rb.AddForce(knockbackVector * force, ForceMode2D.Impulse);
+        }
+    }
+
     void Update()
     {
         

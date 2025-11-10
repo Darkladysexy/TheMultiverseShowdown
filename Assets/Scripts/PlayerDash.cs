@@ -11,7 +11,6 @@ public class PlayerDash : MonoBehaviour
     private int playerLayer; // Layer cua player
     private int dashingLayer; // Layer cua player khi dash
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerMovement = this.GetComponent<PlayerMovement>();
@@ -23,17 +22,17 @@ public class PlayerDash : MonoBehaviour
         else keyCode = KeyCode.Keypad3;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Dash();
     }
-    /// <summary>
-    /// Khi player bam phim dash va da cool down xong thi playe duoc dash
-    /// </summary>
+    
     public void Dash()
     {
-        if(Input.GetKeyDown(keyCode) && enableDash)
+        // === SỬA LỖI TẠI ĐÂY ===
+        // Thêm "!playerMovement.isStun"
+        if(Input.GetKeyDown(keyCode) && enableDash && !playerMovement.isStun)
+        // ======================
         {
             enableDash = false;
             playerMovement.animator.SetTrigger("Dash");
@@ -57,12 +56,11 @@ public class PlayerDash : MonoBehaviour
         {
             child.gameObject.layer = playerLayer;
         }
-
     }
+    
     private IEnumerator Counter(float timeDelay)
     {   
         yield return new WaitForSeconds(timeDelay);
-   
         enableDash = true;
     }
 }

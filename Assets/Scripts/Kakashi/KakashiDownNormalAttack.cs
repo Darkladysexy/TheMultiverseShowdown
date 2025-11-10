@@ -71,7 +71,7 @@ public class KakashiDownNormalAttack : MonoBehaviour, InterfaceSkill
         enemyHit = null;
 
         // 1. Bắt đầu: Ngăn người chơi di chuyển, kích hoạt animation
-        playerMovement.StartStun();
+        playerMovement.Stun(true);
         animator.SetTrigger("DownNormalAttack"); // Kích hoạt animation S+J
 
         // 2. Lướt tới (Dash)

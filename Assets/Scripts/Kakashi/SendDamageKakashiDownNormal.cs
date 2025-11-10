@@ -5,7 +5,7 @@ public class SendDamageKakashiDownNormal : MonoBehaviour
     private string tagEnemy;
     private GameObject parent;
     private KakashiDownNormalAttack attackScript; // Script chính
-    private float force = 3f; // Lực đẩy lùi
+    private float force = 0f; // Lực đẩy lùi
 
     void Awake()
     {

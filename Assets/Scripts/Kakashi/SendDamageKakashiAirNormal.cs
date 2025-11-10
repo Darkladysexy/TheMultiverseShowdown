@@ -7,7 +7,7 @@ public class SendDamageKakashiAirNormal : MonoBehaviour
     private GameObject parent;
     private KakashiAirNormalAttack attackScript;
     private Collider2D hurtboxCollider;
-    private float force = 2.5f; // Lực đẩy lùi
+    private float force = 0f; // Lực đẩy lùi
     private bool hasHit = false; // Cờ để đảm bảo chỉ đánh trúng 1 lần
 
     void Awake()

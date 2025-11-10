@@ -7,7 +7,7 @@ public class NinkenProjectile : MonoBehaviour
 {
     [Header("Chỉ số")]
     public float lifetime = 3f;         // Thời gian tồn tại
-    public float knockbackForce = 4f;   // Lực đẩy lùi khi trúng
+    public float knockbackForce = 0.1f;   // Lực đẩy lùi khi trúng
 
     // Các biến nội bộ
     private Rigidbody2D rb;

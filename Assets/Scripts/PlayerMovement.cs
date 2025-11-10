@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private LegPlayer legPlayer;
     [HideInInspector] public bool isFacingRight = true; 
     [HideInInspector] public bool isStun = false; 
-    public float time = 0.25f;
+    public float time = 0.25f; // Thời gian stun TỐI THIỂU cho đòn nhẹ
     private KeyCode keyCodeLeft;
     private KeyCode keyCodeRight;
     private KeyCode keyCodeJump;
@@ -26,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private int jumpingPlayer; 
     private int dashingLayer;
 
-    // --- THÊM CÁC BIẾN SAU ---
     private PlayerHealth playerHealth;
     [HideInInspector] public bool isBlocking = false;
-    // --- KẾT THÚC THÊM BIẾN ---
+    
+    private Coroutine stunCoroutine; // Biến để lưu trữ coroutine stun
 
     void Awake()
     {
@@ -46,8 +46,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
-        
-        // --- THÊM DÒNG NÀY ---
         playerHealth = GetComponent<PlayerHealth>();
 
         foreach (Transform child in this.gameObject.transform)
@@ -61,51 +59,46 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        // Ngăn nhảy khi đang thủ
-        if (!isStun && !isBlocking)
+        if (isStun)
+        {
+            return; // KHÓA INPUT KHI STUN
+        }
+
+        if (!isBlocking)
             Jump();
 
         animator.SetBool("isGrounded", legPlayer.isGrounded);
         animator.SetFloat("Speed", Math.Abs(rb.linearVelocity.x));
-        animator.SetFloat("VerticalSpeed", rb.linearVelocity.y);
+        animator.SetFloat("VerticalSpeed", rb.linearVelocity.y); 
         animator.SetBool("isMovement", isMovement);
         ChangeLayerJump();
 
-        // --- THÊM DÒNG NÀY ---
-        // Gửi trạng thái thủ cho Animator
         animator.SetBool("IsBlocking", isBlocking);
     }
     
     void FixedUpdate()
     {
-        // Ngăn di chuyển khi đang thủ
         if (!isStun && !isBlocking)
             Move();
     }
     
-    // --- THÊM 2 HÀM MỚI SAU ĐÂY ---
-    // SkillManager sẽ gọi hàm này
+    // (Các hàm StartBlocking, StopBlocking, Move, Jump giữ nguyên)
     public void StartBlocking()
     {
-        if (isBlocking) return; // Đã thủ rồi thì thôi
+        if (isBlocking) return; 
         isBlocking = true;
         if (playerHealth != null)
             playerHealth.isBlocking = true;
-        
-        // Ngừng di chuyển ngay lập tức
         rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
     }
 
-    // SkillManager sẽ gọi hàm này
     public void StopBlocking()
     {
-        if (!isBlocking) return; // Đã nghỉ thủ rồi thì thôi
+        if (!isBlocking) return; 
         isBlocking = false;
         if (playerHealth != null)
             playerHealth.isBlocking = false;
     }
-    // --- KẾT THÚC THÊM HÀM ---
-
 
     private void Move()
     {
@@ -152,25 +145,61 @@ public class PlayerMovement : MonoBehaviour
         if (legPlayer.isGrounded) jumpUsage = 0;
     }
 
-    // (Hàm Stun và EndStun sẽ được gọi bởi PlayerHealth và Animation Event)
-    public void Stun()
+
+    // === HÀM STUN ĐÃ CẬP NHẬT ===
+    
+    // Hàm này được PlayerHealth hoặc các Skill gọi
+    public void Stun(bool isHeavyHit)
     {
+        // 1. Đặt isStun = true NGAY LẬP TỨC
         isStun = true;
-        StartCoroutine(StunDuration(time));
+        
+        // 2. Dừng Coroutine stun cũ (nếu có)
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+        }
+        
+        // 3. Chỉ bắt đầu Coroutine đếm ngược nếu đây là đòn nhẹ (flinch)
+        if (!isHeavyHit)
+        {
+            stunCoroutine = StartCoroutine(StunDuration(time));
+        }
+        // Nếu là đòn nặng (isHeavyHit = true), Coroutine sẽ KHÔNG chạy.
+        // Trạng thái stun sẽ chỉ kết thúc khi anim 'GetUp' gọi EndStun().
     }
+    
     private IEnumerator StunDuration(float time)
     {
         yield return new WaitForSeconds(time);
-        isStun = false;
+        
+        // Hết giờ? Tự động gọi EndStun()
+        // Đặt coroutine về null trước khi gọi EndStun
+        stunCoroutine = null; 
+        EndStun();
     }
+    
+    // (StartStun() không còn được dùng bên ngoài nữa)
     public void StartStun()
     {
         isStun = true;
     }
+
+    // Hàm này được Coroutine ở trên HOẶC Animation Event 'GetUp' gọi
     public void EndStun()
     {
+        // Dừng Coroutine (nếu nó vẫn đang chạy)
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+            stunCoroutine = null;
+        }
+        
+        // Mở khóa
         isStun = false;
     }
+
+    // (Các hàm Jump/Layer giữ nguyên)
     public void StartJump()
     {
         this.gameObject.layer = jumpingPlayer;
@@ -189,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ChangeLayerJump()
     {
-        if (rb.linearVelocityY > 0.1)
+        if (rb.linearVelocity.y > 0.1)
         {
             this.gameObject.layer = jumpingPlayer;
             foreach (Transform child in this.gameObject.transform)

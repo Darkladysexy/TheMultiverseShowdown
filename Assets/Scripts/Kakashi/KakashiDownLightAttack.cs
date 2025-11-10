@@ -61,7 +61,7 @@ public class KakashiDownLightAttack : MonoBehaviour, InterfaceSkill
         lastAttackTime = Time.time;
         
         // Khóa Kakashi trong khi làm động tác triệu hồi
-        playerMovement.StartStun(); 
+        playerMovement.Stun(true); 
         animator.SetTrigger("DownLightAttack"); // Kích hoạt animation S+U
     }
 

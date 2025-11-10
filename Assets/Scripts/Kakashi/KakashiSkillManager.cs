@@ -237,4 +237,21 @@ public class KakashiSkillManager : MonoBehaviour
     {
         downLightAttack?.EndSkill();
     }
+    // === THÊM EVENT CHO DOWN HEAVY ATTACK (S+I) ===
+    
+    /// <summary>
+    /// Gọi bởi Animation Event tại thời điểm bắt đầu tìm địch
+    /// </summary>
+    public void TriggerDownHeavyAttack_Start()
+    {
+        downHeavyAttack?.StartSkill();
+    }
+
+    /// <summary>
+    /// Gọi bởi Animation Event khi kết thúc animation
+    /// </summary>
+    public void TriggerDownHeavyAttack_End()
+    {
+        downHeavyAttack?.EndSkill();
+    }
 }
