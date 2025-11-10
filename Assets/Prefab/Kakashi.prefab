@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644925960405901127}
   - component: {fileID: 2239428220887325691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chidoriHurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,15 @@ GameObject:
   - component: {fileID: 4849301363965185502}
   - component: {fileID: 2545777809975247946}
   - component: {fileID: 4225680189395927945}
-  - component: {fileID: 6869849906008671331}
-  m_Layer: 0
+  - component: {fileID: 8664371080988452003}
+  - component: {fileID: 6011778292063409847}
+  - component: {fileID: 3914380437643270353}
+  - component: {fileID: 8016200448441359656}
+  - component: {fileID: 3656680821382382787}
+  - component: {fileID: 5931203365168958645}
+  - component: {fileID: 7788238901870018137}
+  - component: {fileID: 6864640029453708293}
+  m_Layer: 6
   m_Name: Kakashi
   m_TagString: P1
   m_Icon: {fileID: 0}
@@ -179,7 +186,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.39, y: 0.43}
+  m_Size: {x: 0.98, y: 0.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -230,9 +237,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &3889314774558924339
 BoxCollider2D:
@@ -273,7 +280,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.39, y: 0.43}
-    newSize: {x: 0.39, y: 0.43}
+    newSize: {x: 0.98, y: 0.71}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -306,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  isBlocking: 0
 --- !u!114 &3888731181207925752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +333,7 @@ MonoBehaviour:
   isFacingRight: 1
   isStun: 0
   time: 0.25
+  isBlocking: 0
 --- !u!114 &8661923841886316052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +384,7 @@ MonoBehaviour:
   kunaiPrefab: {fileID: 5785096257450506359, guid: 057d631c3e8aef3438778f711c59963e, type: 3}
   kunaiSpawnPoint: {fileID: 8239111566339138668}
   kunaiCount: 3
-  kunaiDelay: 0.1
+  kunaiDelay: 0.15
 --- !u!114 &2545777809975247946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,8 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chidoriEffectPrefab: {fileID: 4117178174417798862, guid: e8990d23967e3b64abeeb19b732cea97, type: 3}
   chidoriSpawnPoint: {fileID: 3346093911632999037}
-  dashSpeed: 15
-  dashDuration: 0.5
+  dashForce: 5
   chidoriHurtBox: {fileID: 305229465254507440}
 --- !u!114 &4225680189395927945
 MonoBehaviour:
@@ -407,9 +415,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kunaiPrefab: {fileID: 3221224942453836943, guid: 6a10a99a261edbc4ca36ece9a021a2fb, type: 3}
   kunaiSpawnPoint: {fileID: 1946673000167450703}
-  kunaiCount: 3
-  kunaiDelay: 0.15
---- !u!114 &6869849906008671331
+  kunaiCount: 1
+  kunaiDelay: 0.05
+--- !u!114 &8664371080988452003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -418,19 +426,94 @@ MonoBehaviour:
   m_GameObject: {fileID: 512659086109130741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7cfb184744fbfd4e82b710bb5e549e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3db180ec3395d754194eaed8e72bfed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  runAudio: {fileID: 0}
-  jumpAudio: {fileID: 0}
-  fallAudio: {fileID: 0}
-  normalAttack1Audio: {fileID: 0}
-  normalAttack3Audio: {fileID: 0}
-  normalAttack2Audio: {fileID: 0}
-  takeDamageAudio: {fileID: 0}
-  takeDamageFallAudio: {fileID: 0}
-  dashAudio: {fileID: 0}
+--- !u!114 &6011778292063409847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77deb347ef9638d4d9253f569861219b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3914380437643270353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa3d9ba7f32d5f47ab632202d1925c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8016200448441359656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198aea156655d84408972d608062ac98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3656680821382382787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a6a001ddd5cc548b3f805570c1f45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDown: 15
+--- !u!114 &5931203365168958645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8badb2b7fbf5a9b45ba445c3da1d1baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7788238901870018137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b91aa1d1be160498ff6a49d01a4cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6864640029453708293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a348364bd1bee40aafee8661b4152b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1726870891464144637
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3346093911632999037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: chidoriSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1946673000167450703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AirkunaiSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8239111566339138668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: kunaiSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6786309230692480917}
   - component: {fileID: 7243913052032583793}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: normalAttack1_HurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3238249201544504274}
   - component: {fileID: 7323505175440500866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: normalAttack2_HurtBox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9113484677422888178}
   - component: {fileID: 1028704505565245400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: normalAttack3_HurtBox (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

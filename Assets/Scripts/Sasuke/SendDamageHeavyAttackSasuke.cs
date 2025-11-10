@@ -56,7 +56,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
                     enemyAnimator.SetTrigger("TakeDamageFall");
                     
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
-                    enemyHealth.TakeDamage(damage, force, vector3);
+                    enemyHealth.TakeDamage(damage, force, vector3, true);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }

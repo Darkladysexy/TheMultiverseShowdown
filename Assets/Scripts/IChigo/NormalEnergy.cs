@@ -94,7 +94,7 @@ public class NormalEnergy : MonoBehaviour
 
             enemyAnimator.SetTrigger("TakeDamageFall");
             Vector3 vt = (-this.gameObject.transform.position + collision.gameObject.transform.position).normalized;
-            playerHealth.TakeDamage(HeavyAttack.instant.damage, force, vt);
+            playerHealth.TakeDamage(HeavyAttack.instant.damage, force, vt, true);
 
             GameManager.instant.PauseGame(collision.gameObject.transform.position);
             CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);

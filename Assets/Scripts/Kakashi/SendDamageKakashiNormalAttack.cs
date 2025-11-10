@@ -10,50 +10,40 @@ public class SendDamageKakashiNormalAttack : MonoBehaviour
     public int attackComboStep;
     private Collider2D hurboxCollider;
     private float force = 2f;
+    private bool hasHitThisEnable = false; // Ngăn 1 đòn đánh trúng nhiều lần
 
     void Awake()
     {
-        // Kiểm tra parent
+        // ... (Giữ nguyên Awake) ...
         if (transform.parent == null)
         {
             Debug.LogError($"[{gameObject.name}] KHÔNG CÓ PARENT! HurtBox phải là child của Kakashi!");
-            enabled = false; // Tắt script này
+            enabled = false; 
             return;
         }
-        
         parent = transform.parent.gameObject;
-        
-        // Tìm component KakashiNormalAttack
         kakashiNormalAttack = parent.GetComponent<KakashiNormalAttack>();
-        
         if (kakashiNormalAttack == null)
         {
             Debug.LogError($"[{gameObject.name}] KHÔNG TÌM THẤY KakashiNormalAttack trên {parent.name}!");
-            Debug.LogError($"Hãy đảm bảo {parent.name} có component KakashiNormalAttack!");
-            enabled = false; // Tắt script này
+            enabled = false; 
             return;
         }
-        
-        // Set enemy tag
         if (parent.CompareTag("P1"))
             tagEnemy = "P2";
         else if (parent.CompareTag("P2"))
             tagEnemy = "P1";
         else
         {
-            Debug.LogWarning($"[{gameObject.name}] Parent không có tag P1 hoặc P2!");
             tagEnemy = "P2"; // Default
         }
     }
 
     void OnEnable()
     {
-        // Safety check
-        if (kakashiNormalAttack == null)
-        {
-            Debug.LogError($"[{gameObject.name}] kakashiNormalAttack NULL trong OnEnable!");
-            return;
-        }
+        hasHitThisEnable = false; // Reset cờ
+        
+        if (kakashiNormalAttack == null) return;
         
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
@@ -61,39 +51,41 @@ public class SendDamageKakashiNormalAttack : MonoBehaviour
         
         hurboxCollider = this.GetComponent<Collider2D>();
         
-        if (hurboxCollider == null)
-        {
-            Debug.LogError($"[{gameObject.name}] KHÔNG CÓ COLLIDER2D!");
-            return;
-        }
+        if (hurboxCollider == null) return;
         
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
         
         int damage = kakashiNormalAttack.GetDamageForComboStep(attackComboStep);
         
-        if (damage <= 0)
-        {
-            Debug.LogWarning($"[{gameObject.name}] Damage = 0 cho combo step {attackComboStep}");
-            return;
-        }
+        if (damage <= 0) return;
         
         foreach (Collider2D collision in results)
         {
-            if (collision.gameObject.CompareTag(tagEnemy))
+            if (collision.gameObject.CompareTag(tagEnemy) && !hasHitThisEnable)
             {
                 PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
-                Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
                 
                 if (enemyHealth != null)
                 {
-                    if (enemyAnimator != null)
-                        enemyAnimator.SetTrigger("TakeDamage");
+                    // --- SỬA ĐÒN 3 LÀ ĐÒN NGÃ ---
+                    bool isHeavy = (attackComboStep == 3);
                         
                     Vector3 knockbackDir = (collision.gameObject.transform.position - parent.transform.position).normalized;
-                    enemyHealth.TakeDamage(damage, force, knockbackDir);
+                    
+                    // --- SỬA DÒNG NÀY ---
+                    enemyHealth.TakeDamage(damage, force, knockbackDir, isHeavy); 
+                    
+                    if (isHeavy)
+                    {
+                        // Thêm hiệu ứng nếu là đòn 3
+                        GameManager.instant.PauseGame(this.transform.position);
+                        CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
+                    }
+                    // --- KẾT THÚC SỬA ---
                     
                     Debug.Log($"[{gameObject.name}] Dealt {damage} damage to {collision.gameObject.name}");
+                    hasHitThisEnable = true; // Đã đánh trúng, không đánh nữa trong lần OnEnable này
                 }
             }
         }

@@ -9,50 +9,40 @@ public class SendDamageKakashiHeavy : MonoBehaviour
     private KakashiHeavyAttack kakashiHeavyAttack;
     private Collider2D hurboxCollider;
     private float force = 3f;
+    private bool hasHitThisEnable = false; // Ngăn 1 đòn đánh trúng nhiều lần
 
     void Awake()
     {
-        // Kiểm tra parent
+        // ... (Giữ nguyên Awake) ...
         if (transform.parent == null)
         {
             Debug.LogError($"[{gameObject.name}] KHÔNG CÓ PARENT! HurtBox phải là child của Kakashi!");
             enabled = false;
             return;
         }
-        
         parent = transform.parent.gameObject;
-        
-        // Tìm component KakashiHeavyAttack
         kakashiHeavyAttack = parent.GetComponent<KakashiHeavyAttack>();
-        
         if (kakashiHeavyAttack == null)
         {
             Debug.LogError($"[{gameObject.name}] KHÔNG TÌM THẤY KakashiHeavyAttack trên {parent.name}!");
-            Debug.LogError($"Hãy đảm bảo {parent.name} có component KakashiHeavyAttack!");
             enabled = false;
             return;
         }
-        
-        // Set enemy tag
         if (parent.CompareTag("P1"))
             tagEnemy = "P2";
         else if (parent.CompareTag("P2"))
             tagEnemy = "P1";
         else
         {
-            Debug.LogWarning($"[{gameObject.name}] Parent không có tag P1 hoặc P2!");
             tagEnemy = "P2"; // Default
         }
     }
 
     void OnEnable()
     {
-        // Safety check
-        if (kakashiHeavyAttack == null)
-        {
-            Debug.LogError($"[{gameObject.name}] kakashiHeavyAttack NULL trong OnEnable!");
-            return;
-        }
+        hasHitThisEnable = false; // Reset
+        
+        if (kakashiHeavyAttack == null) return;
         
         ContactFilter2D contactFilter2D = new ContactFilter2D();
         contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
@@ -60,39 +50,31 @@ public class SendDamageKakashiHeavy : MonoBehaviour
         
         hurboxCollider = this.GetComponent<Collider2D>();
         
-        if (hurboxCollider == null)
-        {
-            Debug.LogError($"[{gameObject.name}] KHÔNG CÓ COLLIDER2D!");
-            return;
-        }
+        if (hurboxCollider == null) return;
         
         List<Collider2D> results = new List<Collider2D>();
         Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
         
         int damage = kakashiHeavyAttack.damage;
         
-        if (damage <= 0)
-        {
-            Debug.LogWarning($"[{gameObject.name}] Damage = 0!");
-            return;
-        }
+        if (damage <= 0) return;
         
         foreach (Collider2D collision in results)
         {
-            if (collision.gameObject.CompareTag(tagEnemy))
+            if (collision.gameObject.CompareTag(tagEnemy) && !hasHitThisEnable)
             {
                 PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
-                Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
                 
                 if (enemyHealth != null)
                 {
-                    if (enemyAnimator != null)
-                        enemyAnimator.SetTrigger("TakeDamage");
-                        
                     Vector3 knockbackDir = (collision.gameObject.transform.position - parent.transform.position).normalized;
-                    enemyHealth.TakeDamage(damage, force, knockbackDir);
+                    
+                    // --- SỬA DÒNG NÀY ---
+                    enemyHealth.TakeDamage(damage, force, knockbackDir, true); // true = đây là đòn nặng
+                    // --- KẾT THÚC SỬA ---
                     
                     Debug.Log($"[{gameObject.name}] Dealt {damage} damage to {collision.gameObject.name}");
+                    hasHitThisEnable = true;
                 }
             }
         }

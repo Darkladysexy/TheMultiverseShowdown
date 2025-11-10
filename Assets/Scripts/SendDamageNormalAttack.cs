@@ -50,15 +50,22 @@ public class SendDamageNormalAttack : MonoBehaviour
                 if (enemyHealth != null)
                 {
                     
-                    if (attackComboStep == 3)
+                    bool isHeavy = (attackComboStep == 3); // Đòn 3 là đòn ngã
+
+                    if (isHeavy)
                     {
-                        enemyAnimator.SetTrigger("TakeDamageFall");
+                        // enemyAnimator.SetTrigger("TakeDamageFall"); // PlayerHealth sẽ làm
                         GameManager.instant.PauseGame(this.transform.position);
                         CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
                     }
-                    else enemyAnimator.SetTrigger("TakeDamage");
+                    // else enemyAnimator.SetTrigger("TakeDamage"); // PlayerHealth sẽ làm
+                    
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
-                    enemyHealth.TakeDamage(damage, force, vector3);
+                    
+                    // --- SỬA DÒNG NÀY ---
+                    enemyHealth.TakeDamage(damage, force, vector3, isHeavy); // Thêm "isHeavy"
+                    // --- KẾT THÚC SỬA ---
+
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }

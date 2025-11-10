@@ -41,8 +41,10 @@ public class SpecialEnergy : MonoBehaviour
             Animator enemyAnimator = collision.gameObject.GetComponent<Animator>();
 
             Vector3 vt3 = (-SpeacialAttack.instant.gameObject.transform.position + collision.gameObject.transform.position).normalized;
-            enemyAnimator.SetTrigger("TakeDamageFall");
-            enemyHealth.TakeDamage(SpeacialAttack.instant.damage, force, vt3);
+            // enemyAnimator.SetTrigger("TakeDamageFall"); // Không cần nữa, PlayerHealth tự xử lý
+            
+            // SỬA DÒNG NÀY: Thêm 'true' vì đây là đòn 'Fall'
+            enemyHealth.TakeDamage(SpeacialAttack.instant.damage, force, vt3, true);
 
             GameManager.instant.PauseGame(collision.gameObject.transform.position);
             CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);

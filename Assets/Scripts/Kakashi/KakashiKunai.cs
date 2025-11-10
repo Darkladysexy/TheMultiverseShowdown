@@ -80,7 +80,9 @@ public class KakashiKunai : MonoBehaviour
             if (takeDamage != null)
             {
                 Vector3 hitDirection = (collision.transform.position - transform.position).normalized;
-                takeDamage.TakeDamage(damage, knockbackForce, hitDirection);
+                
+                // SỬA DÒNG NÀY: Thêm 'false' vì đây là đòn thường
+                takeDamage.TakeDamage(damage, knockbackForce, hitDirection, false);
             }
             Destroy(gameObject);
         }
