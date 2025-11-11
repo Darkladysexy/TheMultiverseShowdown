@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9072549871779122118}
   - component: {fileID: 8709899843685627548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,9 +93,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4389801405359915689}
   - component: {fileID: 6210604416108431078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,9 +179,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1816725976544031478}
   - component: {fileID: 6661083845657784984}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,9 +264,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4087363605694809338}
   - component: {fileID: 852745802449653202}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38764040538136603}
   - component: {fileID: 5188157949850293919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,9 +443,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5340411891329327425}
   - component: {fileID: 4310949610685308074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,9 +528,9 @@ GameObject:
   m_Component:
   - component: {fileID: 867627690700800386}
   - component: {fileID: 1676180505453862753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -613,9 +613,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1515963698397712029}
   - component: {fileID: 4968882676707247701}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -4,8 +4,13 @@ using UnityEngine.SceneManagement;
 public class SelectMap : MonoBehaviour
 {
     public GameObject[] Maps;
+    public GameObject Selections;
     private int selectedMap;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Selections.SetActive(false);
+    }
     public void nextMap()
     {
         Maps[selectedMap].SetActive(false);
