@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4429971066460853045}
   m_Layer: 6
   m_Name: Ichigo
-  m_TagString: P2
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,6 +333,7 @@ MonoBehaviour:
   isFacingRight: 1
   isStun: 0
   time: 0.25
+  isBlocking: 0
 --- !u!114 &3133258264693771643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +431,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  isBlocking: 0
+  heavyKnockbackUpwardForce: 1.2
+  heavyKnockbackDelay: 0.1
 --- !u!320 &2326260098930062075
 PlayableDirector:
   m_ObjectHideFlags: 0
