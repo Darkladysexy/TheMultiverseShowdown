@@ -57,6 +57,7 @@ public class CharacterState : MonoBehaviour
         }
         else
         {
+            textMeshPro.text = "Please choose your map";
             maps.SetActive(true);
         }
         buttons.SetActive(false);
