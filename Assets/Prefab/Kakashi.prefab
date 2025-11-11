@@ -154,8 +154,9 @@ GameObject:
   - component: {fileID: 6268381799183086530}
   - component: {fileID: 2951922971843937353}
   - component: {fileID: 3888731181207925752}
+  - component: {fileID: 5324131571554940063}
+  - component: {fileID: 1001654767783971880}
   - component: {fileID: 8661923841886316052}
-  - component: {fileID: 7675200998125947391}
   - component: {fileID: 4849301363965185502}
   - component: {fileID: 2545777809975247946}
   - component: {fileID: 4225680189395927945}
@@ -168,7 +169,6 @@ GameObject:
   - component: {fileID: 7788238901870018137}
   - component: {fileID: 6864640029453708293}
   - component: {fileID: 2629490109881615500}
-  - component: {fileID: 1001654767783971880}
   m_Layer: 6
   m_Name: Kakashi
   m_TagString: P1
@@ -402,6 +402,50 @@ MonoBehaviour:
   isStun: 0
   time: 0.25
   isBlocking: 0
+--- !u!114 &5324131571554940063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7208c2c38d2e00d428bb73a5525d775b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboResetTime: 0.5
+  normalAttack1_Damage: 10
+  normalAttack2_Damage: 15
+  normalAttack3_Damage: 20
+  normalAttack1_HurtBox: {fileID: 4986277517311250061}
+  normalAttack2_HurtBox: {fileID: 5379805930169541538}
+  normalAttack3_HurtBox: {fileID: 7212136702392256893}
+  isNormalAttack1: 0
+  isNormalAttack2: 0
+  isNormalAttack3: 0
+--- !u!114 &1001654767783971880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cfb184744fbfd4e82b710bb5e549e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  runAudio: {fileID: 0}
+  jumpAudio: {fileID: 8300000, guid: a1d9df97f7446714ca0a17728aaa71dd, type: 3}
+  fallAudio: {fileID: 0}
+  normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  takeDamageAudio: {fileID: 8300000, guid: 30c0deef7874fc9429764bc9176ede1c, type: 3}
+  takeDamageFallAudio: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
+  dashAudio: {fileID: 0}
 --- !u!114 &8661923841886316052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,25 +459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1395225617220498735}
---- !u!114 &7675200998125947391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512659086109130741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4b96cfdaadb874cb7061fc5f76b4ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comboResetTime: 0.5
-  normalAttack1_Damage: 10
-  normalAttack2_Damage: 15
-  normalAttack3_Damage: 20
-  normalAttack1_HurtBox: {fileID: 4986277517311250061}
-  normalAttack2_HurtBox: {fileID: 5379805930169541538}
-  normalAttack3_HurtBox: {fileID: 7212136702392256893}
 --- !u!114 &4849301363965185502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,28 +656,6 @@ PlayableDirector:
     value: {fileID: 5495320532462618431}
   m_ExposedReferences:
     m_References: []
---- !u!114 &1001654767783971880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512659086109130741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7cfb184744fbfd4e82b710bb5e549e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  runAudio: {fileID: 0}
-  jumpAudio: {fileID: 8300000, guid: a1d9df97f7446714ca0a17728aaa71dd, type: 3}
-  fallAudio: {fileID: 0}
-  normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  takeDamageAudio: {fileID: 8300000, guid: 30c0deef7874fc9429764bc9176ede1c, type: 3}
-  takeDamageFallAudio: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
-  dashAudio: {fileID: 0}
 --- !u!1 &665309878246370857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6786309230692480917}
   - component: {fileID: 7243913052032583793}
-  - component: {fileID: 574949559081665540}
+  - component: {fileID: 6834571828336859753}
   m_Layer: 6
   m_Name: normalAttack1_HurtBox
   m_TagString: Untagged
@@ -1272,7 +1275,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.30512607, y: 0.26062655}
   m_EdgeRadius: 0
---- !u!114 &574949559081665540
+--- !u!114 &6834571828336859753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1281,7 +1284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4986277517311250061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacd81cf06b9d844a8a28ecdd1213eba, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1089166d2b4564c8ea4e8af999b99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackComboStep: 1
@@ -1326,7 +1329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3238249201544504274}
   - component: {fileID: 7323505175440500866}
-  - component: {fileID: 5888163618103858639}
+  - component: {fileID: 3652617062965408920}
   m_Layer: 6
   m_Name: normalAttack2_HurtBox (1)
   m_TagString: Untagged
@@ -1395,7 +1398,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3188181, y: 0.26404953}
   m_EdgeRadius: 0
---- !u!114 &5888163618103858639
+--- !u!114 &3652617062965408920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1404,7 +1407,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5379805930169541538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacd81cf06b9d844a8a28ecdd1213eba, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1089166d2b4564c8ea4e8af999b99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackComboStep: 2
@@ -1516,7 +1519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9113484677422888178}
   - component: {fileID: 1028704505565245400}
-  - component: {fileID: 8525699936135221377}
+  - component: {fileID: 6804425262063640399}
   m_Layer: 6
   m_Name: normalAttack3_HurtBox (2)
   m_TagString: Untagged
@@ -1585,7 +1588,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.28116465, y: 0.32224107}
   m_EdgeRadius: 0
---- !u!114 &8525699936135221377
+--- !u!114 &6804425262063640399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1594,7 +1597,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7212136702392256893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacd81cf06b9d844a8a28ecdd1213eba, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1089166d2b4564c8ea4e8af999b99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackComboStep: 3

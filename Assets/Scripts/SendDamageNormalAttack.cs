@@ -27,14 +27,14 @@ public class SendDamageNormalAttack : MonoBehaviour
     }
     void OnEnable()
     {
-        // Bo loc de loc ra cac object can thiey
-        ContactFilter2D contactFilter2D = new ContactFilter2D();
-        contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        contactFilter2D.useTriggers = true;
-        // Ket qua khi loc ra cac va cham
-        hurboxCollider = this.GetComponent<Collider2D>();
-        List<Collider2D> results = new List<Collider2D>();
-        Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
+            // Bo loc de loc ra cac object can thiey
+            ContactFilter2D contactFilter2D = new ContactFilter2D();
+            contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+            contactFilter2D.useTriggers = true;
+            // Ket qua khi loc ra cac va cham
+            hurboxCollider = this.GetComponent<Collider2D>();
+            List<Collider2D> results = new List<Collider2D>();
+            Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
 
         int damage = playerAttack.GetDamageForComboStep(attackComboStep);
         if (damage <= 0) return;
@@ -50,22 +50,15 @@ public class SendDamageNormalAttack : MonoBehaviour
                 if (enemyHealth != null)
                 {
                     
-                    bool isHeavy = (attackComboStep == 3); // Đòn 3 là đòn ngã
-
-                    if (isHeavy)
+                    if (attackComboStep == 3)
                     {
-                        // enemyAnimator.SetTrigger("TakeDamageFall"); // PlayerHealth sẽ làm
+                        enemyAnimator.SetTrigger("TakeDamageFall");
                         GameManager.instant.PauseGame(this.transform.position);
                         CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
                     }
-                    // else enemyAnimator.SetTrigger("TakeDamage"); // PlayerHealth sẽ làm
-                    
+                    else enemyAnimator.SetTrigger("TakeDamage");
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
-                    
-                    // --- SỬA DÒNG NÀY ---
-                    enemyHealth.TakeDamage(damage, force, vector3, isHeavy); // Thêm "isHeavy"
-                    // --- KẾT THÚC SỬA ---
-
+                    enemyHealth.TakeDamage(damage, force, vector3,false);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }

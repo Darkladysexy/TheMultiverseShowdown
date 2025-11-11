@@ -49,6 +49,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(comboStep);
         if (Time.time - lastAttackTime > comboResetTime && !isAttacking)
         {
             comboStep = 0;
@@ -95,6 +96,10 @@ public class PlayerAttack : MonoBehaviour
         isNormalAttack1 = false;
         isNormalAttack2 = false;
         isNormalAttack3 = false;
+
+        if (normalAttack1_HurtBox != null) normalAttack1_HurtBox.SetActive(false);
+        if (normalAttack2_HurtBox != null) normalAttack2_HurtBox.SetActive(false);
+        if (normalAttack3_HurtBox != null) normalAttack3_HurtBox.SetActive(false);
     }
 
     public int GetDamageForComboStep(int step)
@@ -105,18 +110,6 @@ public class PlayerAttack : MonoBehaviour
         return 0;
     }
 
-    public void ResetAttackState()
-    {
-        lastAttackTime = Time.time;
-        isAttacking = false;
-        isNormalAttack1 = false;
-        isNormalAttack2 = false;
-        isNormalAttack3 = false;
-
-        if (normalAttack1_HurtBox != null) normalAttack1_HurtBox.SetActive(false);
-        if (normalAttack2_HurtBox != null) normalAttack2_HurtBox.SetActive(false);
-        if (normalAttack3_HurtBox != null) normalAttack3_HurtBox.SetActive(false);
-    }
 
     public void StartNormalAttack1()
     {

@@ -9,7 +9,7 @@ public class KakashiSkillManager : MonoBehaviour
     private PlayerMovement playerMovement; 
 
     // == DANH SÁCH TẤT CẢ CÁC KỸ NĂNG ==
-    private KakashiNormalAttack normalAttack; // J (Ground)
+    // private KakashiNormalAttack normalAttack; // J (Ground)
     private KakashiLightAttack lightAttack; // U (Ground)
     private KakashiHeavyAttack heavyAttack; // I (Ground)
     private KakashiAerialAttack aerialAttack; // U (Air)
@@ -38,7 +38,7 @@ public class KakashiSkillManager : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         // Lấy tất cả các component skill
-        normalAttack = GetComponent<KakashiNormalAttack>();
+        // normalAttack = GetComponent<KakashiNormalAttack>();
         lightAttack = GetComponent<KakashiLightAttack>();
         heavyAttack = GetComponent<KakashiHeavyAttack>();
         aerialAttack = GetComponent<KakashiAerialAttack>();
@@ -111,10 +111,10 @@ public class KakashiSkillManager : MonoBehaviour
         if (isPlayingAttackAnim)
         {
             // Chỉ cho phép "buffering" (xếp hàng) combo đánh thường (J)
-            if (Input.GetKeyDown(keyJ) && !isDownHeld && !isUpHeld && isGrounded)
-            {
-                normalAttack.HandleNormalAttack();
-            }
+            // if (Input.GetKeyDown(keyJ) && !isDownHeld && !isUpHeld && isGrounded)
+            // {
+            //     normalAttack.HandleNormalAttack();
+            // }
             
             // Nếu đang tấn công, thì không cho phép Thủ
             HandleBlocking(false, isGrounded, true); // Tắt block
@@ -142,11 +142,11 @@ public class KakashiSkillManager : MonoBehaviour
                 Debug.Log("SkillManager: Kích hoạt Air+J (AirNormalAttack)");
                 airNormalAttack.Attack();
             }
-            else if (isGrounded) // Ground + J (chỉ khi rảnh)
-            {
-                Debug.Log("SkillManager: Kích hoạt J (NormalAttack)");
-                normalAttack.HandleNormalAttack(); 
-            }
+            // else if (isGrounded) // Ground + J (chỉ khi rảnh)
+            // {
+            //     Debug.Log("SkillManager: Kích hoạt J (NormalAttack)");
+            //     normalAttack.HandleNormalAttack(); 
+            // }
             else
                 attackTriggeredThisFrame = false; // J đã được nhấn, nhưng không có hành động hợp lệ
         }
