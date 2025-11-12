@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
     
     private Animator animator;
     private PlayerMovement playerMovement;
-    [HideInInspector] public bool isBlocking = false; 
+    private PlayerBlock playerBlock;
 
     [Header("Knockback Settings")]
     public float heavyKnockbackUpwardForce = 1.2f; 
@@ -19,11 +19,12 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         animator = this.gameObject.GetComponent<Animator>();
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        playerBlock = this.gameObject.GetComponent<PlayerBlock>();
     }
 
     public void TakeDamage(int damage, float force, Vector3 dirForce, bool isHeavyHit)
     {
-        if (isBlocking)
+        if (playerBlock.isBlocking)
         {
             rb.AddForce(dirForce * (force * 0.5f), ForceMode2D.Impulse); 
             return;

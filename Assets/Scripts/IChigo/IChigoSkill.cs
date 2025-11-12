@@ -10,6 +10,7 @@ public class IChigoSkill : MonoBehaviour
     private int actionLayerIndex;
     private HeavyAttack heavyAttack;
     private SpeacialAttack speacialAttack;
+    private PlayerBlock playerBlock;
     // private KeyCode heavyAttackKey;
     // private KeyCode specialAttackKey;
     
@@ -18,6 +19,7 @@ public class IChigoSkill : MonoBehaviour
         instant = this;
         heavyAttack = this.GetComponent<HeavyAttack>();
         speacialAttack = this.GetComponent<SpeacialAttack>();
+        playerBlock = this.GetComponent<PlayerBlock>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

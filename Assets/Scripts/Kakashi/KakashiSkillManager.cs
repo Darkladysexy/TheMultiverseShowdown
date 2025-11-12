@@ -117,7 +117,7 @@ public class KakashiSkillManager : MonoBehaviour
             // }
             
             // Nếu đang tấn công, thì không cho phép Thủ
-            HandleBlocking(false, isGrounded, true); // Tắt block
+            // HandleBlocking(false, isGrounded, true); // Tắt block
             return; // Thoát ra, không kiểm tra các đòn khác
         }
         
@@ -176,23 +176,23 @@ public class KakashiSkillManager : MonoBehaviour
         }
 
         // --- 3. XỬ LÝ THỦ (S) ---
-        HandleBlocking(isDownHeld, isGrounded, attackTriggeredThisFrame);
+        // HandleBlocking(isDownHeld, isGrounded, attackTriggeredThisFrame);
     }
     // --- KẾT THÚC HÀM UPDATE() ĐÃ SỬA ---
 
 
-    void HandleBlocking(bool isDownHeld, bool isGrounded, bool attackTriggeredThisFrame)
-    {
-        // Nếu giữ 'S', trên mặt đất, VÀ không nhấn J/U/I trong frame này
-        if (isDownHeld && isGrounded && !attackTriggeredThisFrame)
-        {
-            playerMovement.StartBlocking();
-        }
-        else
-        {
-            playerMovement.StopBlocking();
-        }
-    }
+    // void HandleBlocking(bool isDownHeld, bool isGrounded, bool attackTriggeredThisFrame)
+    // {
+    //     // Nếu giữ 'S', trên mặt đất, VÀ không nhấn J/U/I trong frame này
+    //     if (isDownHeld && isGrounded && !attackTriggeredThisFrame)
+    //     {
+    //         playerMovement.StartBlocking();
+    //     }
+    //     else
+    //     {
+    //         playerMovement.StopBlocking();
+    //     }
+    // }
 
     // =========================================================
     // HỆ THỐNG ANIMATION EVENT (Giữ nguyên)

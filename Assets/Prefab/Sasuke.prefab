@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 8177183007245617046}
   - component: {fileID: 5082955275738428181}
   - component: {fileID: 2007383302183882338}
+  - component: {fileID: 3488742226010620015}
   m_Layer: 6
   m_Name: Sasuke
   m_TagString: P2
@@ -345,6 +346,7 @@ MonoBehaviour:
   isFacingRight: 1
   isStun: 0
   time: 0.25
+  isBlocking: 0
 --- !u!114 &1109177629961043499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  heavyKnockbackUpwardForce: 1.2
+  heavyKnockbackDelay: 0.1
 --- !u!320 &5119529568950681098
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -472,6 +476,8 @@ PlayableDirector:
     value: {fileID: 1402145250149891786}
   - key: {fileID: 8919718613336787199, guid: b482ec075b1d41341ba2292548c25b0a, type: 2}
     value: {fileID: 8177183007245617046}
+  - key: {fileID: -3453271407703443507, guid: b482ec075b1d41341ba2292548c25b0a, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &8177183007245617046
@@ -623,6 +629,19 @@ MonoBehaviour:
   takeDamageAudio: {fileID: 8300000, guid: 5363e6ac6c5eb804b9231fbc576f5808, type: 3}
   takeDamageFallAudio: {fileID: 8300000, guid: 90ad790022ea5f94ab0d3ad161158122, type: 3}
   dashAudio: {fileID: 8300000, guid: 08fffd00d39d2bd4f87201186c9e687d, type: 3}
+--- !u!114 &3488742226010620015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402145250149891786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc166e895159464399ee97fa909d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBlocking: 0
 --- !u!1 &3211619188562970557
 GameObject:
   m_ObjectHideFlags: 0

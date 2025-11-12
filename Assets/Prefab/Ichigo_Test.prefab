@@ -135,10 +135,9 @@ GameObject:
   - component: {fileID: 2388114163650485182}
   - component: {fileID: 7588961984234442062}
   - component: {fileID: 4429971066460853045}
-  - component: {fileID: 6214134828487878263}
   m_Layer: 6
-  m_Name: Ichigo
-  m_TagString: P1
+  m_Name: Ichigo_Test
+  m_TagString: P2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +333,6 @@ MonoBehaviour:
   isFacingRight: 1
   isStun: 0
   time: 0.25
-  isBlocking: 0
 --- !u!114 &3133258264693771643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,8 +430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  heavyKnockbackUpwardForce: 1.2
-  heavyKnockbackDelay: 0.1
 --- !u!320 &2326260098930062075
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -614,19 +610,6 @@ MonoBehaviour:
   takeDamageAudio: {fileID: 8300000, guid: 6867c4410f6e32441981be855f608a65, type: 3}
   takeDamageFallAudio: {fileID: 8300000, guid: 84eab90d0ae5faa4297b61ae8b2c0c74, type: 3}
   dashAudio: {fileID: 8300000, guid: 2203d8d9ece3b2f44a2c510de1b548c9, type: 3}
---- !u!114 &6214134828487878263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3436352336244433881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc166e895159464399ee97fa909d208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBlocking: 0
 --- !u!1 &3680048949942789750
 GameObject:
   m_ObjectHideFlags: 0

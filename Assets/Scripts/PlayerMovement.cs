@@ -72,8 +72,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("VerticalSpeed", rb.linearVelocity.y); 
         animator.SetBool("isMovement", isMovement);
         ChangeLayerJump();
-
-        animator.SetBool("IsBlocking", isBlocking);
+        // animator.SetBool("IsBlocking", isBlocking);
     }
     
     void FixedUpdate()
@@ -82,23 +81,23 @@ public class PlayerMovement : MonoBehaviour
             Move();
     }
     
-    // (Các hàm StartBlocking, StopBlocking, Move, Jump giữ nguyên)
-    public void StartBlocking()
-    {
-        if (isBlocking) return; 
-        isBlocking = true;
-        if (playerHealth != null)
-            playerHealth.isBlocking = true;
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-    }
+    // // (Các hàm StartBlocking, StopBlocking, Move, Jump giữ nguyên)
+    // public void StartBlocking()
+    // {
+    //     if (isBlocking) return; 
+    //     isBlocking = true;
+    //     if (playerHealth != null)
+    //         playerHealth.isBlocking = true;
+    //     rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+    // }
 
-    public void StopBlocking()
-    {
-        if (!isBlocking) return; 
-        isBlocking = false;
-        if (playerHealth != null)
-            playerHealth.isBlocking = false;
-    }
+    // public void StopBlocking()
+    // {
+    //     if (!isBlocking) return; 
+    //     isBlocking = false;
+    //     if (playerHealth != null)
+    //         playerHealth.isBlocking = false;
+    // }
 
     private void Move()
     {
