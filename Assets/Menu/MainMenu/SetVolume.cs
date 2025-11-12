@@ -1,15 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SetVolume : MonoBehaviour
 {
-    private Slider slider;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private AudioSource audioSource;
     void Start()
     {
-        slider = gameObject.GetComponent<Slider>();
-    }
-    public void getVolume()
-    {
-        StaticData.vol = slider.value;
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.volume = StaticData.vol;
     }
 }
