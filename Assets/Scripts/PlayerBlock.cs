@@ -34,8 +34,9 @@ public class PlayerBlock : MonoBehaviour
     }
     public void StartBlocking()
     {
-        if (isBlocking) return; 
+        if (isBlocking) return;
         isBlocking = true;
+        playerMovement.StartStun();
         
     }
 
@@ -43,18 +44,18 @@ public class PlayerBlock : MonoBehaviour
     {
         if (!isBlocking) return;
         isBlocking = false;
+        playerMovement.EndStun();
     }
     public void HandleBlocking()
     {
         // Nếu giữ 'S', trên mặt đất, VÀ không nhấn J/U/I trong frame này
         if (legPlayer.isGrounded && Input.GetKey(keyCode))
         {
-            playerMovement.StartStun();
+        
             StartBlocking();
         }
         else
         {
-            playerMovement.EndStun();
             StopBlocking();
         }
     }
