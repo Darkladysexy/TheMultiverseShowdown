@@ -24,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     public bool isNormalAttack3 = false;
     
     private LegPlayer legPlayer;
+    private PlayerBlock playerBlock;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerBlock = GetComponent<PlayerBlock>();
         foreach(Transform child in this.gameObject.transform)
         {
             if(child.gameObject.name == "Leg")
@@ -57,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
 
         bool isGrounded = legPlayer != null ? legPlayer.isGrounded : false;
 
-        if (Input.GetKeyDown(keyCodeAttack) && isGrounded)
+        if (!playerBlock.isBlocking && Input.GetKeyDown(keyCodeAttack) && isGrounded)
         {
             if (!isAttacking)
             {

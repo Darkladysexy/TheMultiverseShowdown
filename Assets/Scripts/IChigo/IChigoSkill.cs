@@ -4,7 +4,6 @@ using UnityEngine.Playables;
 
 public class IChigoSkill : MonoBehaviour
 {
-    [HideInInspector] public static IChigoSkill instant;
     [HideInInspector] public Animator animator;
     private PlayableDirector skillTimeLine;
     private int actionLayerIndex;
@@ -16,7 +15,6 @@ public class IChigoSkill : MonoBehaviour
     
     void Awake()
     {
-        instant = this;
         heavyAttack = this.GetComponent<HeavyAttack>();
         speacialAttack = this.GetComponent<SpeacialAttack>();
         playerBlock = this.GetComponent<PlayerBlock>();

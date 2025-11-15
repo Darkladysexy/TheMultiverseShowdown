@@ -8,6 +8,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     // Singletan cua SpecialAttackIchigo
     [HideInInspector] public static SpeacialAttack instant;
     private LegPlayer legPlayer;
+    private Animator animator;
     [HideInInspector] public PlayerMovement playerMovement;
     private AudioSource audioSource;
     public AudioClip specialAttackAudio;
@@ -28,6 +29,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
+        animator = this.gameObject.GetComponent<Animator>();
         
         foreach(Transform child in this.gameObject.transform)
         {
@@ -42,7 +44,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     {
         if (legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && !isSpecialAttack)
         {
-            IChigoSkill.instant.animator.SetTrigger("SpecialAttack");
+            animator.SetTrigger("SpecialAttack");
         }
     }
 
@@ -60,7 +62,15 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 
     public void EndSkill()
     {
-        Instantiate(specialSkillObj, specialSkillPos.gameObject.transform.position, Quaternion.identity);
+        GameObject specialEnergy = Instantiate(specialSkillObj, specialSkillPos.gameObject.transform.position, Quaternion.identity);
+        // Tan cong sang phai
+        if (playerMovement.isFacingRight) specialEnergy.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 0.001f, ForceMode2D.Impulse);
+        // Tan cong sang trai
+        else
+        {
+            specialEnergy.transform.rotation = Quaternion.Euler(0, 180, 0);
+            specialEnergy.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0) * 0.001f, ForceMode2D.Impulse);
+        }
     }
 
     public void StartSkill()

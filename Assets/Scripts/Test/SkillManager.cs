@@ -26,5 +26,10 @@ public abstract class SkillManager : MonoBehaviour
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
         return stateInfo.IsTag("NoAction");
     }
+    protected bool IsBloking()
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
+        return stateInfo.IsName("Block");
+    }
     public abstract void SkillActive();
 }
