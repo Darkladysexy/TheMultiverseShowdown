@@ -86,7 +86,7 @@ public class KakashiSkillManager : MonoBehaviour
     void Update()
     {
         // Không nhận input nếu đang bị stun
-        if (playerMovement.isStun) return;
+        // if (playerMovement.isStun) return;
 
         // Đọc trạng thái
         bool isGrounded = legPlayer.isGrounded;
@@ -253,5 +253,29 @@ public class KakashiSkillManager : MonoBehaviour
     public void TriggerDownHeavyAttack_End()
     {
         downHeavyAttack?.EndSkill();
+    }
+    public void TriggerUpNormalAttack_Start()
+    {
+        upNormalAttack?.StartSkill();
+    }
+    public void TriggerUpNormalAttack_End()
+    {
+        upNormalAttack?.EndSkill();
+    }
+    public void TriggerUpLightAttack_Start()
+    {
+        upLightAttack?.StartSkill();
+    }
+    public void TriggerUpLightAttack_End()
+    {
+        upLightAttack?.EndSkill();
+    }
+    public void TriggerUpHeavyAttack_SpawnDragon()
+    {
+        upHeavyAttack?.SpawnDragon();
+    }
+    public void TriggerUpHeavyAttack_End()
+    {
+        upHeavyAttack?.EndSkill();
     }
 }
