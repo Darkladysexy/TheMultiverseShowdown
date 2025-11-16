@@ -23,6 +23,10 @@ public class CharacterState : MonoBehaviour
         buttons.SetActive(false);
         textMeshPro.text = "Player 1 choose your character";
     }
+    void Update()
+    {
+       
+    }
     public void getCharacter(int index)
     {
         if (IsPlayer1)
@@ -40,7 +44,6 @@ public class CharacterState : MonoBehaviour
             Debug.Log(prefabs[index]);
         }
         buttons.SetActive(true);
-
     }
 
     public bool changePlayerTurn()

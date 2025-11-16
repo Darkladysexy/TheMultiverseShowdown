@@ -968,6 +968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kakashi
       objectReference: {fileID: 0}
+    - target: {fileID: 512659086109130741, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
+      propertyPath: m_TagString
+      value: P1
+      objectReference: {fileID: 0}
     - target: {fileID: 5408096016284037752, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.802

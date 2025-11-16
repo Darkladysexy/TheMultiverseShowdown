@@ -432,7 +432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  isBlocking: 0
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &2326260098930062075

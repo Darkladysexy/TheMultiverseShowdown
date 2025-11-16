@@ -10,6 +10,18 @@ public class SelectMap : MonoBehaviour
     void Start()
     {
         Selections.SetActive(false);
+
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            previousMap();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            nextMap();
+        }
     }
     public void nextMap()
     {
