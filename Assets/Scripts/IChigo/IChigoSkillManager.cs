@@ -5,6 +5,7 @@ public class IChigoSkillManager : SkillManager
     private HeavyAttack heavyAttack;
     private SpeacialAttack speacialAttack;
     private Down_Skill_IChigo down_Skill_IChigo;
+    private Up_Skill_IChigo up_Skill_IChigo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,6 +14,7 @@ public class IChigoSkillManager : SkillManager
         heavyAttack = this.gameObject.GetComponent<HeavyAttack>();
         speacialAttack = this.gameObject.GetComponent<SpeacialAttack>();
         down_Skill_IChigo = this.gameObject.GetComponent<Down_Skill_IChigo>();
+        up_Skill_IChigo = this.gameObject.GetComponent<Up_Skill_IChigo>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,19 @@ public class IChigoSkillManager : SkillManager
                 down_Skill_IChigo.Down_Special_Attack();
                 enableAttack = false;
             } 
+        }
+        else if(Input.GetKey(upArrowKeyCode))
+        {
+            if(Input.GetKeyDown(normalAttackKeyCode) && enableAttack)
+            {
+                up_Skill_IChigo.UpNormalAttack();
+                enableAttack = false;
+            }
+            else if(Input.GetKeyDown(specialAttackKeyCode) && enableAttack)
+            {
+                up_Skill_IChigo.UpSpecialAttack();
+                enableAttack = false;
+            }
         }
     }
 }

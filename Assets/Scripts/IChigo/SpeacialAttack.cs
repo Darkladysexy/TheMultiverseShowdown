@@ -12,6 +12,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     [HideInInspector] public PlayerMovement playerMovement;
     private AudioSource audioSource;
     public AudioClip specialAttackAudio;
+    private KeyCode upKeyCode;
     [Header("Thoi gian hoi chieu va sat thuong")]
     public float coolDownTime { get; set; } = 4f;
     public int damage { get; set; } = 40;
@@ -27,6 +28,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
         // damage = 40;
         instant = this;
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
+        upKeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
         animator = this.gameObject.GetComponent<Animator>();
@@ -42,7 +44,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 
     public void Attack()
     {
-        if (legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && !isSpecialAttack)
+        if (legPlayer.isGrounded && !Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && !isSpecialAttack)
         {
             animator.SetTrigger("SpecialAttack");
         }

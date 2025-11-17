@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 688137253}
   m_Layer: 0
   m_Name: DownHeavyAttack
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,6 +688,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.124
       objectReference: {fileID: 0}
+    - target: {fileID: 2918422829574859897, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_TagString
+      value: Skill
+      objectReference: {fileID: 0}
     - target: {fileID: 3209860901814831636, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: specialSkillObj
       value: 
@@ -699,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 3436352336244433881, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_Name
       value: Ichigo_Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249432863601892974, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_TagString
+      value: Skill
       objectReference: {fileID: 0}
     - target: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -741,6 +749,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7959258557138284864, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959258557138284864, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_Size.y
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959258557138284864, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
@@ -764,19 +780,48 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.268
       objectReference: {fileID: 0}
+    - target: {fileID: 9038689991419877887, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_TagString
+      value: Skill
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 688137250}
-    m_AddedComponents: []
+    - targetCorrespondingSourceObject: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2071265904}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3436352336244433881, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 889263020}
   m_SourcePrefab: {fileID: 100100000, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
 --- !u!4 &734696297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
   m_PrefabInstance: {fileID: 717424414}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &889263001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3436352336244433881, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+  m_PrefabInstance: {fileID: 717424414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &889263020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889263001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab1536403e223a428120a08cca6c0aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialSkillObj: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
+  specialSkillPos: {fileID: 2071265903}
 --- !u!1 &902315577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6191864532193771343, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
@@ -1099,6 +1144,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4886303, y: 11.215683}
   m_EdgeRadius: 0
+--- !u!1 &2071265903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2071265904}
+  m_Layer: 6
+  m_Name: UpSpecialAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2071265904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071265903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07, y: 0.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 734696297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4213994802527148112
 PrefabInstance:
   m_ObjectHideFlags: 0
