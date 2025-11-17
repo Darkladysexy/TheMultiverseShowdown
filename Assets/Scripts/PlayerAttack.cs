@@ -6,6 +6,9 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     private KeyCode keyCodeAttack;
 
+    // === THÊM DÒNG NÀY ===
+    private KeyCode keyCodeUp; // Phím W (hoặc UpArrow)
+
     private int comboStep = 0;
     private float lastAttackTime = 0f;
     public float comboResetTime = 0.5f;
@@ -44,6 +47,9 @@ public class PlayerAttack : MonoBehaviour
         }
         keyCodeAttack = gameObject.CompareTag("P1") ? KeyCode.J : KeyCode.Keypad1;
 
+        // === THÊM DÒNG NÀY ĐỂ GÁN PHÍM W ===
+        keyCodeUp = gameObject.CompareTag("P1") ? KeyCode.W : KeyCode.UpArrow;
+
         if (normalAttack1_HurtBox != null) normalAttack1_HurtBox.SetActive(false);
         if (normalAttack2_HurtBox != null) normalAttack2_HurtBox.SetActive(false);
         if (normalAttack3_HurtBox != null) normalAttack3_HurtBox.SetActive(false);
@@ -59,7 +65,11 @@ public class PlayerAttack : MonoBehaviour
 
         bool isGrounded = legPlayer != null ? legPlayer.isGrounded : false;
 
-        if (!playerBlock.isBlocking && Input.GetKeyDown(keyCodeAttack) && isGrounded)
+        // === SỬA LẠI DÒNG IF NÀY ===
+        bool isUpHeld = Input.GetKey(keyCodeUp); // Kiểm tra xem có đang giữ W không
+
+        // Thêm điều kiện "!isUpHeld"
+        if (!playerBlock.isBlocking && Input.GetKeyDown(keyCodeAttack) && isGrounded && !isUpHeld)
         {
             if (!isAttacking)
             {
