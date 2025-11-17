@@ -170,9 +170,10 @@ GameObject:
   - component: {fileID: 6864640029453708293}
   - component: {fileID: 2629490109881615500}
   - component: {fileID: 8395203757065879462}
+  - component: {fileID: 876139280365221182}
   m_Layer: 6
   m_Name: Kakashi
-  m_TagString: P2
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,15 +441,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  runAudio: {fileID: 0}
+  runAudio: {fileID: 8300000, guid: c1495f9d776fc404cb418043663dd717, type: 3}
   jumpAudio: {fileID: 8300000, guid: a1d9df97f7446714ca0a17728aaa71dd, type: 3}
-  fallAudio: {fileID: 0}
-  normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  fallAudio: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
   takeDamageAudio: {fileID: 8300000, guid: 30c0deef7874fc9429764bc9176ede1c, type: 3}
   takeDamageFallAudio: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
-  dashAudio: {fileID: 0}
+  dashAudio: {fileID: 8300000, guid: 32ed5a771c7833b48a8f3ff73b8624b8, type: 3}
+  normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  lightAttackAudio: {fileID: 8300000, guid: a7a14cb86242cb24591cf3a7fd664726, type: 3}
+  heavyAttackAudio: {fileID: 0}
+  aerialAttackAudio: {fileID: 8300000, guid: a7a14cb86242cb24591cf3a7fd664726, type: 3}
+  airNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  substitutionAudio: {fileID: 8300000, guid: 7b632fcbc4424174fb4c87e46f769b1e, type: 3}
+  downNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  downLightAttackAudio: {fileID: 0}
+  downHeavyAttackAudio: {fileID: 0}
+  upNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  upLightAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  upHeavyAttackAudio: {fileID: 0}
 --- !u!114 &8661923841886316052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,8 +488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kunaiPrefab: {fileID: 5785096257450506359, guid: 057d631c3e8aef3438778f711c59963e, type: 3}
   kunaiSpawnPoint: {fileID: 8239111566339138668}
-  kunaiCount: 3
-  kunaiDelay: 0.15
+  kunaiCount: 2
+  kunaiDelay: 0.2
 --- !u!114 &2545777809975247946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +716,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBlocking: 0
+--- !u!114 &876139280365221182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512659086109130741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cfb184744fbfd4e82b710bb5e549e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  runAudio: {fileID: 0}
+  jumpAudio: {fileID: 8300000, guid: a1d9df97f7446714ca0a17728aaa71dd, type: 3}
+  fallAudio: {fileID: 0}
+  takeDamageAudio: {fileID: 0}
+  takeDamageFallAudio: {fileID: 0}
+  dashAudio: {fileID: 0}
+  normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  lightAttackAudio: {fileID: 0}
+  heavyAttackAudio: {fileID: 0}
+  aerialAttackAudio: {fileID: 0}
+  airNormalAttackAudio: {fileID: 0}
+  substitutionAudio: {fileID: 0}
+  downNormalAttackAudio: {fileID: 0}
+  downLightAttackAudio: {fileID: 0}
+  downHeavyAttackAudio: {fileID: 0}
+  upNormalAttackAudio: {fileID: 0}
+  upLightAttackAudio: {fileID: 0}
+  upHeavyAttackAudio: {fileID: 0}
 --- !u!1 &665309878246370857
 GameObject:
   m_ObjectHideFlags: 0

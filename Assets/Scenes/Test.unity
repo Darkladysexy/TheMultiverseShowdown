@@ -253,44 +253,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &478975819 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 512659086109130741, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-  m_PrefabInstance: {fileID: 1630222732}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &478975844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478975819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7cfb184744fbfd4e82b710bb5e549e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  runAudio: {fileID: 0}
-  jumpAudio: {fileID: 8300000, guid: a1d9df97f7446714ca0a17728aaa71dd, type: 3}
-  fallAudio: {fileID: 0}
-  takeDamageAudio: {fileID: 0}
-  takeDamageFallAudio: {fileID: 0}
-  dashAudio: {fileID: 0}
-  normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  lightAttackAudio: {fileID: 0}
-  heavyAttackAudio: {fileID: 0}
-  aerialAttackAudio: {fileID: 0}
-  airNormalAttackAudio: {fileID: 0}
-  substitutionAudio: {fileID: 0}
-  downNormalAttackAudio: {fileID: 0}
-  downLightAttackAudio: {fileID: 0}
-  downHeavyAttackAudio: {fileID: 0}
-  upNormalAttackAudio: {fileID: 0}
-  upLightAttackAudio: {fileID: 0}
-  upHeavyAttackAudio: {fileID: 0}
 --- !u!1 &577507356
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,58 +385,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kakashi
       objectReference: {fileID: 0}
-    - target: {fileID: 512659086109130741, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: m_TagString
-      value: P1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: runAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: c1495f9d776fc404cb418043663dd717, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: dashAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 32ed5a771c7833b48a8f3ff73b8624b8, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: fallAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: lightAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: a7a14cb86242cb24591cf3a7fd664726, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: aerialAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: a7a14cb86242cb24591cf3a7fd664726, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: substitutionAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b632fcbc4424174fb4c87e46f769b1e, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: upLightAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: upNormalAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: airNormalAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: downNormalAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-    - target: {fileID: 4849301363965185502, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: kunaiCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4849301363965185502, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: kunaiDelay
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5408096016284037752, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.76604605
@@ -518,10 +428,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 512659086109130741, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478975844}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
 --- !u!1 &1765932782
 GameObject:
