@@ -36,7 +36,6 @@ public class PlayerBlock : MonoBehaviour
     {
         if (isBlocking) return;
         isBlocking = true;
-        playerMovement.StartStun();
         
     }
 
@@ -44,7 +43,6 @@ public class PlayerBlock : MonoBehaviour
     {
         if (!isBlocking) return;
         isBlocking = false;
-        playerMovement.EndStun();
     }
     public void HandleBlocking()
     {

@@ -27,14 +27,14 @@ public class SendDamageNormalAttack : MonoBehaviour
     }
     void OnEnable()
     {
-            // Bo loc de loc ra cac object can thiey
-            ContactFilter2D contactFilter2D = new ContactFilter2D();
-            contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-            contactFilter2D.useTriggers = true;
-            // Ket qua khi loc ra cac va cham
-            hurboxCollider = this.GetComponent<Collider2D>();
-            List<Collider2D> results = new List<Collider2D>();
-            Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
+        // Bo loc de loc ra cac object can thiey
+        ContactFilter2D contactFilter2D = new ContactFilter2D();
+        contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+        contactFilter2D.useTriggers = true;
+        // Ket qua khi loc ra cac va cham
+        hurboxCollider = this.GetComponent<Collider2D>();
+        List<Collider2D> results = new List<Collider2D>();
+        Physics2D.OverlapCollider(hurboxCollider, contactFilter2D, results);
 
         int damage = playerAttack.GetDamageForComboStep(attackComboStep);
         if (damage <= 0) return;

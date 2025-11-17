@@ -29,7 +29,21 @@ public class IChigoSkillManager : SkillManager
         }
         if(IsBloking())
         {
-            if(Input.GetKeyDown(normalAttackKeyCode)) down_Skill_IChigo.Down_Normal_Attack();
+            if(Input.GetKeyDown(normalAttackKeyCode) && enableAttack)
+            {
+                down_Skill_IChigo.Down_Normal_Attack();
+                enableAttack = false;
+            } 
+            else if(Input.GetKeyDown(heavyAttackKeyCode) && enableAttack) 
+            {
+                down_Skill_IChigo.Down_Heay_Attack();
+                enableAttack = false;
+            }
+            else if(Input.GetKeyDown(specialAttackKeyCode) && enableAttack)
+            {
+                down_Skill_IChigo.Down_Special_Attack();
+                enableAttack = false;
+            } 
         }
     }
 }

@@ -233,6 +233,11 @@ MonoBehaviour:
   m_Events:
     m_Signals: []
     m_Events: []
+--- !u!1 &191178504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6863367638450643062, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+  m_PrefabInstance: {fileID: 717424414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &216570255
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,63 +316,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.37125587, y: 11.215683}
   m_EdgeRadius: 0
---- !u!1001 &255890423
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3436352336244433881, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_Name
-      value: Ichigo
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.3111398
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.3495347
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746211264391667359, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8b5e7215bacbf6a419057f01bd614123, type: 3}
 --- !u!1 &273820320
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +488,7 @@ GameObject:
   - component: {fileID: 688137250}
   - component: {fileID: 688137252}
   - component: {fileID: 688137251}
+  - component: {fileID: 688137253}
   m_Layer: 0
   m_Name: DownHeavyAttack
   m_TagString: Untagged
@@ -709,6 +658,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &688137253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688137249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 2
+  attackType: 1
 --- !u!1001 &717424414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +680,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1047995719720497439, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: heavySkillPos
+      value: 
+      objectReference: {fileID: 191178504}
+    - target: {fileID: 1478613420171215717, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.124
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209860901814831636, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: specialSkillObj
+      value: 
+      objectReference: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
+    - target: {fileID: 3209860901814831636, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: specialSkillPos
+      value: 
+      objectReference: {fileID: 902315577}
     - target: {fileID: 3436352336244433881, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_Name
       value: Ichigo_Test
@@ -727,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.009
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -773,6 +752,18 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8193449413732083521, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: specialSkillPos
+      value: 
+      objectReference: {fileID: 902315577}
+    - target: {fileID: 8927686196371422879, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927686196371422879, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.268
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -784,6 +775,11 @@ PrefabInstance:
 --- !u!4 &734696297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+  m_PrefabInstance: {fileID: 717424414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &902315577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6191864532193771343, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
   m_PrefabInstance: {fileID: 717424414}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1246469769
@@ -1270,4 +1266,3 @@ SceneRoots:
   - {fileID: 273820324}
   - {fileID: 1634445648}
   - {fileID: 717424414}
-  - {fileID: 255890423}

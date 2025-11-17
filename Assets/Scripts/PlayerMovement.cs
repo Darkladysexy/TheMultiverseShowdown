@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float height = 5f;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Animator animator;
-    
+    private PlayerBlock playerBlock;
     private LegPlayer legPlayer;
     [HideInInspector] public bool isFacingRight = true; 
     [HideInInspector] public bool isStun = false; 
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private int dashingLayer;
 
     private PlayerHealth playerHealth;
-    [HideInInspector] public bool isBlocking = false;
+    // [HideInInspector] public bool isBlocking;
     
     private Coroutine stunCoroutine; // Biến để lưu trữ coroutine stun
 
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         playerHealth = GetComponent<PlayerHealth>();
+        playerBlock = this.gameObject.GetComponent<PlayerBlock>();
 
         foreach (Transform child in this.gameObject.transform)
         {
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             return; // KHÓA INPUT KHI STUN
         }
 
-        if (!isBlocking)
+        if (!playerBlock.isBlocking)
             Jump();
 
         animator.SetBool("isGrounded", legPlayer.isGrounded);
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (!isStun && !isBlocking)
+        if (!isStun && !playerBlock.isBlocking)
             Move();
     }
     
@@ -178,9 +179,10 @@ public class PlayerMovement : MonoBehaviour
         EndStun();
     }
     
-    // (StartStun() không còn được dùng bên ngoài nữa)
+    // (StartStun() không còn được dùng bên ngoài nữa)  
     public void StartStun()
     {
+        rb.linearVelocity = new Vector2(0,rb.linearVelocity.y);
         isStun = true;
     }
 

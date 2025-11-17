@@ -7,6 +7,7 @@ public abstract class SkillManager : MonoBehaviour
     protected KeyCode heavyAttackKeyCode;
     protected KeyCode specialAttackKeyCode;
     protected Animator animator;
+    protected bool enableAttack = true;
     protected int actionLayerIndex;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected void Initialize()
@@ -32,4 +33,8 @@ public abstract class SkillManager : MonoBehaviour
         return stateInfo.IsName("Block");
     }
     public abstract void SkillActive();
+    public void SetEnableAttack(bool enableAttack)
+    {
+        this.enableAttack = enableAttack;
+    }
 }
