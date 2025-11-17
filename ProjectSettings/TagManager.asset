@@ -3,30 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Ground
-  - P1
-  - P2
-  - P1Projectile
-  - P2Projectile
-  - Skill
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-<<<<<<< Updated upstream
-  - DashingPlayer
-  - Water
-  - UI
-  - Player
-  - SpecialEnergy_IChigo
-  - Ground
-  - Jumping_Player
-  - Special_Energy_IChigo
-  - hurtbox
-  - Background
-=======
-  - Player
+  - 
   - Water
   - UI
   - 
@@ -36,7 +18,6 @@ TagManager:
   - 
   - 
   - 
->>>>>>> Stashed changes
   - 
   - 
   - 
@@ -59,12 +40,6 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Playaer
-    uniqueID: 289803631
-    locked: 0
-  - name: New Layer 2
-    uniqueID: 916343327
     locked: 0
   m_RenderingLayers:
   - Default
