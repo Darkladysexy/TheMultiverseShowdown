@@ -24,15 +24,15 @@ public class SasukeSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Kiem tra xem AttackLayer co dang o state NoAction khong
-        // Neu co thi moi thuc hien duoc don danh
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
-        bool isReadyForAction = stateInfo.IsTag("NoAction");
-        if (isReadyForAction)
-        {
-            specialAttackSasuke.Attack();
-            heavyAttackSasuke.Attack();
-        }
+        // // Kiem tra xem AttackLayer co dang o state NoAction khong
+        // // Neu co thi moi thuc hien duoc don danh
+        // AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
+        // bool isReadyForAction = stateInfo.IsTag("NoAction");
+        // if (isReadyForAction)
+        // {
+        //     specialAttackSasuke.Attack();
+        //     heavyAttackSasuke.Attack();
+        // }
     }
     // Cac animation event cua skill
     public void TriggerHeavyAttackStart()

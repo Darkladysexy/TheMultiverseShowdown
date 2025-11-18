@@ -60,28 +60,35 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     public void Attack()
     {
         // Danh len trem
-        if (Input.GetKey(keyCodeDir) && Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
+        if (Input.GetKey(keyCodeDir))
         {
-            SasukeSkill.instant.animator.SetTrigger("HeavyAttackUpforward");
-            enableAttack = false;
-            if (playerMovement.isFacingRight)
-                rb.AddForce(new Vector2(1, 1) * force, ForceMode2D.Impulse);
-            else
-                rb.AddForce(new Vector2(-1, 1) * force, ForceMode2D.Impulse);
+            if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
+            {    
+                SasukeSkill.instant.animator.SetTrigger("HeavyAttackUpforward");
+                enableAttack = false;
+                if (playerMovement.isFacingRight)
+                    rb.AddForce(new Vector2(1, 1) * force, ForceMode2D.Impulse);
+                else
+                    rb.AddForce(new Vector2(-1, 1) * force, ForceMode2D.Impulse);
+            }
         }
         // Danh xuong duoi
-        else if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack)
+        else
         {
-            SasukeSkill.instant.animator.SetTrigger("HeavyAttackDownforward");
-            enableAttack = false;
-            rb.AddForce(new Vector2(0, -1) * force, ForceMode2D.Impulse);
+            
+            if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack)
+            {
+                SasukeSkill.instant.animator.SetTrigger("HeavyAttackDownforward");
+                enableAttack = false;
+                rb.AddForce(new Vector2(0, -1) * force, ForceMode2D.Impulse);
+            }
+            else if (legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack)
+            {
+                SasukeSkill.instant.animator.SetTrigger("HeavyAttackforward");
+                enableAttack = false;
+            }
         }
         // Danh sang ngang
-        else if (legPlayer.isGrounded && !Input.GetKeyDown(keyCodeDir) && Input.GetKeyDown(KeyCode) && enableAttack)
-        {
-            SasukeSkill.instant.animator.SetTrigger("HeavyAttackforward");
-            enableAttack = false;
-        }
     }
     /// <summary>
     /// Tao luc day khi danh xuong duoi

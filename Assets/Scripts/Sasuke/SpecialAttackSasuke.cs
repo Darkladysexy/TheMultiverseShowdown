@@ -13,6 +13,7 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     public float coolDownTime { get; set; } = 4f;
     public int damage { get; set; } = 40;
     [HideInInspector] public KeyCode KeyCode { get; set; }
+    private KeyCode upKeyCode;
     private bool enableAttack = true;
     [Header("Collider cua cac don danh")]
     public GameObject specialAttack1_HurtBox;
@@ -37,6 +38,7 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
         }
 
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
+        upKeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
         // Tat cac collider ban dau la false
         specialAttack1_HurtBox.SetActive(false);
         specialAttack2_HurtBox.SetActive(false);
@@ -53,7 +55,7 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     /// </summary>
     public void Attack()
     {
-        if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
+        if (!Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
         {
             SasukeSkill.instant.animator.SetTrigger("SpecialAttack");
             enableAttack = false;

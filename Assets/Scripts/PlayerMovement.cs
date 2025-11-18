@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
     // (StartStun() không còn được dùng bên ngoài nữa)  
     public void StartStun()
     {
-        rb.linearVelocity = new Vector2(0,rb.linearVelocity.y);
+        // rb.linearVelocity = new Vector2(0,rb.linearVelocity.y);
         isStun = true;
     }
 

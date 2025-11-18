@@ -17,6 +17,7 @@ public class SendDamageCloseAttack : MonoBehaviour
     public float force = 2f;
     [Header("Loại tấn công nào")]
     public AttackType attackType = AttackType.Normal;
+    private List<GameObject> listAttacked = new List<GameObject>();
     void Awake()
     {
         parent = transform.parent.gameObject;
@@ -26,17 +27,17 @@ public class SendDamageCloseAttack : MonoBehaviour
         if(attackType == AttackType.Heavy)
         {
             damage = 20;
-            isHeavyHit = false;
+            isHeavyHit = true;
         }
         else if (attackType == AttackType.Special)
         {
             damage = 30;
-            isHeavyHit = false;
+            isHeavyHit = true;
         }
         else
         {
             damage = 10;
-            isHeavyHit = true;
+            isHeavyHit = false;
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,9 +49,13 @@ public class SendDamageCloseAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckCollison();
     }
-        void OnEnable()
+    void OnEnable()
+    {
+        listAttacked.Clear();
+    }
+    private void CheckCollison()
     {
         // Bo loc de loc ra cac object can thiey
         ContactFilter2D contactFilter2D = new ContactFilter2D();
@@ -66,13 +71,19 @@ public class SendDamageCloseAttack : MonoBehaviour
         {
             if (collision.gameObject.CompareTag(tagEnemy))
             {
-                PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                if(listAttacked.Contains(collision.gameObject)) continue;
 
-                if (enemyHealth != null)
+                PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                PlayerBlock playerBlock = collision.gameObject.GetComponent<PlayerBlock>();
+                if (enemyHealth != null && playerBlock != null)
                 {
-                    Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
-                    enemyHealth.TakeDamage(damage, force, vector3,isHeavyHit);
-                    Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
+                    if(!playerBlock.isBlocking)
+                    {
+                        Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
+                        enemyHealth.TakeDamage(damage, force, vector3,isHeavyHit);
+                        listAttacked.Add(collision.gameObject);
+                        Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
+                    }
                 }
             }
             Debug.Log("Kiem tra va cham");

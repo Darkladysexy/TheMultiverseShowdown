@@ -98,14 +98,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: Stun
+    functionName: TriggerHeavyAttackCoolDown
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: TriggerHeavyAttackCoolDown
+    functionName: StartStun
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -134,13 +134,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.6
     functionName: TriggerHeavyAttackEnd
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.9
-    functionName: EndStun
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
