@@ -869,7 +869,7 @@ MonoBehaviour:
   downNormalAttackAudio: {fileID: 8300000, guid: fcfde50351b598346af7a87a210fdd10, type: 3}
   downLightAttackAudio: {fileID: 0}
   downHeavyAttackAudio: {fileID: 8300000, guid: 7682a454fbee17847b316026b348b32d, type: 3}
-  upNormalAttackAudio: {fileID: 0}
+  upNormalAttackAudio: {fileID: 8300000, guid: 1a49311f64c4f2e4cb31cf4fc950c94d, type: 3}
   upLightAttackAudio: {fileID: 0}
   upHeavyAttackAudio: {fileID: 0}
 --- !u!114 &2216481505082709664

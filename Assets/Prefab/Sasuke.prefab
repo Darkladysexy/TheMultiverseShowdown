@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 51216607899973307}
   - component: {fileID: 1134886208528903436}
   - component: {fileID: 5253960106487167209}
+  - component: {fileID: 1023861772469012443}
   m_Layer: 6
   m_Name: Sasuke
   m_TagString: P1
@@ -642,8 +643,8 @@ MonoBehaviour:
   aerialAttackAudio: {fileID: 0}
   airNormalAttackAudio: {fileID: 0}
   substitutionAudio: {fileID: 0}
-  downNormalAttackAudio: {fileID: 0}
-  downLightAttackAudio: {fileID: 0}
+  downNormalAttackAudio: {fileID: 8300000, guid: 792308eee6ad2e1499ba3abc8b94bbde, type: 3}
+  downLightAttackAudio: {fileID: 8300000, guid: 7473b5b33fb2363489d2e7630607909e, type: 3}
   downHeavyAttackAudio: {fileID: 0}
   upNormalAttackAudio: {fileID: 0}
   upLightAttackAudio: {fileID: 0}
@@ -698,6 +699,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downSpecialSkillObject: {fileID: 5540775780787436285, guid: afb85518277439044af768f2f24d73d3, type: 3}
+--- !u!114 &1023861772469012443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402145250149891786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e8eb48776984240a090ff2f817100f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downNormalAudio: {fileID: 8300000, guid: 792308eee6ad2e1499ba3abc8b94bbde, type: 3}
+  downHeavyAudio: {fileID: 8300000, guid: 7473b5b33fb2363489d2e7630607909e, type: 3}
+  downSpecialAudio: {fileID: 0}
+  upNormalAudio1: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
+  upNormalAudio2: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
+  upNormalAudio3: {fileID: 8300000, guid: 91898de2c4067514da3a4b534764824d, type: 3}
+  upSpecialAudio: {fileID: 8300000, guid: 7afed8eeb06188441853118e6b481d3b, type: 3}
 --- !u!1 &2235665828919130356
 GameObject:
   m_ObjectHideFlags: 0
