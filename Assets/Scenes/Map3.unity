@@ -472,6 +472,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &779025586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1402145250149891786, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
+  m_PrefabInstance: {fileID: 1757746920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &779025607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779025586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e8eb48776984240a090ff2f817100f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downNormalAudio: {fileID: 8300000, guid: 792308eee6ad2e1499ba3abc8b94bbde, type: 3}
+  downHeavyAudio: {fileID: 8300000, guid: 7473b5b33fb2363489d2e7630607909e, type: 3}
+  downSpecialAudio: {fileID: 0}
+  upNormalAudio1: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
+  upNormalAudio2: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
+  upNormalAudio3: {fileID: 8300000, guid: 91898de2c4067514da3a4b534764824d, type: 3}
+  upSpecialAudio: {fileID: 8300000, guid: 7afed8eeb06188441853118e6b481d3b, type: 3}
 --- !u!1 &1246469769
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,10 +787,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sasuke
       objectReference: {fileID: 0}
+    - target: {fileID: 2007383302183882338, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
+      propertyPath: downLightAttackAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 7473b5b33fb2363489d2e7630607909e, type: 3}
+    - target: {fileID: 2007383302183882338, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
+      propertyPath: downNormalAttackAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 792308eee6ad2e1499ba3abc8b94bbde, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1402145250149891786, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 779025607}
   m_SourcePrefab: {fileID: 100100000, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
 --- !u!1 &1821023840
 GameObject:
@@ -858,6 +893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ichigo_Test
       objectReference: {fileID: 0}
+    - target: {fileID: 4429971066460853045, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
+      propertyPath: upNormalAttackAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a49311f64c4f2e4cb31cf4fc950c94d, type: 3}
     - target: {fileID: 5746211264391667359, guid: 9a2cd2e91c9b1b041adcd5b03cf86b0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.4872994

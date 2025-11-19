@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class DownSpecialSasukeSkill : MonoBehaviour
 {
+    public AudioClip audioClip;
+    private AudioSource audioSource;
     private float force = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,5 +36,9 @@ public class DownSpecialSasukeSkill : MonoBehaviour
     public void DestroyGameObject()
     {
         Destroy(this.gameObject);
+    }
+    public void PlayAudioClip()
+    {
+        if(audioSource != null) audioSource.PlayOneShot(audioClip);
     }
 }
