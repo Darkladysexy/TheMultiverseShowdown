@@ -26,6 +26,7 @@ public class Up_Skill_IChigo : MonoBehaviour
     public void UpNormalAttack()
     {
         animator.SetTrigger("UpNormalSkillAttack");
+        playerMovement.StartStun();
     }
     public void UpHeavyAttack()
     {
@@ -34,6 +35,7 @@ public class Up_Skill_IChigo : MonoBehaviour
     public void UpSpecialAttack()
     {
         animator.SetTrigger("UpSpecialSkillAttack");
+        playerMovement.StartStun();
     }
     public void SpawnUpSpecialEnergy()
     {

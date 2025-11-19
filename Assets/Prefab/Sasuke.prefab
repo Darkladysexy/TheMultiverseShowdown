@@ -697,6 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15841c2c29bf337449e55597c1dd0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downSpecialSkillObject: {fileID: 5540775780787436285, guid: afb85518277439044af768f2f24d73d3, type: 3}
 --- !u!1 &2235665828919130356
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +711,7 @@ GameObject:
   - component: {fileID: 1130425703841771690}
   m_Layer: 6
   m_Name: UpNormalAttack1
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -823,7 +824,7 @@ GameObject:
   - component: {fileID: 6690757809660029163}
   m_Layer: 6
   m_Name: UpNormalAttack3
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1040,7 +1041,7 @@ GameObject:
   - component: {fileID: 4713626592016475040}
   m_Layer: 6
   m_Name: UpSpecialAttack
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1159,7 +1160,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1589,7 +1590,7 @@ GameObject:
   - component: {fileID: 1992462048193725293}
   m_Layer: 0
   m_Name: 371_0
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1786,7 +1787,7 @@ GameObject:
   - component: {fileID: 4157651428553650859}
   m_Layer: 6
   m_Name: UpNormalAttack2
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
