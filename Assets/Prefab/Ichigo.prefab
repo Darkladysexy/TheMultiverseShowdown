@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6214134828487878263}
   m_Layer: 6
   m_Name: Ichigo
-  m_TagString: P1
+  m_TagString: P2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +334,6 @@ MonoBehaviour:
   isFacingRight: 1
   isStun: 0
   time: 0.25
-  isBlocking: 0
 --- !u!114 &3133258264693771643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,12 +607,23 @@ MonoBehaviour:
   runAudio: {fileID: 8300000, guid: 4490831428a4ec349b90fc454e1d07d1, type: 3}
   jumpAudio: {fileID: 8300000, guid: f0272be1346feaf45b0215c64242797b, type: 3}
   fallAudio: {fileID: 8300000, guid: efe9578e3b9530847bd649782a01ba13, type: 3}
-  normalAttack1Audio: {fileID: 8300000, guid: f8b683a07c89d9e4396fadb48023ceb5, type: 3}
-  normalAttack3Audio: {fileID: 8300000, guid: e13ac950506ff574d8ee7f2c95aa148b, type: 3}
-  normalAttack2Audio: {fileID: 8300000, guid: f8b683a07c89d9e4396fadb48023ceb5, type: 3}
   takeDamageAudio: {fileID: 8300000, guid: 6867c4410f6e32441981be855f608a65, type: 3}
   takeDamageFallAudio: {fileID: 8300000, guid: 84eab90d0ae5faa4297b61ae8b2c0c74, type: 3}
   dashAudio: {fileID: 8300000, guid: 2203d8d9ece3b2f44a2c510de1b548c9, type: 3}
+  normalAttack1Audio: {fileID: 8300000, guid: f8b683a07c89d9e4396fadb48023ceb5, type: 3}
+  normalAttack2Audio: {fileID: 8300000, guid: f8b683a07c89d9e4396fadb48023ceb5, type: 3}
+  normalAttack3Audio: {fileID: 8300000, guid: e13ac950506ff574d8ee7f2c95aa148b, type: 3}
+  lightAttackAudio: {fileID: 0}
+  heavyAttackAudio: {fileID: 0}
+  aerialAttackAudio: {fileID: 0}
+  airNormalAttackAudio: {fileID: 0}
+  substitutionAudio: {fileID: 0}
+  downNormalAttackAudio: {fileID: 0}
+  downLightAttackAudio: {fileID: 0}
+  downHeavyAttackAudio: {fileID: 0}
+  upNormalAttackAudio: {fileID: 0}
+  upLightAttackAudio: {fileID: 0}
+  upHeavyAttackAudio: {fileID: 0}
 --- !u!114 &6214134828487878263
 MonoBehaviour:
   m_ObjectHideFlags: 0
