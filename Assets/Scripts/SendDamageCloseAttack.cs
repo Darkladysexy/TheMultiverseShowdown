@@ -9,6 +9,7 @@ public enum AttackType
 public class SendDamageCloseAttack : MonoBehaviour
 {
     private string tagEnemy;
+    private PlayerStamina playerStamina;
     private GameObject parent;
     private Collider2D hurboxCollider;
     private bool isHeavyHit;
@@ -21,6 +22,7 @@ public class SendDamageCloseAttack : MonoBehaviour
     void Awake()
     {
         parent = transform.parent.gameObject;
+
 
         tagEnemy = (parent.CompareTag("P1")) ? "P2" : "P1";
 
@@ -43,7 +45,7 @@ public class SendDamageCloseAttack : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerStamina = parent.GetComponent<PlayerStamina>();
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class SendDamageCloseAttack : MonoBehaviour
                     {
                         Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                         enemyHealth.TakeDamage(damage, force, vector3,isHeavyHit);
+                        playerStamina.IncreaseStamina(damage/2);
                         listAttacked.Add(collision.gameObject);
                         Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                     }

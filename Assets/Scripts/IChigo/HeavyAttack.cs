@@ -69,6 +69,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     {
         animator.SetBool("HeavyAttack", false);
         GameObject normalEnergy = Instantiate(heavySkillObj, heavySkillPos.gameObject.transform.position, Quaternion.identity);
+        normalEnergy.tag = this.gameObject.tag;
         // Danh ngang
         if (isForward)
         {

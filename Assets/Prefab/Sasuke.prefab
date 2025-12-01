@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 1134886208528903436}
   - component: {fileID: 5253960106487167209}
   - component: {fileID: 1023861772469012443}
+  - component: {fileID: 8665378924294284246}
   m_Layer: 6
   m_Name: Sasuke
   m_TagString: P1
@@ -382,9 +383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboResetTime: 0.5
-  normalAttack1_Damage: 0
-  normalAttack2_Damage: 0
-  normalAttack3_Damage: 0
+  normalAttack1_Damage: 10
+  normalAttack2_Damage: 15
+  normalAttack3_Damage: 20
   normalAttack1_HurtBox: {fileID: 6038103863107596645}
   normalAttack2_HurtBox: {fileID: 747987060237404576}
   normalAttack3_HurtBox: {fileID: 9043327041735972774}
@@ -718,6 +719,20 @@ MonoBehaviour:
   upNormalAudio2: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
   upNormalAudio3: {fileID: 8300000, guid: 91898de2c4067514da3a4b534764824d, type: 3}
   upSpecialAudio: {fileID: 8300000, guid: 7afed8eeb06188441853118e6b481d3b, type: 3}
+--- !u!114 &8665378924294284246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402145250149891786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5975f2f5c40914b93b43004d467c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  stamina: 0
 --- !u!1 &2235665828919130356
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  force: 0.5
   attackType: 0
 --- !u!1 &3195837545459945572
 GameObject:
@@ -939,7 +954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  force: 0.5
   attackType: 0
 --- !u!1 &3211619188562970557
 GameObject:
@@ -1907,7 +1922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  force: 0.5
   attackType: 0
 --- !u!1 &5885866397498232507
 GameObject:

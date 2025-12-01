@@ -65,6 +65,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     public void EndSkill()
     {
         GameObject specialEnergy = Instantiate(specialSkillObj, specialSkillPos.gameObject.transform.position, Quaternion.identity);
+        specialEnergy.tag = this.gameObject.tag;
         // Tan cong sang phai
         if (playerMovement.isFacingRight) specialEnergy.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 0.001f, ForceMode2D.Impulse);
         // Tan cong sang trai

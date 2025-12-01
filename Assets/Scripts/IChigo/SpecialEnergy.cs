@@ -3,13 +3,18 @@ using UnityEngine;
 public class SpecialEnergy : MonoBehaviour
 {
     private float force = 1f; // Luc day nang luong
+    private string tagEnemy;
+    private GameObject parent;
+    private PlayerStamina playerStamina;
     void Awake()
     {
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        parent = GameObject.FindWithTag(this.gameObject.tag);
+        tagEnemy = (parent.CompareTag("P1")) ? "P2" : "P1";
+        playerStamina = parent.GetComponent<PlayerStamina>();
     }
 
     // Update is called once per frame
@@ -33,7 +38,7 @@ public class SpecialEnergy : MonoBehaviour
             
             // SỬA DÒNG NÀY: Thêm 'true' vì đây là đòn 'Fall'
             enemyHealth.TakeDamage(SpeacialAttack.instant.damage, force, vt3, true);
-
+            playerStamina.IncreaseStamina(SpeacialAttack.instant.damage / 2);
             GameManager.instant.PauseGame(collision.gameObject.transform.position);
             CameraManager.instant.StartShake(0.1f, 0.1f,this.transform);
         }
