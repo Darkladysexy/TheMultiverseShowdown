@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6214134828487878263}
   m_Layer: 6
   m_Name: Ichigo
-  m_TagString: P2
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,9 +347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboResetTime: 0.5
-  normalAttack1_Damage: 0
-  normalAttack2_Damage: 0
-  normalAttack3_Damage: 0
+  normalAttack1_Damage: 2
+  normalAttack2_Damage: 2
+  normalAttack3_Damage: 4
   normalAttack1_HurtBox: {fileID: 4249432863601892974}
   normalAttack2_HurtBox: {fileID: 9038689991419877887}
   normalAttack3_HurtBox: {fileID: 2918422829574859897}

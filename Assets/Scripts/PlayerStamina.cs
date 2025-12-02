@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStamina : MonoBehaviour
 {
     [SerializeField] private int maxStamina = 100;
-    [SerializeField] private int stamina = 0;
+    [SerializeField] public int stamina = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
