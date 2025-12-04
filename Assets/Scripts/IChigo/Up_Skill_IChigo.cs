@@ -8,8 +8,14 @@ public class Up_Skill_IChigo : MonoBehaviour
         - Up special attack: w/uprrow + special attack
     */
     private Animator animator;
+    [Header("Vị trí Spawn và Object")]
     public GameObject specialSkillObj;
     public GameObject specialSkillPos;
+    [Header("Sát thương các kĩ năng")]
+    public int upNormalAttackDamage = 15;
+    public int upSpecialAttackDamage = 40;
+    [Header("Collider các kĩ năng")]
+    public GameObject UpNormalAttackCollider;
     private PlayerMovement playerMovement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,8 +46,18 @@ public class Up_Skill_IChigo : MonoBehaviour
     public void SpawnUpSpecialEnergy()
     {
         GameObject specialEnergy = Instantiate(specialSkillObj, specialSkillPos.gameObject.transform.position, Quaternion.identity);
+        specialEnergy.tag = this.gameObject.tag;
+        SpecialEnergy specialEnergyScript = specialEnergy.GetComponent<SpecialEnergy>();
+        specialEnergyScript.SetDamage(upSpecialAttackDamage);
         specialEnergy.transform.rotation = Quaternion.Euler(0, 0, 90);
         specialEnergy.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1) * 0.001f, ForceMode2D.Impulse);
-
+    }
+    public void EnableUpNormalAttackCollider()
+    {
+        UpNormalAttackCollider.SetActive(true);
+    }
+    public void DisableUpNormalAttackCollider()
+    {
+        UpNormalAttackCollider.SetActive(false);
     }
 }

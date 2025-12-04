@@ -15,6 +15,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     private Vector2 direction = new Vector2Int(1, 1);
     private LegPlayer legPlayer;
     [HideInInspector] public PlayerMovement playerMovement;
+    private PlayerStamina playerStamina;
     private Animator animator;
     private AudioSource audioSource;
     public AudioClip heavyAttackAudio;
@@ -47,6 +48,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
             }
         }
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        playerStamina = this.gameObject.GetComponent<PlayerStamina>();
         // coolDownTime = 2f;
     }
 
@@ -69,6 +71,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     {
         animator.SetBool("HeavyAttack", false);
         GameObject normalEnergy = Instantiate(heavySkillObj, heavySkillPos.gameObject.transform.position, Quaternion.identity);
+        normalEnergy.GetComponent<NormalEnergy>().SetDamage(damage);
         normalEnergy.tag = this.gameObject.tag;
         // Danh ngang
         if (isForward)
@@ -128,21 +131,24 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
     public void Attack()
     {
         // Kiểm tra "Đánh lên"
-        if (Input.GetKeyDown(KeyCode) && Input.GetKey(keyCodeDir) && legPlayer.isGrounded && enableAttack)
+        if (Input.GetKeyDown(KeyCode) && Input.GetKey(keyCodeDir) && legPlayer.isGrounded && enableAttack && playerStamina.currentStamina >= damage)
         {
             animator.SetBool("HeavyAttack", true);
+            playerStamina.UseStamina(damage);
             isUpForward = true;
         }
         // Kiểm tra "Đánh ngang"
-        else if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
+        else if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack && playerStamina.currentStamina >= damage)
         {
             animator.SetBool("HeavyAttack", true);
+            playerStamina.UseStamina(damage);
             isForward = true;
         }
         // Kiểm tra "Đánh xuống"
-        else if (Input.GetKeyDown(KeyCode) && !Input.GetKey(keyCodeDir) && !legPlayer.isGrounded && enableAttack)
+        else if (Input.GetKeyDown(KeyCode) && !Input.GetKey(keyCodeDir) && !legPlayer.isGrounded && enableAttack && playerStamina.currentStamina >= damage)
         {
             animator.SetBool("HeavyAttack", true);
+            playerStamina.UseStamina(damage);
             isDownForward = true;
         }
     }

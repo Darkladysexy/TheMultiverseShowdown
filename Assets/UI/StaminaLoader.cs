@@ -23,8 +23,8 @@ public class StaminaLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stamina1 = p1.GetComponent<PlayerStamina>().stamina;
-        stamina2 = p2.GetComponent<PlayerStamina>().stamina;
+        stamina1 = p1.GetComponent<PlayerStamina>().currentStamina;
+        stamina2 = p2.GetComponent<PlayerStamina>().currentStamina;
 
         stm1.value =(float) stamina1/100;
         stm2.value =(float) stamina2/100;

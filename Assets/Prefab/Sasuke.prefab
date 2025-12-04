@@ -845,6 +845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0.5
+  damage: 40
   attackType: 0
 --- !u!1 &3195837545459945572
 GameObject:
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0.5
+  damage: 40
   attackType: 0
 --- !u!1 &3211619188562970557
 GameObject:
@@ -1061,6 +1063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 1
 --- !u!1 &3225545927663632574
 GameObject:
@@ -1164,6 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 50
   attackType: 2
 --- !u!60 &4713626592016475040
 PolygonCollider2D:
@@ -1609,6 +1613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 50
   attackType: 1
 --- !u!1 &4545237441096717254
 GameObject:
@@ -1808,6 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 10
   attackType: 1
 --- !u!1 &5574561449786070042
 GameObject:
@@ -1923,6 +1929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 0.5
+  damage: 40
   attackType: 0
 --- !u!1 &5885866397498232507
 GameObject:
@@ -2029,6 +2036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 50
   attackType: 1
 --- !u!1 &6038103863107596645
 GameObject:
@@ -2247,6 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 0
 --- !u!1 &6433929298924389611
 GameObject:
@@ -2363,6 +2372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 1
 --- !u!1 &8574989755380109654
 GameObject:
@@ -2555,6 +2565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 1
 --- !u!1 &9043327041735972774
 GameObject:

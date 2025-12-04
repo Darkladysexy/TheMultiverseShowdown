@@ -36,6 +36,7 @@ public class SendDamageNormalAttack : MonoBehaviour
         
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -84,7 +85,7 @@ public class SendDamageNormalAttack : MonoBehaviour
                     else enemyAnimator.SetTrigger("TakeDamage");
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                     enemyHealth.TakeDamage(damage, force, vector3,false);
-                    playerStamina.IncreaseStamina(damage / 2);
+                    playerStamina.IncreaseStamina(damage);
                     listAttacked.Add(collision.gameObject);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }

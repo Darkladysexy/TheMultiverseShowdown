@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerStamina : MonoBehaviour
 {
-    [SerializeField] private int maxStamina = 100;
-    [SerializeField] public int stamina = 0;
+    [SerializeField] public int maxStamina = 100;
+    [SerializeField] public int currentStamina = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,10 +18,15 @@ public class PlayerStamina : MonoBehaviour
 
     public void IncreaseStamina(int amount)
     {
-        stamina += amount;
-        if (stamina > maxStamina)
+        currentStamina += amount;
+        if (currentStamina > maxStamina)
         {
-            stamina = maxStamina;
+            currentStamina = maxStamina;
         }
+    }
+    public void UseStamina(int amount)
+    {
+        currentStamina -= amount;
+        Debug.Log("Stamina used: " + amount + ", Current Stamina: " + currentStamina);
     }
 }

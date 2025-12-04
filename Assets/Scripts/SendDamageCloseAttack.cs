@@ -13,10 +13,10 @@ public class SendDamageCloseAttack : MonoBehaviour
     private GameObject parent;
     private Collider2D hurboxCollider;
     private bool isHeavyHit;
-    private int damage = 10;
     [Header("Lực đẩy enemy")]
     public float force = 2f;
-    [Header("Loại tấn công nào")]
+    [Header("Sát thương và loại đòn đánh")]
+    public int damage = 10;
     public AttackType attackType = AttackType.Normal;
     private List<GameObject> listAttacked = new List<GameObject>();
     void Awake()
@@ -28,17 +28,14 @@ public class SendDamageCloseAttack : MonoBehaviour
 
         if(attackType == AttackType.Heavy)
         {
-            damage = 20;
             isHeavyHit = true;
         }
         else if (attackType == AttackType.Special)
         {
-            damage = 30;
             isHeavyHit = true;
         }
         else
         {
-            damage = 10;
             isHeavyHit = false;
         }
     }
@@ -83,7 +80,7 @@ public class SendDamageCloseAttack : MonoBehaviour
                     {
                         Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                         enemyHealth.TakeDamage(damage, force, vector3,isHeavyHit);
-                        playerStamina.IncreaseStamina(damage/2);
+                        playerStamina.IncreaseStamina(damage);
                         listAttacked.Add(collision.gameObject);
                         Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                     }

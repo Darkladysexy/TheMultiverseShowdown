@@ -59,7 +59,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
                     
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                     enemyHealth.TakeDamage(damage, force, vector3, true);
-                    playerStamina.IncreaseStamina(damage / 2);
+                    playerStamina.IncreaseStamina(damage);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }
