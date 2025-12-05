@@ -7,6 +7,14 @@ public class Down_Skill_Sasuke : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody2D rb;
     private string enemyTag;
+    [Header("Collider các kĩ năng")]
+    public GameObject downNormalAttackCollider;
+    public GameObject downHeavyAttackCollider;
+    [Header("Sát thương các kĩ năng")]
+    public int downNormalAttackDamage = 15;
+    public int downHeavyAttackDamage = 25;
+    public int downSpecialAttackDamage = 40;
+    [Header("Down Special Skill Object")]
     public GameObject downSpecialSkillObject;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,6 +23,9 @@ public class Down_Skill_Sasuke : MonoBehaviour
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         enemyTag = (this.gameObject.CompareTag("P1")) ? "P2" : "P1";
+
+        downNormalAttackCollider.GetComponent<SendDamageCloseAttack>().SetDamage(downNormalAttackDamage);
+        downHeavyAttackCollider.GetComponent<SendDamageCloseAttack>().SetDamage(downHeavyAttackDamage);
     }
 
     // Update is called once per frame
@@ -43,7 +54,28 @@ public class Down_Skill_Sasuke : MonoBehaviour
     private void SpawnDownSpecialSkill()
     {
         GameObject enemy = GameObject.FindWithTag(enemyTag);
-        if(enemy != null) Instantiate(downSpecialSkillObject,enemy.transform.position,Quaternion.identity);
+        if(enemy != null) 
+        {
+            GameObject downSpecial = Instantiate(downSpecialSkillObject,enemy.transform.position,Quaternion.identity);
+            downSpecial.GetComponentInChildren<DownSpecialSasukeSkill>().SetDamage(downSpecialAttackDamage);
+            downSpecial.GetComponentInChildren<DownSpecialSasukeSkill>().parent = this.gameObject;
+        }
+    }
+    public void EnableDownNormalAttackCollider()
+    {
+        downNormalAttackCollider.SetActive(true);
+    }
+    public void DisableDownNormalAttackCollider()
+    {
+        downNormalAttackCollider.SetActive(false);
+    }
+    public void EnableDownHeavyAttackCollider()
+    {
+        downHeavyAttackCollider.SetActive(true);
+    }
+    public void DisableDownHeavyAttackCollider()
+    {
+        downHeavyAttackCollider.SetActive(false);
     }
     
 }

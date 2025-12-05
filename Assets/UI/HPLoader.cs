@@ -7,26 +7,45 @@ public class HPLoader : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private GameObject p1;
     private GameObject p2;
+    private PlayerHealth player1Health;
+    private PlayerHealth player2Health;
     public Slider hp1;
     public Slider hp2;
-    private int health1;
-    private int health2;
     void Start()
     {
         p1 = GameObject.FindGameObjectWithTag("P1");
         p2 = GameObject.FindGameObjectWithTag("P2");
+        player1Health = p1.GetComponent<PlayerHealth>();
+        player2Health = p2.GetComponent<PlayerHealth>();
  
         hp1.value =1;
         hp2.value =1;
+
+        player1Health.OnChangeHealth+= UpdatePlayer1HealthUI;
+        player2Health.OnChangeHealth+= UpdatePlayer2HealthUI;
     }
 
     // Update is called once per frame
     void Update()
     {
-        health1 = p1.GetComponent<PlayerHealth>().health;
-        health2 = p2.GetComponent<PlayerHealth>().health;
 
-        hp1.value =(float) health1/100;
-        hp2.value =(float) health2/100;
+
     }
+    private void UpdatePlayer1HealthUI(int health)
+    {
+        hp1.value = (float)health / 1000;
+    }
+    private void UpdatePlayer2HealthUI(int health)
+    {
+        hp2.value = (float)health / 1000;
+    }
+
+    // void OnDestroy()
+    // {
+    //     if (player1Health != null)
+    //         player1Health.OnChangeHealth -= UpdatePlayer1HealthUI;
+
+    //     if (player2Health != null)
+    //         player2Health.OnChangeHealth -= UpdatePlayer2HealthUI;
+    // }
 }

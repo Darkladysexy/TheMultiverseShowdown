@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 92531394020644579}
   - component: {fileID: 3209860901814831636}
   - component: {fileID: 591670062608447355}
+  - component: {fileID: 5895507032049121724}
   m_Layer: 6
   m_Name: Ichigo_Test
   m_TagString: P2
@@ -595,9 +596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboResetTime: 0.5
-  normalAttack1_Damage: 0
-  normalAttack2_Damage: 0
-  normalAttack3_Damage: 0
+  normalAttack1_Damage: 10
+  normalAttack2_Damage: 15
+  normalAttack3_Damage: 20
   normalAttack1_HurtBox: {fileID: 4249432863601892974}
   normalAttack2_HurtBox: {fileID: 9038689991419877887}
   normalAttack3_HurtBox: {fileID: 2918422829574859897}
@@ -678,7 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1a7f9021602a94a9db386fcfb66d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1000
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &2326260098930062075
@@ -911,6 +912,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialSkillObj: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
   specialSkillPos: {fileID: 6191864532193771343}
+  downNormalAttackCollider: {fileID: 5531841989592941240}
+  downHeavyAttackCollider: {fileID: 3934622129973536247}
+  downNormalAttackDamage: 15
+  downHeavyAttackDamage: 25
+  downSpecialDamage: 40
 --- !u!114 &591670062608447355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +931,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialSkillObj: {fileID: 4427251286022813886, guid: f0ac0bc99ac41504cabcad23ccdac27d, type: 3}
   specialSkillPos: {fileID: 8142475102559472189}
+  upNormalAttackDamage: 15
+  upSpecialAttackDamage: 40
+  UpNormalAttackCollider: {fileID: 1826452886997614287}
+--- !u!114 &5895507032049121724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436352336244433881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5975f2f5c40914b93b43004d467c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  currentStamina: 0
 --- !u!1 &3680048949942789750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 10
   attackType: 1
 --- !u!1 &4249432863601892974
 GameObject:
@@ -1362,7 +1386,7 @@ Transform:
   m_GameObject: {fileID: 5531841989592941240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.065, y: 0.218, z: 0}
+  m_LocalPosition: {x: 0.065, y: 0.218, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1417,7 +1441,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 0.11}
+  m_Size: {x: 0.08, y: 0.09}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1497,6 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 10
   attackType: 0
 --- !u!1 &6191864532193771343
 GameObject:

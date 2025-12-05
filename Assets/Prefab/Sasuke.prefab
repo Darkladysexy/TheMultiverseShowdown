@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1a7f9021602a94a9db386fcfb66d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1000
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &5119529568950681098
@@ -687,6 +687,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e76efd7cd19114385d28bd5daedf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upNormalAttack1Collider: {fileID: 2235665828919130356}
+  upNormalAttack2Collider: {fileID: 5574561449786070042}
+  upNormalAttack3Collider: {fileID: 3195837545459945572}
+  upSpecialAttackCollider: {fileID: 3225545927663632574}
+  upNormalAttackDamage: 20
+  upSpecialAttackDamage: 35
 --- !u!114 &5253960106487167209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +705,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15841c2c29bf337449e55597c1dd0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downSpecialSkillObject: {fileID: 5540775780787436285, guid: afb85518277439044af768f2f24d73d3, type: 3}
+  downNormalAttackCollider: {fileID: 6176253766717003936}
+  downHeavyAttackCollider: {fileID: 4545237441096717254}
+  downNormalAttackDamage: 15
+  downHeavyAttackDamage: 25
+  downSpecialAttackDamage: 40
+  downSpecialSkillObject: {fileID: 5403560152069217041, guid: ca0da79c99a7dc648b4112ec3f91db44, type: 3}
 --- !u!114 &1023861772469012443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 100
-  stamina: 0
+  currentStamina: 0
 --- !u!1 &2235665828919130356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,7 +1655,7 @@ Transform:
   m_GameObject: {fileID: 4545237441096717254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.69, y: -0.1296395, z: 0}
+  m_LocalPosition: {x: 0.69, y: -0.1296395, z: -1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

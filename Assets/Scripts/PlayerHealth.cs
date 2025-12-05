@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerHealth : MonoBehaviour, ITakeDamage
 {
-    public int health = 100; 
+    public int health = 1000; 
     private Rigidbody2D rb;
-    
     private Animator animator;
     private PlayerMovement playerMovement;
     private PlayerBlock playerBlock;
-
+    public event Action<int> OnChangeHealth;
     [Header("Knockback Settings")]
     public float heavyKnockbackUpwardForce = 1.2f; 
     public float heavyKnockbackDelay = 0.1f; 
@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         }
 
         health -= damage; 
+        OnChangeHealth?.Invoke(health);
         
         if (force > 0)
         {

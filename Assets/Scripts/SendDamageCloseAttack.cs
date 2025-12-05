@@ -89,4 +89,8 @@ public class SendDamageCloseAttack : MonoBehaviour
             Debug.Log("Kiem tra va cham");
         }
     }
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
 }

@@ -7,6 +7,7 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
 {
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
+    private PlayerStamina playerStamina;
     private LegPlayer legPlayer;
     private AudioSource audioSource;
     public float coolDownTime { get; set; } = 2f;
@@ -30,6 +31,7 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     void Start()
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        playerStamina = this.gameObject.GetComponent<PlayerStamina>();
         rb = this.GetComponent<Rigidbody2D>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
 
@@ -62,9 +64,10 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
         // Danh len trem
         if (Input.GetKey(keyCodeDir))
         {
-            if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
+            if (Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack && playerStamina.currentStamina >= damage)
             {    
                 SasukeSkill.instant.animator.SetTrigger("HeavyAttackUpforward");
+                playerStamina.UseStamina(damage);
                 enableAttack = false;
                 if (playerMovement.isFacingRight)
                     rb.AddForce(new Vector2(1, 1) * force, ForceMode2D.Impulse);
@@ -76,15 +79,27 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
         else
         {
             
-            if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack)
+            if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack && playerStamina.currentStamina >= damage)
             {
                 SasukeSkill.instant.animator.SetTrigger("HeavyAttackDownforward");
+                playerStamina.UseStamina(damage);
+                enableAttack = false;
+                if (playerMovement.isFacingRight)
+                    rb.AddForce(new Vector2(1, -1) * force, ForceMode2D.Impulse);
+                else
+                    rb.AddForce(new Vector2(-1, -1) * force, ForceMode2D.Impulse);
+            }
+            else if (!legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack && playerStamina.currentStamina >= damage)
+            {
+                SasukeSkill.instant.animator.SetTrigger("HeavyAttackDownforward");
+                playerStamina.UseStamina(damage);
                 enableAttack = false;
                 rb.AddForce(new Vector2(0, -1) * force, ForceMode2D.Impulse);
             }
-            else if (legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack)
+            else if (legPlayer.isGrounded && Input.GetKeyDown(KeyCode) && enableAttack && playerStamina.currentStamina >= damage)
             {
                 SasukeSkill.instant.animator.SetTrigger("HeavyAttackforward");
+                playerStamina.UseStamina(damage);
                 enableAttack = false;
             }
         }
