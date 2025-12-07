@@ -31,13 +31,13 @@ public class HPLoader : MonoBehaviour
 
 
     }
-    private void UpdatePlayer1HealthUI(int health)
+    private void UpdatePlayer1HealthUI(int currentHealth, int maxHealth)
     {
-        hp1.value = (float)health / 1000;
+        hp1.value = (float)currentHealth / maxHealth;
     }
-    private void UpdatePlayer2HealthUI(int health)
+    private void UpdatePlayer2HealthUI(int currentHealth, int maxHealth)
     {
-        hp2.value = (float)health / 1000;
+        hp2.value = (float)currentHealth / maxHealth;
     }
 
     // void OnDestroy()

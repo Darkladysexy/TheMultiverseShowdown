@@ -35,7 +35,7 @@ public class SpecialEnergy : MonoBehaviour
         {
             PlayerHealth enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
-            Vector3 vt3 = (this.gameObject.transform.position + collision.gameObject.transform.position).normalized;
+            Vector3 vt3 = (-this.gameObject.transform.position + collision.gameObject.transform.position).normalized;
             // enemyAnimator.SetTrigger("TakeDamageFall"); // Không cần nữa, PlayerHealth tự xử lý
             Debug.Log(damage);
             // SỬA DÒNG NÀY: Thêm 'true' vì đây là đòn 'Fall'

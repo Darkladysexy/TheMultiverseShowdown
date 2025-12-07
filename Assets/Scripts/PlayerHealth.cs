@@ -4,12 +4,13 @@ using System;
 
 public class PlayerHealth : MonoBehaviour, ITakeDamage
 {
-    public int health = 1000; 
+    public int maxHealth = 1000; 
+    public int currentHealth;
     private Rigidbody2D rb;
     private Animator animator;
     private PlayerMovement playerMovement;
     private PlayerBlock playerBlock;
-    public event Action<int> OnChangeHealth;
+    public event Action<int,int> OnChangeHealth;
     [Header("Knockback Settings")]
     public float heavyKnockbackUpwardForce = 1.2f; 
     public float heavyKnockbackDelay = 0.1f; 
@@ -20,6 +21,8 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         animator = this.gameObject.GetComponent<Animator>();
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         playerBlock = this.gameObject.GetComponent<PlayerBlock>();
+
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage, float force, Vector3 dirForce, bool isHeavyHit)
@@ -30,8 +33,8 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
             return;
         }
 
-        health -= damage; 
-        OnChangeHealth?.Invoke(health);
+        currentHealth -= damage; 
+        OnChangeHealth?.Invoke(currentHealth,maxHealth);
         
         if (force > 0)
         {

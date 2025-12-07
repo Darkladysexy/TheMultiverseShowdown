@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4124145882126255053}
   - component: {fileID: 2155024792396850709}
   - component: {fileID: 7377533451379719292}
+  - component: {fileID: 3011972334213284783}
   m_Layer: 6
   m_Name: UpNormalAttackEnergy
   m_TagString: Skill
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1826452886997614287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.323, z: 0}
+  m_LocalPosition: {x: -0.014, y: 0.323, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 289803631
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -7953443022403402997, guid: dd00acc36f9227048b90358bdeda0d83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -241,6 +242,21 @@ PolygonCollider2D:
       - {x: -0.25, y: 0.755}
       - {x: -0.22999999, y: 0.72499996}
   m_UseDelaunayMesh: 0
+--- !u!114 &3011972334213284783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826452886997614287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 2
+  damage: 10
+  attackType: 0
 --- !u!1 &2918422829574859897
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +399,7 @@ GameObject:
   - component: {fileID: 5895507032049121724}
   m_Layer: 6
   m_Name: Ichigo_Test
-  m_TagString: P2
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -679,7 +695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1a7f9021602a94a9db386fcfb66d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  maxHealth: 1000
+  currentHealth: 0
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &2326260098930062075
@@ -1086,7 +1103,7 @@ Transform:
   m_GameObject: {fileID: 3934622129973536247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.416, y: 0.078, z: 0}
+  m_LocalPosition: {x: -0.416, y: 0.078, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1133,8 +1150,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 444462645
-  m_SortingLayer: 0
+  m_SortingLayerID: 289803631
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
@@ -1386,7 +1403,7 @@ Transform:
   m_GameObject: {fileID: 5531841989592941240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.065, y: 0.218, z: -1}
+  m_LocalPosition: {x: 0.06, y: 0.156, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1435,13 +1452,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 0.09}
+  m_Size: {x: 1.14, y: 1.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1485,8 +1502,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.08, y: 0.09}
-    newSize: {x: 0.08, y: 0.09}
+    oldSize: {x: 1.14, y: 1.24}
+    newSize: {x: 1.14, y: 1.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

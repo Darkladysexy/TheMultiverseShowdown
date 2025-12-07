@@ -11,7 +11,7 @@ public class KakashiDebugger : MonoBehaviour
         // Log position mỗi giây
         if (frameCount % 60 == 0)
         {
-            Debug.Log($"[KAKASHI] Frame {frameCount}: Position: {transform.position}, Active: {gameObject.activeSelf}, Health: {GetComponent<PlayerHealth>()?.health}");
+            Debug.Log($"[KAKASHI] Frame {frameCount}: Position: {transform.position}, Active: {gameObject.activeSelf}, Health: {GetComponent<PlayerHealth>()?.currentHealth}");
         }
         
         // Cảnh báo nếu rơi quá thấp

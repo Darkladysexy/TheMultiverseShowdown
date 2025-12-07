@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 8665378924294284246}
   m_Layer: 6
   m_Name: Sasuke
-  m_TagString: P1
+  m_TagString: P2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,7 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1a7f9021602a94a9db386fcfb66d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
+  maxHealth: 1000
+  currentHealth: 0
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &5119529568950681098
@@ -1151,9 +1152,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 289803631
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1218,7 +1219,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.34, y: 1.38}
+    oldSize: {x: 1.35, y: 1.37}
     newSize: {x: 1.34, y: 1.38}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1655,7 +1656,7 @@ Transform:
   m_GameObject: {fileID: 4545237441096717254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.69, y: -0.1296395, z: -1}
+  m_LocalPosition: {x: 0.69, y: -0.1296395, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1702,9 +1703,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 289803631
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -4914828518517250220, guid: 6ee153c88221e6546b06251f651f0c90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
