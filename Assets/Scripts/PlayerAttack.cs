@@ -28,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
     
     private LegPlayer legPlayer;
     private PlayerBlock playerBlock;
+    private PlayerHealth playerHealth;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerBlock = GetComponent<PlayerBlock>();
+        playerHealth = GetComponent<PlayerHealth>();
         foreach(Transform child in this.gameObject.transform)
         {
             if(child.gameObject.name == "Leg")
@@ -69,7 +71,7 @@ public class PlayerAttack : MonoBehaviour
         bool isUpHeld = Input.GetKey(keyCodeUp); // Kiểm tra xem có đang giữ W không
 
         // Thêm điều kiện "!isUpHeld"
-        if (!playerBlock.isBlocking && Input.GetKeyDown(keyCodeAttack) && isGrounded && !isUpHeld)
+        if (!playerHealth.isDead && !playerBlock.isBlocking && Input.GetKeyDown(keyCodeAttack) && isGrounded && !isUpHeld)
         {
             if (!isAttacking)
             {

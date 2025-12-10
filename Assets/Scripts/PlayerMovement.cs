@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return; // KHÓA INPUT KHI STUN
         }
+        if(playerHealth.isDead) return;
 
         if (!playerBlock.isBlocking)
             Jump();
@@ -78,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
+        if(playerHealth.isDead) return;
         if (!isStun && !playerBlock.isBlocking)
             Move();
     }
@@ -109,8 +111,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 2f);
             if (!isFacingRight)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                isFacingRight = true;
+                // transform.rotation = Quaternion.Euler(0, 0, 0);
+                Flip(true);
+                // isFacingRight = true;
             }
         }
         else if (Input.GetKey(keyCodeLeft))
@@ -120,8 +123,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed", 2f);
             if (isFacingRight)
             {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                isFacingRight = false;
+                // transform.rotation = Quaternion.Euler(0, 180, 0);
+                Flip(false);
+                // isFacingRight = false;
             }
         }
         else
@@ -130,6 +134,27 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             animator.SetFloat("Speed", 0f);
         }
+    }
+
+    private void Flip(bool faceRight)
+    {
+        isFacingRight = faceRight;
+
+        // LẤY SCALE HIỆN TẠI
+        Vector3 scaler = transform.localScale;
+
+        // Nếu quay phải thì X dương, quay trái thì X âm
+        if (faceRight)
+        {
+            scaler.x = Mathf.Abs(scaler.x); // Luôn dương (1)
+        }
+        else
+        {
+            scaler.x = -Mathf.Abs(scaler.x); // Luôn âm (-1)
+        }
+
+        // Gán ngược lại
+        transform.localScale = scaler;
     }
     
     private void Jump()

@@ -10,6 +10,8 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     private LegPlayer legPlayer;
     private Animator animator;
     [HideInInspector] public PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
+    private PlayerStamina playerStamina;
     private AudioSource audioSource;
     public AudioClip specialAttackAudio;
     private KeyCode upKeyCode;
@@ -30,8 +32,10 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.I : KeyCode.Keypad5;
         upKeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        playerStamina = this.gameObject.GetComponent<PlayerStamina>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
         animator = this.gameObject.GetComponent<Animator>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         
         foreach(Transform child in this.gameObject.transform)
         {
@@ -44,9 +48,12 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 
     public void Attack()
     {
-        if (legPlayer.isGrounded && !Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && !isSpecialAttack)
+        if(playerHealth.isDead) return;
+
+        if (legPlayer.isGrounded && !Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && !isSpecialAttack && playerStamina.currentStamina >= damage)
         {
             animator.SetTrigger("SpecialAttack");
+            playerStamina.UseStamina(damage);
         }
     }
 
@@ -65,6 +72,8 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     public void EndSkill()
     {
         GameObject specialEnergy = Instantiate(specialSkillObj, specialSkillPos.gameObject.transform.position, Quaternion.identity);
+        specialEnergy.GetComponent<SpecialEnergy>().SetDamage(damage);
+        specialEnergy.tag = this.gameObject.tag;
         // Tan cong sang phai
         if (playerMovement.isFacingRight) specialEnergy.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 0.001f, ForceMode2D.Impulse);
         // Tan cong sang trai

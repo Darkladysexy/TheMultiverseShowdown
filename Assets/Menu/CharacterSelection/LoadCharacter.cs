@@ -13,6 +13,11 @@ public class LoadCharacter : MonoBehaviour
 
     void Start()
     {
+       SpawnCharacters();
+
+    }
+    private void SpawnCharacters()
+    {
         if (isSpawn1)
         {
             player1.tag = "P1";
@@ -24,4 +29,5 @@ public class LoadCharacter : MonoBehaviour
             Instantiate(player2, spawnPoint.position, Quaternion.identity);
         }
     }
+   
 }

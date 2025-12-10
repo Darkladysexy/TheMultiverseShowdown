@@ -347,9 +347,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboResetTime: 0.5
-  normalAttack1_Damage: 0
-  normalAttack2_Damage: 0
-  normalAttack3_Damage: 0
+  normalAttack1_Damage: 2
+  normalAttack2_Damage: 2
+  normalAttack3_Damage: 4
   normalAttack1_HurtBox: {fileID: 4249432863601892974}
   normalAttack2_HurtBox: {fileID: 9038689991419877887}
   normalAttack3_HurtBox: {fileID: 2918422829574859897}

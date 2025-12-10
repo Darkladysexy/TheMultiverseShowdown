@@ -148,6 +148,8 @@ GameObject:
   - component: {fileID: 51216607899973307}
   - component: {fileID: 1134886208528903436}
   - component: {fileID: 5253960106487167209}
+  - component: {fileID: 1023861772469012443}
+  - component: {fileID: 8665378924294284246}
   m_Layer: 6
   m_Name: Sasuke
   m_TagString: P1
@@ -381,9 +383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboResetTime: 0.5
-  normalAttack1_Damage: 0
-  normalAttack2_Damage: 0
-  normalAttack3_Damage: 0
+  normalAttack1_Damage: 10
+  normalAttack2_Damage: 15
+  normalAttack3_Damage: 20
   normalAttack1_HurtBox: {fileID: 6038103863107596645}
   normalAttack2_HurtBox: {fileID: 747987060237404576}
   normalAttack3_HurtBox: {fileID: 9043327041735972774}
@@ -450,7 +452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1a7f9021602a94a9db386fcfb66d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 1000
+  currentHealth: 0
+  isDead: 0
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &5119529568950681098
@@ -642,8 +646,8 @@ MonoBehaviour:
   aerialAttackAudio: {fileID: 0}
   airNormalAttackAudio: {fileID: 0}
   substitutionAudio: {fileID: 0}
-  downNormalAttackAudio: {fileID: 0}
-  downLightAttackAudio: {fileID: 0}
+  downNormalAttackAudio: {fileID: 8300000, guid: 792308eee6ad2e1499ba3abc8b94bbde, type: 3}
+  downLightAttackAudio: {fileID: 8300000, guid: 7473b5b33fb2363489d2e7630607909e, type: 3}
   downHeavyAttackAudio: {fileID: 0}
   upNormalAttackAudio: {fileID: 0}
   upLightAttackAudio: {fileID: 0}
@@ -685,6 +689,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e76efd7cd19114385d28bd5daedf4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upNormalAttack1Collider: {fileID: 2235665828919130356}
+  upNormalAttack2Collider: {fileID: 5574561449786070042}
+  upNormalAttack3Collider: {fileID: 3195837545459945572}
+  upSpecialAttackCollider: {fileID: 3225545927663632574}
+  upNormalAttackDamage: 20
+  upSpecialAttackDamage: 35
 --- !u!114 &5253960106487167209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +707,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15841c2c29bf337449e55597c1dd0074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downNormalAttackCollider: {fileID: 6176253766717003936}
+  downHeavyAttackCollider: {fileID: 4545237441096717254}
+  downNormalAttackDamage: 15
+  downHeavyAttackDamage: 25
+  downSpecialAttackDamage: 40
+  downSpecialSkillObject: {fileID: 5403560152069217041, guid: ca0da79c99a7dc648b4112ec3f91db44, type: 3}
+--- !u!114 &1023861772469012443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402145250149891786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e8eb48776984240a090ff2f817100f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downNormalAudio: {fileID: 8300000, guid: 792308eee6ad2e1499ba3abc8b94bbde, type: 3}
+  downHeavyAudio: {fileID: 8300000, guid: 7473b5b33fb2363489d2e7630607909e, type: 3}
+  downSpecialAudio: {fileID: 0}
+  upNormalAudio1: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
+  upNormalAudio2: {fileID: 8300000, guid: 6fdf715ee3a21794ab496a573ef57f21, type: 3}
+  upNormalAudio3: {fileID: 8300000, guid: 91898de2c4067514da3a4b534764824d, type: 3}
+  upSpecialAudio: {fileID: 8300000, guid: 7afed8eeb06188441853118e6b481d3b, type: 3}
+--- !u!114 &8665378924294284246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402145250149891786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5975f2f5c40914b93b43004d467c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  currentStamina: 0
 --- !u!1 &2235665828919130356
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +759,7 @@ GameObject:
   - component: {fileID: 1130425703841771690}
   m_Layer: 6
   m_Name: UpNormalAttack1
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,7 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  force: 0.5
+  damage: 40
   attackType: 0
 --- !u!1 &3195837545459945572
 GameObject:
@@ -823,7 +873,7 @@ GameObject:
   - component: {fileID: 6690757809660029163}
   m_Layer: 6
   m_Name: UpNormalAttack3
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,7 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  force: 0.5
+  damage: 40
   attackType: 0
 --- !u!1 &3211619188562970557
 GameObject:
@@ -1025,6 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 1
 --- !u!1 &3225545927663632574
 GameObject:
@@ -1040,7 +1092,7 @@ GameObject:
   - component: {fileID: 4713626592016475040}
   m_Layer: 6
   m_Name: UpSpecialAttack
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1101,9 +1153,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 289803631
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1128,6 +1180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 50
   attackType: 2
 --- !u!60 &4713626592016475040
 PolygonCollider2D:
@@ -1159,7 +1212,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1167,7 +1220,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.34, y: 1.38}
+    oldSize: {x: 1.35, y: 1.37}
     newSize: {x: 1.34, y: 1.38}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1573,6 +1626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 50
   attackType: 1
 --- !u!1 &4545237441096717254
 GameObject:
@@ -1589,7 +1643,7 @@ GameObject:
   - component: {fileID: 1992462048193725293}
   m_Layer: 0
   m_Name: 371_0
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1650,9 +1704,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 289803631
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -4914828518517250220, guid: 6ee153c88221e6546b06251f651f0c90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1772,6 +1826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 10
   attackType: 1
 --- !u!1 &5574561449786070042
 GameObject:
@@ -1786,7 +1841,7 @@ GameObject:
   - component: {fileID: 4157651428553650859}
   m_Layer: 6
   m_Name: UpNormalAttack2
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1886,7 +1941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4399e9e040e3346a48e6dee5b2a60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  force: 0.5
+  damage: 40
   attackType: 0
 --- !u!1 &5885866397498232507
 GameObject:
@@ -1993,6 +2049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 50
   attackType: 1
 --- !u!1 &6038103863107596645
 GameObject:
@@ -2211,6 +2268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 0
 --- !u!1 &6433929298924389611
 GameObject:
@@ -2327,6 +2385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 1
 --- !u!1 &8574989755380109654
 GameObject:
@@ -2519,6 +2578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2
+  damage: 40
   attackType: 1
 --- !u!1 &9043327041735972774
 GameObject:

@@ -7,6 +7,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
     private string tagEnemy;
     private GameObject parent;
     private HeavyAttackSasuke heavyAttackSasuke;
+    private PlayerStamina playerStamina;
     private Collider2D hurboxCollider;
     private float force = 1.5f;
     
@@ -15,6 +16,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
         parent = transform.parent.gameObject;
 
         heavyAttackSasuke = parent.GetComponent<HeavyAttackSasuke>();
+        playerStamina = parent.GetComponent<PlayerStamina>();
 
         tagEnemy = (parent.CompareTag("P1")) ? "P2" : "P1";
         
@@ -57,6 +59,7 @@ public class SendDamageHeavyAttackSasuke : MonoBehaviour
                     
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                     enemyHealth.TakeDamage(damage, force, vector3, true);
+                    playerStamina.IncreaseStamina(damage);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }

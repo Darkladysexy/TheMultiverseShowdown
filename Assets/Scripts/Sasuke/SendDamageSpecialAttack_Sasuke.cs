@@ -6,6 +6,7 @@ public class SendDamageSpecialAttack_Sasuke : MonoBehaviour
 private string tagEnemy;
     private GameObject parent;
     private SpecialAttackSasuke specialAttackSasuke;
+    private PlayerStamina playerStamina;
     private Collider2D hurboxCollider;
     private float force = 1.5f;
     
@@ -14,6 +15,7 @@ private string tagEnemy;
         parent = transform.parent.gameObject;
 
         specialAttackSasuke = parent.GetComponent<SpecialAttackSasuke>();
+        playerStamina = parent.GetComponent<PlayerStamina>();
 
         tagEnemy = (parent.CompareTag("P1")) ? "P2" : "P1";
         
@@ -54,6 +56,7 @@ private string tagEnemy;
                     
                     Vector3 vector3 = (collision.gameObject.transform.position - this.gameObject.transform.position).normalized;
                     enemyHealth.TakeDamage(damage, force, vector3, true);
+                    playerStamina.IncreaseStamina(damage);
                     Debug.Log("Gây " + damage + " sát thương cho " + collision.name);
                 }
             }

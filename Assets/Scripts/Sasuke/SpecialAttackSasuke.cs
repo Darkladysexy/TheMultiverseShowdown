@@ -7,6 +7,7 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
 {
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
+    private PlayerStamina playerStamina;
     private LegPlayer legPlayer;
     private PlayableDirector skillTimeLine;
     private AudioSource audioSource;
@@ -25,6 +26,7 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     void Start()
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        playerStamina = this.gameObject.GetComponent<PlayerStamina>();
         rb = this.GetComponent<Rigidbody2D>();
         skillTimeLine = this.GetComponent<PlayableDirector>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
@@ -55,9 +57,10 @@ public class SpecialAttackSasuke : MonoBehaviour,InterfaceSkill
     /// </summary>
     public void Attack()
     {
-        if (!Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack)
+        if (!Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && legPlayer.isGrounded && enableAttack && playerStamina.currentStamina >= damage)
         {
             SasukeSkill.instant.animator.SetTrigger("SpecialAttack");
+            playerStamina.UseStamina(damage);
             enableAttack = false;
         }
     }

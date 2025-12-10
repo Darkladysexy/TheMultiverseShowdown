@@ -10,6 +10,7 @@ public class IChigoSkill : MonoBehaviour
     private HeavyAttack heavyAttack;
     private SpeacialAttack speacialAttack;
     private PlayerBlock playerBlock;
+
     // private KeyCode heavyAttackKey;
     // private KeyCode specialAttackKey;
     
@@ -32,13 +33,13 @@ public class IChigoSkill : MonoBehaviour
     void Update()
     {
         // Kiem tra xem Attack Layer dang o state NoAction khong
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
-        bool isReadyForAction = stateInfo.IsTag("NoAction");
-        if (isReadyForAction)
-        {
-            heavyAttack.Attack();
-            speacialAttack.Attack();
-        }
+        // AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(actionLayerIndex);
+        // bool isReadyForAction = stateInfo.IsTag("NoAction");
+        // if (isReadyForAction)
+        // {
+        //     heavyAttack.Attack();
+        //     speacialAttack.Attack();
+        // }
     }
     // Dung de lam Animation event
     public void TriggerHeavyAttackStart()
