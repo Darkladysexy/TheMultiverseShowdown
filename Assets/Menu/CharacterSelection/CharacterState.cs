@@ -37,6 +37,7 @@ public class CharacterState : MonoBehaviour
         if (IsPlayer1)
         {
             CharacterData.prefabs1 = prefabs[index];
+            CharacterData.sprite1 = sprites[index];
             image1.sprite = sprites[index] ;
             image1.color = Color.white;
             Debug.Log(prefabs[index]);
@@ -44,6 +45,7 @@ public class CharacterState : MonoBehaviour
         else
         {
             CharacterData.prefabs2 = prefabs[index];
+            CharacterData.sprite2 = sprites[index];
             image2.sprite = sprites[index] ;
             image2.color = Color.white;
             Debug.Log(prefabs[index]);
