@@ -12,13 +12,13 @@ public class InputReciever : MonoBehaviour
     }
     public void StopAllInput()
     {
-        p1.GetComponent<PlayerMovement>().isStun = true;
-        p2.GetComponent<PlayerMovement>().isStun = true;
+        p1.GetComponent<PlayerMovement>().isStun = true   ;
+        p2.GetComponent<PlayerMovement>().isStun = true   ;
     }
 
     public void StartAllInput()
     {
-        p1.GetComponent<PlayerMovement>().isStun = false;
-        p2.GetComponent<PlayerMovement>().isStun = false;
+        p1.GetComponent<PlayerMovement>().isStun = false   ;
+        p2.GetComponent<PlayerMovement>().isStun = false   ;
     }
 }

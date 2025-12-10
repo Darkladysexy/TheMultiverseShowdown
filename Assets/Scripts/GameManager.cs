@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instant;
+    public PlayableDirector introScene;
+    public PlayableDirector endGameScene;
     void Awake()
     {
         instant = this;
@@ -11,13 +14,18 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        introScene.Play();
+        endGameScene.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(GameObject.FindGameObjectWithTag("P1").GetComponent<PlayerHealth>().currentHealth <=0 
+            || GameObject.FindGameObjectWithTag("P2").GetComponent<PlayerHealth>().currentHealth <= 0)
+        {
+            endGameScene.Play();
+        }
     }
 
     public void PauseGame(Vector3 position)

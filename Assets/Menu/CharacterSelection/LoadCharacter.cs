@@ -10,10 +10,13 @@ public class LoadCharacter : MonoBehaviour
     private GameObject player2 = CharacterData.prefabs2;
     public Transform spawnPoint;
     public bool isSpawn1;
-
+    void Awake()
+    {
+        SpawnCharacters();
+    }
     void Start()
     {
-       SpawnCharacters();
+       
 
     }
     private void SpawnCharacters()

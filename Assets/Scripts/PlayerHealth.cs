@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         }
 
         currentHealth -= damage; 
-        OnChangeHealth?.Invoke(currentHealth,maxHealth);
+        OnChangeHealth?.Invoke(currentHealth, maxHealth);
 
         
         

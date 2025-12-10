@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,27 +11,30 @@ public class HPLoader : MonoBehaviour
     private PlayerHealth player2Health;
     public Slider hp1;
     public Slider hp2;
+    void Awake()
+    {
+        hp1.value = 1f;
+        hp2.value = 1f;
+    }
     void Start()
     {
-        StartCoroutine(WaitAndUpdateHealthUI());
         p1 = GameObject.FindGameObjectWithTag("P1");
         p2 = GameObject.FindGameObjectWithTag("P2");
-        player1Health = p1.GetComponent<PlayerHealth>();
-        player2Health = p2.GetComponent<PlayerHealth>();
- 
-        hp1.value = 1;
-        hp2.value = 1;
 
-        player1Health.OnChangeHealth+= UpdatePlayer1HealthUI;
-        player2Health.OnChangeHealth+= UpdatePlayer2HealthUI;
+        if (p1 != null)
+            player1Health = p1.GetComponent<PlayerHealth>();
+
+        if (p2 != null)
+            player2Health = p2.GetComponent<PlayerHealth>();
+
+        // Subscribe once to the health-change events so UI updates when health changes.
+        if (player1Health != null)
+            player1Health.OnChangeHealth += UpdatePlayer1HealthUI;
+
+        if (player2Health != null)
+            player2Health.OnChangeHealth += UpdatePlayer2HealthUI;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
+    // No Update() required — UI updates via events from PlayerHealth.
     private void UpdatePlayer1HealthUI(int currentHealth, int maxHealth)
     {
         hp1.value = (float)currentHealth / maxHealth;
@@ -41,17 +43,15 @@ public class HPLoader : MonoBehaviour
     {
         hp2.value = (float)currentHealth / maxHealth;
     }
-    private IEnumerator WaitAndUpdateHealthUI()
+    // removed unused coroutine
+
+    void OnDestroy()
     {
-        yield return new WaitForSeconds(3.0f);
+        // Unsubscribe from events to prevent memory leaks.
+        if (player1Health != null)
+            player1Health.OnChangeHealth -= UpdatePlayer1HealthUI;
+
+        if (player2Health != null)
+            player2Health.OnChangeHealth -= UpdatePlayer2HealthUI;
     }
-
-    // void OnDestroy()
-    // {
-    //     if (player1Health != null)
-    //         player1Health.OnChangeHealth -= UpdatePlayer1HealthUI;
-
-    //     if (player2Health != null)
-    //         player2Health.OnChangeHealth -= UpdatePlayer2HealthUI;
-    // }
 }

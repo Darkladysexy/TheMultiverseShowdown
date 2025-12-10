@@ -15,7 +15,10 @@ public class PlayerStamina : MonoBehaviour
     {
         
     }
-
+    public int getStamina()
+    {
+        return currentStamina;
+    }   
     public void IncreaseStamina(int amount)
     {
         currentStamina += amount;

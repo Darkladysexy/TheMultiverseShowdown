@@ -385,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+  isDead: 0
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.5
 --- !u!114 &3888731181207925752
