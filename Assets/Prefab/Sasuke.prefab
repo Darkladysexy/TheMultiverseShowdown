@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 8665378924294284246}
   m_Layer: 6
   m_Name: Sasuke
-  m_TagString: P2
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+  isDead: 0
   heavyKnockbackUpwardForce: 1.2
   heavyKnockbackDelay: 0.1
 --- !u!320 &5119529568950681098

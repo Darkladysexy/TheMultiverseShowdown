@@ -7,6 +7,7 @@ public class SasukeSkillManager : SkillManager
     private Down_Skill_Sasuke down_Skill_Sasuke;
     private Up_Skill_Sasuke up_Skill_Sasuke;
     private PlayerStamina playerStamina;
+    private PlayerHealth playerHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +18,7 @@ public class SasukeSkillManager : SkillManager
         down_Skill_Sasuke = this.gameObject.GetComponent<Down_Skill_Sasuke>();
         up_Skill_Sasuke = this.gameObject.GetComponent<Up_Skill_Sasuke>();
         playerStamina = this.gameObject.GetComponent<PlayerStamina>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class SasukeSkillManager : SkillManager
     public override void SkillActive()
     {
         Debug.Log("Sasuke Skill");
+        if(playerHealth.isDead) return;
         if(NoAction())
         {
             heavyAttackSasuke.Attack();

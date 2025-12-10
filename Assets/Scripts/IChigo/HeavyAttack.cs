@@ -8,6 +8,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
 {
     public static HeavyAttack instant;
     private Rigidbody2D rb;
+    private PlayerHealth playerHealth;
     private readonly Vector2 LEFTUP = new Vector2Int(-1, 1);
     private readonly Vector2 RIGHTUP = new Vector2Int(1, 1);
     private readonly Vector2 LEFTDOWN = new Vector2Int(-1, -1);
@@ -40,6 +41,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
         audioSource = this.gameObject.GetComponent<AudioSource>();
         animator = this.gameObject.GetComponent<Animator>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         foreach (Transform child in this.gameObject.transform)
         {
             if (child.gameObject.name == "Leg")
@@ -130,6 +132,7 @@ public class HeavyAttack : MonoBehaviour,InterfaceSkill
 
     public void Attack()
     {
+        if(playerHealth.isDead) return;
         // Kiểm tra "Đánh lên"
         if (Input.GetKeyDown(KeyCode) && Input.GetKey(keyCodeDir) && legPlayer.isGrounded && enableAttack && playerStamina.currentStamina >= damage)
         {

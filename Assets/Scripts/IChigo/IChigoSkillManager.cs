@@ -7,6 +7,7 @@ public class IChigoSkillManager : SkillManager
     private Down_Skill_IChigo down_Skill_IChigo;
     private Up_Skill_IChigo up_Skill_IChigo;
     private PlayerStamina playerStamina;
+    private PlayerHealth playerHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +18,7 @@ public class IChigoSkillManager : SkillManager
         down_Skill_IChigo = this.gameObject.GetComponent<Down_Skill_IChigo>();
         up_Skill_IChigo = this.gameObject.GetComponent<Up_Skill_IChigo>();
         playerStamina = this.gameObject.GetComponent<PlayerStamina>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class IChigoSkillManager : SkillManager
     }
     public override void SkillActive()
     {
+        if(playerHealth.isDead) return;
         if(NoAction())
         {
             if(playerStamina.currentStamina >= heavyAttack.damage) 

@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return; // KHÓA INPUT KHI STUN
         }
+        if(playerHealth.isDead) return;
 
         if (!playerBlock.isBlocking)
             Jump();
@@ -78,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
+        if(playerHealth.isDead) return;
         if (!isStun && !playerBlock.isBlocking)
             Move();
     }

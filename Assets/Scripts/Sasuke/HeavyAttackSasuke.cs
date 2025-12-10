@@ -8,6 +8,7 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
     private PlayerStamina playerStamina;
+    private PlayerHealth playerHealth;
     private LegPlayer legPlayer;
     private AudioSource audioSource;
     public float coolDownTime { get; set; } = 2f;
@@ -34,6 +35,7 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
         playerStamina = this.gameObject.GetComponent<PlayerStamina>();
         rb = this.GetComponent<Rigidbody2D>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
 
         KeyCode = (this.gameObject.CompareTag("P1")) ? KeyCode.U : KeyCode.Keypad4;
         keyCodeDir = (this.gameObject.CompareTag("P1")) ? KeyCode.W : KeyCode.UpArrow;
@@ -61,6 +63,7 @@ public class HeavyAttackSasuke : MonoBehaviour, InterfaceSkill
 
     public void Attack()
     {
+        if(playerHealth.isDead) return;
         // Danh len trem
         if (Input.GetKey(keyCodeDir))
         {

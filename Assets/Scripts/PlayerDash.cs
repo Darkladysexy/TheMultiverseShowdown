@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
     public float coolDownTime { get ; set;}
     [HideInInspector] public KeyCode keyCode { get; set; }
     public float force = 10f; // Luc day khi dash
@@ -14,6 +15,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         playerMovement = this.GetComponent<PlayerMovement>();
+        playerHealth = this.GetComponent<PlayerHealth>();
         playerLayer = LayerMask.NameToLayer("Player");
         dashingLayer = LayerMask.NameToLayer("DashingPlayer");
 
@@ -31,7 +33,7 @@ public class PlayerDash : MonoBehaviour
     {
         // === SỬA LỖI TẠI ĐÂY ===
         // Thêm "!playerMovement.isStun"
-        if(Input.GetKeyDown(keyCode) && enableDash && !playerMovement.isStun)
+        if(Input.GetKeyDown(keyCode) && enableDash && !playerMovement.isStun && !playerHealth.isDead)
         // ======================
         {
             enableDash = false;

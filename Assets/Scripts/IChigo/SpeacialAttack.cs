@@ -10,6 +10,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
     private LegPlayer legPlayer;
     private Animator animator;
     [HideInInspector] public PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
     private PlayerStamina playerStamina;
     private AudioSource audioSource;
     public AudioClip specialAttackAudio;
@@ -34,6 +35,7 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
         playerStamina = this.gameObject.GetComponent<PlayerStamina>();
         audioSource = this.gameObject.GetComponent<AudioSource>();
         animator = this.gameObject.GetComponent<Animator>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         
         foreach(Transform child in this.gameObject.transform)
         {
@@ -46,6 +48,8 @@ public class SpeacialAttack : MonoBehaviour,InterfaceSkill
 
     public void Attack()
     {
+        if(playerHealth.isDead) return;
+
         if (legPlayer.isGrounded && !Input.GetKey(upKeyCode) && Input.GetKeyDown(KeyCode) && !isSpecialAttack && playerStamina.currentStamina >= damage)
         {
             animator.SetTrigger("SpecialAttack");

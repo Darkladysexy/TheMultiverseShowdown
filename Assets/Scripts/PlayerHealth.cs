@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
     private Animator animator;
     private PlayerMovement playerMovement;
     private PlayerBlock playerBlock;
+    public bool isDead = false;
     public event Action<int,int> OnChangeHealth;
     [Header("Knockback Settings")]
     public float heavyKnockbackUpwardForce = 1.2f; 
@@ -35,17 +36,27 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
 
         currentHealth -= damage; 
         OnChangeHealth?.Invoke(currentHealth,maxHealth);
+
+        
         
         if (force > 0)
         {
             if (isHeavyHit)
             {
-                StartCoroutine(ApplyDelayedKnockback(force, dirForce));
+                // StartCoroutine(ApplyDelayedKnockback(force, dirForce));
+                KnockBack(force, dirForce);
             }
             else
             {
                 rb.AddForce(dirForce * force, ForceMode2D.Impulse);
             }
+        }
+
+        if(currentHealth <= 0)
+        {
+            animator.SetTrigger("Die");
+            isDead = true;
+            return;
         }
 
         // === LOGIC STUN MỚI (KIỂM TRA ANIMATOR) ===
@@ -80,6 +91,16 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
     private IEnumerator ApplyDelayedKnockback(float force, Vector3 dirForce)
     {
         yield return new WaitForSeconds(heavyKnockbackDelay);
+        if (this != null && rb != null)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
+            Vector2 knockbackVector = new Vector2(dirForce.x, heavyKnockbackUpwardForce).normalized; 
+            rb.AddForce(knockbackVector * force, ForceMode2D.Impulse);
+        }
+    }
+
+    private void KnockBack(float force, Vector3 dirForce)
+    {
         if (this != null && rb != null)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 

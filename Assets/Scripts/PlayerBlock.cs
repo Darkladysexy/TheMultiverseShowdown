@@ -5,6 +5,7 @@ public class PlayerBlock : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
     // private PlayerHealth playerHealth;
     private LegPlayer legPlayer;
     public bool isBlocking = false;
@@ -16,6 +17,7 @@ public class PlayerBlock : MonoBehaviour
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         animator = this.gameObject.GetComponent<Animator>();
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         // playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         foreach(Transform child in this.gameObject.transform)
         {
@@ -47,7 +49,7 @@ public class PlayerBlock : MonoBehaviour
     public void HandleBlocking()
     {
         // Nếu giữ 'S', trên mặt đất, VÀ không nhấn J/U/I trong frame này
-        if (legPlayer.isGrounded && Input.GetKey(keyCode))
+        if (!playerHealth.isDead && legPlayer.isGrounded && Input.GetKey(keyCode))
         {
         
             StartBlocking();

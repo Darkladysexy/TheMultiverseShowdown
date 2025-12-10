@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,13 +14,14 @@ public class HPLoader : MonoBehaviour
     public Slider hp2;
     void Start()
     {
+        StartCoroutine(WaitAndUpdateHealthUI());
         p1 = GameObject.FindGameObjectWithTag("P1");
         p2 = GameObject.FindGameObjectWithTag("P2");
         player1Health = p1.GetComponent<PlayerHealth>();
         player2Health = p2.GetComponent<PlayerHealth>();
  
-        hp1.value =1;
-        hp2.value =1;
+        hp1.value = 1;
+        hp2.value = 1;
 
         player1Health.OnChangeHealth+= UpdatePlayer1HealthUI;
         player2Health.OnChangeHealth+= UpdatePlayer2HealthUI;
@@ -38,6 +40,10 @@ public class HPLoader : MonoBehaviour
     private void UpdatePlayer2HealthUI(int currentHealth, int maxHealth)
     {
         hp2.value = (float)currentHealth / maxHealth;
+    }
+    private IEnumerator WaitAndUpdateHealthUI()
+    {
+        yield return new WaitForSeconds(3.0f);
     }
 
     // void OnDestroy()
