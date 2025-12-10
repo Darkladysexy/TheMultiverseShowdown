@@ -37,14 +37,10 @@ AnimationClip:
     - time: 0.7
       value: {fileID: -3874729413812279847, guid: ef6ef66e4d92665478e45f892609c3f7, type: 3}
     - time: 0.8
-      value: {fileID: -3430254271859698856, guid: cd6921a33070ea643b571cb025942f77, type: 3}
-    - time: 0.9
-      value: {fileID: 7237517788357597937, guid: 61c59ba748ed1d044bb56f42992fc251, type: 3}
-    - time: 1
       value: {fileID: -1456422079140348055, guid: dc61756aa40c2744bb77db1e59445d94, type: 3}
-    - time: 1.1
+    - time: 0.9
       value: {fileID: -1911189370502641363, guid: bf128a276d4952b4083281c94761ce2a, type: 3}
-    - time: 1.2
+    - time: 1
       value: {fileID: 1964747838904486770, guid: c2f0cf9abab0e2f47bc46484e50fcdd4, type: 3}
     attribute: m_Sprite
     path: 
@@ -76,8 +72,6 @@ AnimationClip:
     - {fileID: 5217704836538013665, guid: 25405ffe9a711b545b11f5714a39f64b, type: 3}
     - {fileID: 2122183518703798698, guid: 23021386dc93eca40aea62496a8c5446, type: 3}
     - {fileID: -3874729413812279847, guid: ef6ef66e4d92665478e45f892609c3f7, type: 3}
-    - {fileID: -3430254271859698856, guid: cd6921a33070ea643b571cb025942f77, type: 3}
-    - {fileID: 7237517788357597937, guid: 61c59ba748ed1d044bb56f42992fc251, type: 3}
     - {fileID: -1456422079140348055, guid: dc61756aa40c2744bb77db1e59445d94, type: 3}
     - {fileID: -1911189370502641363, guid: bf128a276d4952b4083281c94761ce2a, type: 3}
     - {fileID: 1964747838904486770, guid: c2f0cf9abab0e2f47bc46484e50fcdd4, type: 3}
@@ -86,7 +80,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.3000001
+    m_StopTime: 1.1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -113,7 +107,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.2
+  - time: 0.8
+    functionName: TriggerUpLightAttack_FollowUpHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
     functionName: TriggerUpLightAttack_End
     data: 
     objectReferenceParameter: {fileID: 0}

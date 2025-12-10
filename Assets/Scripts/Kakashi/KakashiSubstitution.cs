@@ -12,16 +12,18 @@ public class KakashiSubstitution : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator animator;
     private Rigidbody2D rb;
+    private PlayerHealth playerHealth; // --- THÊM BIẾN NÀY ---
     private float lastSubTime = -99f;
     private string enemyTag;
     
-    private int actionLayerIndex; // Index của "Attack Layer"
+    private int actionLayerIndex;
 
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerHealth = GetComponent<PlayerHealth>(); // --- LẤY COMPONENT ---
 
         actionLayerIndex = animator.GetLayerIndex("Attack Layer");
 
@@ -31,9 +33,6 @@ public class KakashiSubstitution : MonoBehaviour
             enemyTag = "P1";
     }
 
-    /// <summary>
-    /// Được gọi bởi KakashiSkillManager khi nhấn phím O
-    /// </summary>
     public void AttemptSubstitution()
     {
         // 1. Kiểm tra Cooldown
@@ -43,15 +42,12 @@ public class KakashiSubstitution : MonoBehaviour
             return;
         }
 
-        // 2. === SỬA LOGIC KIỂM TRA ===
-        // Kiểm tra trực tiếp biến 'isStun' thay vì tên animation
-        // Hàm Stun() trong PlayerMovement đã đặt isStun = true ngay lập tức
+        // 2. Kiểm tra điều kiện Stun (Dựa trên biến isStun)
         if (playerMovement == null || !playerMovement.isStun)
         {
             Debug.Log("[Thế thân] Chỉ dùng được khi đang bị dính đòn (isStun = true)!");
             return;
         }
-        // ============================
 
         // 3. Thực hiện
         lastSubTime = Time.time;
@@ -69,13 +65,11 @@ public class KakashiSubstitution : MonoBehaviour
 
         if (enemy != null)
         {
-            // Tìm vị trí sau lưng địch
             float enemyFacingDir = (enemy.transform.rotation.y == 0) ? 1f : -1f; 
             teleportPosition = enemy.transform.position + new Vector3(enemyFacingDir * teleportDistanceBehind, 0.5f, 0);
         }
         else
         {
-            // Không tìm thấy địch, dịch chuyển lùi 1 đoạn
             float myFacingDir = playerMovement.isFacingRight ? 1f : -1f;
             teleportPosition = (Vector2)transform.position - new Vector2(myFacingDir * teleportDistanceBehind, 0);
         }
@@ -83,7 +77,7 @@ public class KakashiSubstitution : MonoBehaviour
         // 6. Dịch chuyển player
         transform.position = teleportPosition;
 
-        // 7. Quay mặt vào địch (nếu có)
+        // 7. Quay mặt vào địch
         if (enemy != null)
         {
             bool shouldFaceRight = (enemy.transform.position.x > transform.position.x);
@@ -91,14 +85,19 @@ public class KakashiSubstitution : MonoBehaviour
             playerMovement.isFacingRight = shouldFaceRight;
         }
 
-        // 8. Ngắt Stun (Rất quan trọng)
-        playerMovement.EndStun(); // Gọi hàm này để reset isStun = false
-        rb.linearVelocity = Vector2.zero; // Dừng mọi lực tác động (ngăn bị văng tiếp)
-
-        // 9. Kích hoạt animation (Poof!) và ngắt anim bị đánh
-        animator.SetTrigger("Substitution"); 
+        // --- 8. LOGIC QUAN TRỌNG ĐỂ SỬA LỖI ---
+        // Hủy lực đẩy knockback đang chờ (nếu có)
+        if (playerHealth != null)
+        {
+            playerHealth.CancelKnockback();
+        }
         
-        // Reset các trigger bị đánh để ngừng anim "TakeDamage"
+        // Ngắt Stun và Dừng lực vật lý ngay lập tức
+        playerMovement.EndStun(); 
+        rb.linearVelocity = Vector2.zero; 
+
+        // 9. Kích hoạt animation và Reset trigger bị đánh
+        animator.SetTrigger("Substitution"); 
         animator.ResetTrigger("TakeDamage");
         animator.ResetTrigger("TakeDamageFall");
     }

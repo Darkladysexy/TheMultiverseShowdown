@@ -270,6 +270,10 @@ public class KakashiSkillManager : MonoBehaviour
     {
         upLightAttack?.EndSkill();
     }
+    public void TriggerUpLightAttack_FollowUpHit() 
+    {
+        upLightAttack?.StartFollowUpHit();
+    }
     public void TriggerUpHeavyAttack_SpawnDragon()
     {
         upHeavyAttack?.SpawnDragon();

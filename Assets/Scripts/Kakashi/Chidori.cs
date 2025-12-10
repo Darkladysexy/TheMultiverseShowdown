@@ -11,6 +11,6 @@ public class Chidori : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 0.1f);
     }
 }

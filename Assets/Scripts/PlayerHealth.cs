@@ -14,6 +14,9 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
     public float heavyKnockbackUpwardForce = 1.2f; 
     public float heavyKnockbackDelay = 0.1f; 
 
+    // --- BIẾN MỚI ĐỂ QUẢN LÝ COROUTINE ---
+    private Coroutine knockbackCoroutine;
+
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
@@ -36,7 +39,11 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         {
             if (isHeavyHit)
             {
-                StartCoroutine(ApplyDelayedKnockback(force, dirForce));
+                // Nếu đang có knockback chờ, hủy nó đi để nhận cái mới
+                if (knockbackCoroutine != null) StopCoroutine(knockbackCoroutine);
+                
+                // Lưu coroutine lại để quản lý
+                knockbackCoroutine = StartCoroutine(ApplyDelayedKnockback(force, dirForce));
             }
             else
             {
@@ -44,9 +51,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
             }
         }
 
-        // === LOGIC STUN MỚI (KIỂM TRA ANIMATOR) ===
-        
-        // Lấy State hiện tại của Attack Layer (Layer 1)
+        // Logic Stun
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(1); 
         bool isAlreadyInHeavyStun = stateInfo.IsName("TakeDamageFall") || stateInfo.IsName("GetUp");
 
@@ -54,34 +59,42 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
         {
             if (isHeavyHit)
             {
-                // 1. Nếu là đòn nặng: Luôn luôn kích hoạt Stun(true) (để ngắt Coroutine cũ)
                 playerMovement.Stun(true); 
                 animator.SetTrigger("TakeDamageFall"); 
             }
             else if (!isAlreadyInHeavyStun)
             {
-                // 2. Nếu là đòn nhẹ (DOT) VÀ KHÔNG ĐANG TRONG TRẠNG THÁI NGÃ:
-                // Mới kích hoạt Stun(false) (bật Coroutine 0.25s) và anim giật mình
                 playerMovement.Stun(false);
                 animator.SetTrigger("TakeDamage"); 
             }
-            // 3. (Trường hợp 3): Nếu là đòn nhẹ (DOT) VÀ ĐANG NGÃ (isAlreadyInHeavyStun = true)
-            // -> KHÔNG LÀM GÌ CẢ. 
-            //    Không gọi Stun(false), không chạy timer 0.25s.
-            //    Không gọi SetTrigger("TakeDamage").
-            //    Chỉ để cho anim ngã tiếp tục.
         }
+    }
+
+    // --- HÀM MỚI: HỦY KNOCKBACK (Dùng cho Thế Thân) ---
+    public void CancelKnockback()
+    {
+        // Hủy lệnh đẩy lùi đang chờ
+        if (knockbackCoroutine != null)
+        {
+            StopCoroutine(knockbackCoroutine);
+            knockbackCoroutine = null;
+        }
+        // Dừng lực hiện tại ngay lập tức để nhân vật đứng yên
+        if (rb != null) rb.linearVelocity = Vector2.zero;
     }
 
     private IEnumerator ApplyDelayedKnockback(float force, Vector3 dirForce)
     {
         yield return new WaitForSeconds(heavyKnockbackDelay);
-        if (this != null && rb != null)
+        
+        if (this != null && rb != null && gameObject.activeSelf)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
             Vector2 knockbackVector = new Vector2(dirForce.x, heavyKnockbackUpwardForce).normalized; 
             rb.AddForce(knockbackVector * force, ForceMode2D.Impulse);
         }
+        
+        knockbackCoroutine = null; // Reset biến khi chạy xong
     }
 
     void Update()

@@ -405,7 +405,6 @@ MonoBehaviour:
   isFacingRight: 1
   isStun: 0
   time: 0.25
-  isBlocking: 0
 --- !u!114 &5324131571554940063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,8 +661,9 @@ MonoBehaviour:
   launchHurtBox: {fileID: 5239033602566179077}
   attackDamage: 25
   attackCooldown: 1
-  teleportDistanceBehind: 1.5
-  followUpJumpForce: 10
+  teleportDistanceBehind: 0.2
+  followUpJumpForce: 4
+  isFollowUpHit: 0
 --- !u!114 &6864640029453708293
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,10 @@ public class KakashiUpLightAttack : MonoBehaviour, InterfaceSkill
     public float teleportDistanceBehind = 1.5f; // Khoảng cách dịch chuyển
     public float followUpJumpForce = 10f; // Lực nhảy đuổi theo
     
+    // --- THÊM DÒNG NÀY ---
+    [HideInInspector] public bool isFollowUpHit = false; // Cờ báo hiệu Đòn 2 đang được kích hoạt
+    // -----------------------
+    
     // --- Interface Properties ---
     public float coolDownTime { get; set; }
     public int damage { get; set; }
@@ -58,6 +62,7 @@ public class KakashiUpLightAttack : MonoBehaviour, InterfaceSkill
         isAttacking = true;
         lastAttackTime = Time.time;
         lockedEnemy = null;
+        isFollowUpHit = false; // <--- RESET CỜ CHO ĐÒN 1
 
         // 1. Tìm kẻ thù
         GameObject enemyObj = GameObject.FindGameObjectWithTag(enemyTag);
@@ -94,19 +99,30 @@ public class KakashiUpLightAttack : MonoBehaviour, InterfaceSkill
     {
         if (launchHurtBox != null)
             launchHurtBox.SetActive(true);
-        
-        // (Script SendDamage... của hurtbox này cần set isHeavyHit = true
-        // và dùng lực knockback Y (hất tung) mạnh)
     }
 
     /// <summary>
-    /// GỌI BẰNG ANIMATION EVENT: Ngay khi đòn đánh hất tung trúng
+    /// GỌI BẰNG ANIMATION EVENT: Ngay khi đòn đánh hất tung trúng (Đòn 1)
     /// </summary>
     public void FollowUpJump()
     {
         // Bay lên theo địch
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset Y vel
         rb.AddForce(Vector2.up * followUpJumpForce, ForceMode2D.Impulse);
+    }
+
+    /// <summary>
+    /// GỌI BẰNG ANIMATION EVENT: Tại frame Kakashi thực hiện cú đá thứ 2
+    /// </summary>
+    public void StartFollowUpHit() // <--- HÀM MỚI
+    {
+        isFollowUpHit = true; // <--- ĐẶT CỜ = TRUE
+        
+        // RE-ENABLE HURTBOX (Vẫn dùng Hurtbox cũ)
+        if (launchHurtBox != null)
+        {
+            launchHurtBox.SetActive(true); 
+        }
     }
 
     /// <summary>
@@ -117,7 +133,8 @@ public class KakashiUpLightAttack : MonoBehaviour, InterfaceSkill
         if (launchHurtBox != null)
             launchHurtBox.SetActive(false);
         
-        playerMovement.EndStun();
+        isFollowUpHit = false; // <--- RESET CỜ VỀ FALSE KHI KẾT THÚC
+        playerMovement.EndStun(); // Mở khóa Kakashi
         isAttacking = false;
     }
     

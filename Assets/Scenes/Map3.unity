@@ -763,6 +763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sasuke
       objectReference: {fileID: 0}
+    - target: {fileID: 1402145250149891786, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4713626592016475040, guid: 36f158a5d27d0364399c4f207c61b039, type: 3}
       propertyPath: m_IsTrigger
       value: 1
