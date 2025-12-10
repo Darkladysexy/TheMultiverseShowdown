@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
     [Header("Knockback Settings")]
     public float heavyKnockbackUpwardForce = 1.2f; 
     public float heavyKnockbackDelay = 0.1f; 
+    private Coroutine knockbackCoroutine;
 
     void Start()
     {
@@ -106,6 +107,14 @@ public class PlayerHealth : MonoBehaviour, ITakeDamage
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
             Vector2 knockbackVector = new Vector2(dirForce.x, heavyKnockbackUpwardForce).normalized; 
             rb.AddForce(knockbackVector * force, ForceMode2D.Impulse);
+        }
+    }
+    public void CancelKnockback() 
+    {
+        if (knockbackCoroutine != null)
+        {
+            StopCoroutine(knockbackCoroutine);
+            knockbackCoroutine = null;
         }
     }
 
