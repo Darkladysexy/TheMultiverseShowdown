@@ -40,8 +40,10 @@ public class KakashiNonNormalDamageHandler : MonoBehaviour
     // --- Specific Fields for UpLight (W+U) ---
     private float upLightLaunchForce = 4f; 
     private float upLightHorizontalForce = 4f; 
+    // THÊM biến force cụ thể cho W+J
+    
+    public float upNormalForce = 4f; 
 
-    // --- General Setup ---
     void Awake()
     {
         // 1. Get Components
@@ -142,6 +144,8 @@ public class KakashiNonNormalDamageHandler : MonoBehaviour
                     {
                         case KakashiDamageMode.UpNormal_WJ: // W + J
                             damage = upSkills.upNormalDamage;
+                            force = upNormalForce; // <--- Dùng lực đẩy mới --->
+                            isHeavyHit = false;
                             break;
 
                         case KakashiDamageMode.AirNormal_AirJ: // Air + J

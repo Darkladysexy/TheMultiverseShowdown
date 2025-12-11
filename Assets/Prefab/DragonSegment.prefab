@@ -151,7 +151,7 @@ MonoBehaviour:
   speed: 4.5
   lifetime: 3
   amplitude: 0.25
-  frequency: 3.25
+  frequency: 5
 --- !u!50 &6304169463672009642
 Rigidbody2D:
   serializedVersion: 5

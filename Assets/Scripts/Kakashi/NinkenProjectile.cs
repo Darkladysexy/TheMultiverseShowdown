@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections; 
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -13,16 +14,19 @@ public class NinkenProjectile : MonoBehaviour
     private Rigidbody2D rb;
     private string enemyTag;
     private int damage;
-    private bool hasHit = false;
+    // Cờ để đảm bảo chỉ gây sát thương 1 lần.
+    private bool hasHitEnemy = false; 
+    // Cờ để đảm bảo quá trình hủy chỉ bắt đầu 1 lần.
+    private bool isDestroying = false; 
+    private const float DESTROY_DELAY = 0.2f; 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        // Đảm bảo Collider là Trigger để có thể va chạm và đi xuyên
         GetComponent<Collider2D>().isTrigger = true;
         
-        // Tự hủy sau một khoảng thời gian
-        Destroy(gameObject, lifetime);
+        // Bắt đầu Coroutine tự hủy theo thời gian (lifetime)
+        StartCoroutine(SelfDestructAfterTime(lifetime)); 
     }
 
     /// <summary>
@@ -52,27 +56,64 @@ public class NinkenProjectile : MonoBehaviour
     /// </summary>
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Nếu đã đánh trúng rồi thì bỏ qua
-        if (hasHit) return;
+        bool isHitTarget = collision.gameObject.CompareTag(enemyTag);
+        bool isHitGround = collision.gameObject.CompareTag("Ground");
 
-        // Kiểm tra xem có va phải kẻ thù không
-        if (collision.gameObject.CompareTag(enemyTag))
+        // --- 1. XỬ LÝ VA CHẠM VỚI KẺ THÙ ---
+        if (isHitTarget && !hasHitEnemy)
         {
             PlayerHealth enemyHealth = collision.GetComponent<PlayerHealth>();
             if (enemyHealth != null)
             {
-                hasHit = true;
+                hasHitEnemy = true; // Đã gây sát thương
                 Vector3 knockbackDir = (collision.transform.position - transform.position).normalized;
                 
                 // Gây sát thương (true = đòn đánh ngã)
                 enemyHealth.TakeDamage(damage, knockbackForce, knockbackDir, true);
-
-                // (Tùy chọn) Thêm hiệu ứng đặc biệt khi đánh trúng
-                // GameManager.instant.PauseGame(...)
                 
-                // Hủy con chó sau khi đánh trúng
-                Destroy(gameObject, 0.1f); 
+                // KHÔNG DỪNG CHUYỂN ĐỘNG. NÓ SẼ TIẾP TỤC RƠI.
+                // KHÔNG GỌI DelayedDestroy.
             }
+        }
+        
+        // --- 2. XỬ LÝ VA CHẠM VỚI ĐẤT ---
+        // Bắt đầu quá trình hủy dù nó có hit enemy hay chưa.
+        if (isHitGround && !isDestroying) 
+        {
+            isDestroying = true; // Ngăn không cho gọi lại
+            StopAllCoroutines(); // Dừng coroutine SelfDestructAfterTime
+
+            // Dừng ngay lập tức vật lý
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.isKinematic = true; 
+            }
+            
+            // Chờ 0.2s rồi hủy
+            StartCoroutine(DelayedDestroy(DESTROY_DELAY));
+        }
+    }
+    
+    /// <summary>
+    /// Coroutine chờ 0.2s rồi hủy
+    /// </summary>
+    private IEnumerator DelayedDestroy(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+    
+    /// <summary>
+    /// Coroutine tự hủy nếu không va chạm (fallback)
+    /// </summary>
+    private IEnumerator SelfDestructAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (!isDestroying) 
+        {
+            isDestroying = true;
+            Destroy(gameObject);
         }
     }
 }

@@ -87,13 +87,13 @@ public class DragonSegment : MonoBehaviour
             {
                 hasHit = true; 
                 enemyHealth.TakeDamage(damage, 3f, knockbackDirection, true); // true = đòn nặng
-                Destroy(gameObject); 
+                // Destroy(gameObject); 
             }
         }
         // Va chạm với Đất
         else if (collision.CompareTag("Ground"))
         {
-             Destroy(gameObject); 
+            //  Destroy(gameObject); 
         }
     }
 }
