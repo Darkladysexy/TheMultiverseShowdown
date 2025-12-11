@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 5895507032049121724}
   m_Layer: 6
   m_Name: Ichigo_Test
-  m_TagString: P1
+  m_TagString: P2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
