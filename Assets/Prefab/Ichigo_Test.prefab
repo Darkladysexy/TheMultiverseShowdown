@@ -891,6 +891,10 @@ MonoBehaviour:
   upNormalAttackAudio: {fileID: 8300000, guid: 1a49311f64c4f2e4cb31cf4fc950c94d, type: 3}
   upLightAttackAudio: {fileID: 0}
   upHeavyAttackAudio: {fileID: 0}
+  bustAudio: {fileID: 0}
+  dragonAudio: {fileID: 0}
+  dogAudio: {fileID: 0}
+  chidoriAudio: {fileID: 0}
 --- !u!114 &2216481505082709664
 MonoBehaviour:
   m_ObjectHideFlags: 0

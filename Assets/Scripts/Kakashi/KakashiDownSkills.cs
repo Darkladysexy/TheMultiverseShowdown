@@ -134,8 +134,11 @@ public class KakashiDownSkills : MonoBehaviour
             }
             rb.MovePosition(targetPos);
             
-            playerMovement.transform.rotation = Quaternion.Euler(0, playerMovement.isFacingRight ? 180 : 0, 0);
-            playerMovement.isFacingRight = !playerMovement.isFacingRight;
+            // playerMovement.transform.rotation = Quaternion.Euler(0, playerMovement.isFacingRight ? 180 : 0, 0);
+            // playerMovement.isFacingRight = !playerMovement.isFacingRight;
+            bool shouldFaceRight = (downNormalEnemyHit.position.x > transform.position.x);
+            playerMovement.Flip(shouldFaceRight);
+            
         }
         
         yield return new WaitForSeconds(0.1f); 
