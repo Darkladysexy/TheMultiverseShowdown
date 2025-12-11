@@ -904,7 +904,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 806969692077818606}
   m_FillRect: {fileID: 363543415933964735}
   m_HandleRect: {fileID: 8853392560470661866}
@@ -1205,32 +1205,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: 6f13738b096abe54ba648bcd9a75eb30, type: 2}
-    - {fileID: 11400000, guid: 9b1f96f6e5d43834f904413d229565e6, type: 2}
+    - {fileID: 11400000, guid: d775b11dd0c362f41bb0bb2309927197, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 8070918353679638454}
           m_TargetAssemblyTypeName: EndGameReciever, Assembly-CSharp
-          m_MethodName: BackToMenu
+          m_MethodName: PlayerWin
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3738434148030770175}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1314,7 +1299,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 7856260102314704803}
   m_FillRect: {fileID: 7853844805700710190}
   m_HandleRect: {fileID: 3607794071916707326}
@@ -1730,14 +1715,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Space to go back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f06375460c6a2bd44846001851d6a523, type: 2}
-  m_sharedMaterial: {fileID: -4277706106327809182, guid: f06375460c6a2bd44846001851d6a523, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4291160573
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2232,7 +2217,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4781647443768928407}
   m_FillRect: {fileID: 4566149830634822911}
   m_HandleRect: {fileID: 4592658471617912301}
@@ -2875,7 +2860,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 128026225278745531}
   m_FillRect: {fileID: 2207345451801440878}
   m_HandleRect: {fileID: 6355594490027212951}
