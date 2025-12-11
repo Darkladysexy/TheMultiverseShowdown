@@ -7,6 +7,7 @@ public class KakashiSkillManager : MonoBehaviour
     public Animator animator;
     private LegPlayer legPlayer;
     private PlayerMovement playerMovement; 
+    private PlayerStamina playerStamina; // <<<< Đã thêm >>>>
 
     // == DANH SÁCH TẤT CẢ CÁC KỸ NĂNG ==
     // private KakashiNormalAttack normalAttack; // J (Ground)
@@ -30,6 +31,7 @@ public class KakashiSkillManager : MonoBehaviour
         animator = GetComponent<Animator>();
         legPlayer = GetComponentInChildren<LegPlayer>(); 
         playerMovement = GetComponent<PlayerMovement>();
+        playerStamina = GetComponent<PlayerStamina>(); // <<<< Khởi tạo PlayerStamina >>>>
 
         // Lấy các component skill cũ còn giữ lại
         lightAttack = GetComponent<KakashiLightAttack>();
@@ -66,6 +68,8 @@ public class KakashiSkillManager : MonoBehaviour
             keyJ = KeyCode.Keypad1; keyU = KeyCode.Keypad4; keyI = KeyCode.Keypad5; 
             keyO = KeyCode.Keypad6; keyW = KeyCode.UpArrow; keyS = KeyCode.DownArrow;
         }
+
+        if(playerStamina == null) Debug.LogError("KakashiSkillManager: Missing PlayerStamina component!");
     }
 
     void Update()
@@ -75,7 +79,9 @@ public class KakashiSkillManager : MonoBehaviour
         bool isDownHeld = Input.GetKey(keyS);
         
         bool isPlayingAttackAnim = !animator.GetCurrentAnimatorStateInfo(actionLayerIndex).IsTag("NoAction");
-
+        
+        if (playerStamina == null) return; 
+        
         // --- 1. XỬ LÝ NÚT THẾ THÂN (O) ---
         if (Input.GetKeyDown(keyO))
         {
@@ -93,17 +99,32 @@ public class KakashiSkillManager : MonoBehaviour
         // --- Check J Key (Normal Attack) ---
         if (Input.GetKeyDown(keyJ))
         {
-            if (isDownHeld && isGrounded) // S + J
+            if (isDownHeld && isGrounded) // S + J (Down Normal Attack)
             {
-                downSkills.DownNormal_Attack();
+                int cost = downSkills.downNormalDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    downSkills.DownNormal_Attack();
+                }
             }
-            else if (isUpHeld && isGrounded) // W + J
+            else if (isUpHeld && isGrounded) // W + J (Up Normal Attack)
             {
-                upSkills.UpNormal_Attack();
+                int cost = upSkills.upNormalDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    upSkills.UpNormal_Attack();
+                }
             }
-            else if (!isGrounded) // Air + J
+            else if (!isGrounded) // Air + J (Air Normal Attack)
             {
-                airSkills.AirNormal_Attack();
+                int cost = airSkills.airNormalDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    airSkills.AirNormal_Attack();
+                }
             }
             // else if (isGrounded) // Ground + J (Dùng cho PlayerAttack.cs)
             // {
@@ -113,29 +134,79 @@ public class KakashiSkillManager : MonoBehaviour
         // --- Check U Key (Light Attack) ---
         else if (Input.GetKeyDown(keyU))
         {
-            if (isDownHeld && isGrounded) // S + U
-                downSkills.DownLight_Attack();
-            else if (isUpHeld && isGrounded) // W + U
-                upSkills.UpLight_Attack();
-            else if (!isGrounded) // Air + U
-                airSkills.Aerial_Attack();
-            else if (isGrounded) // Ground + U
-                lightAttack.Attack();
+            if (isDownHeld && isGrounded) // S + U (Down Light Attack)
+            {
+                int cost = downSkills.downLightDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    downSkills.DownLight_Attack();
+                }
+            }
+            else if (isUpHeld && isGrounded) // W + U (Up Light Attack)
+            {
+                int cost = upSkills.upLightDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    upSkills.UpLight_Attack();
+                }
+            }
+            else if (!isGrounded) // Air + U (Aerial Attack - Kunai)
+            {
+                int cost = airSkills.aerialDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    airSkills.Aerial_Attack();
+                }
+            }
+            else if (isGrounded) // Ground + U (Light Attack - Kunai)
+            {
+                int cost = lightAttack.damage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    lightAttack.Attack();
+                }
+            }
         }
         // --- Check I Key (Heavy Attack) ---
         else if (Input.GetKeyDown(keyI))
         {
-            if (isDownHeld && isGrounded) // S + I
-                downSkills.DownHeavy_Attack();
-            else if (isUpHeld && isGrounded) // W + I
-                upSkills.UpHeavy_Attack();
-            else if (isGrounded) // Ground + I
-                heavyAttack.Attack();
+            if (isDownHeld && isGrounded) // S + I (Down Heavy Attack - Special)
+            {
+                // Down Heavy Attack yêu cầu Max Stamina
+                int cost = playerStamina.maxStamina; 
+                if (playerStamina.currentStamina == cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    downSkills.DownHeavy_Attack();
+                }
+            }
+            else if (isUpHeld && isGrounded) // W + I (Up Heavy Attack - Dragon)
+            {
+                int cost = upSkills.upHeavyDamage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    upSkills.UpHeavy_Attack();
+                }
+            }
+            else if (isGrounded) // Ground + I (Heavy Attack - Chidori)
+            {
+                int cost = heavyAttack.damage;
+                if (playerStamina.currentStamina >= cost)
+                {
+                    playerStamina.UseStamina(cost);
+                    heavyAttack.Attack();
+                }
+            }
         }
     }
 
     // =========================================================
-    // HỆ THỐNG ANIMATION EVENT (Cập nhật)
+    // HỆ THỐNG ANIMATION EVENT (Giữ nguyên)
     // =========================================================
 
     public void TriggerLightAttackStart() => lightAttack?.StartSkill();
