@@ -444,21 +444,21 @@ MonoBehaviour:
   fallAudio: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
   takeDamageAudio: {fileID: 8300000, guid: 30c0deef7874fc9429764bc9176ede1c, type: 3}
   takeDamageFallAudio: {fileID: 8300000, guid: b8f42513723e706468c41c90b4136c99, type: 3}
-  dashAudio: {fileID: 8300000, guid: 32ed5a771c7833b48a8f3ff73b8624b8, type: 3}
+  dashAudio: {fileID: 8300000, guid: 49bb0701311e84f489a1506c12d1186f, type: 3}
   normalAttack1Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   normalAttack2Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   normalAttack3Audio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  lightAttackAudio: {fileID: 8300000, guid: a7a14cb86242cb24591cf3a7fd664726, type: 3}
-  heavyAttackAudio: {fileID: 0}
-  aerialAttackAudio: {fileID: 8300000, guid: a7a14cb86242cb24591cf3a7fd664726, type: 3}
+  lightAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
+  heavyAttackAudio: {fileID: 8300000, guid: ea5556e5883287c4dbfe9e248b6f2fb7, type: 3}
+  aerialAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   airNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   substitutionAudio: {fileID: 8300000, guid: 7b632fcbc4424174fb4c87e46f769b1e, type: 3}
   downNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  downLightAttackAudio: {fileID: 0}
-  downHeavyAttackAudio: {fileID: 0}
+  downLightAttackAudio: {fileID: 8300000, guid: f1bd888bd389d084090eba6904adf3a3, type: 3}
+  downHeavyAttackAudio: {fileID: 8300000, guid: ffa993f5ebbae3744b94b7cd1c13d1e1, type: 3}
   upNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   upLightAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-  upHeavyAttackAudio: {fileID: 0}
+  upHeavyAttackAudio: {fileID: 8300000, guid: ea5556e5883287c4dbfe9e248b6f2fb7, type: 3}
 --- !u!114 &8661923841886316052
 MonoBehaviour:
   m_ObjectHideFlags: 0
