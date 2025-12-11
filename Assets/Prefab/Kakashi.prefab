@@ -459,6 +459,10 @@ MonoBehaviour:
   upNormalAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   upLightAttackAudio: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
   upHeavyAttackAudio: {fileID: 8300000, guid: ea5556e5883287c4dbfe9e248b6f2fb7, type: 3}
+  bustAudio: {fileID: 8300000, guid: 5153edf02ddf0544aa56f844f754f965, type: 3}
+  dragonAudio: {fileID: 8300000, guid: 63c703c3419e8d04095894ffe83742f5, type: 3}
+  dogAudio: {fileID: 0}
+  chidoriAudio: {fileID: 8300000, guid: 40f9f420d802b534e807eb5bb1b2f371, type: 3}
 --- !u!114 &8661923841886316052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +507,7 @@ MonoBehaviour:
   chidoriEffectPrefab: {fileID: 4117178174417798862, guid: e8990d23967e3b64abeeb19b732cea97, type: 3}
   chidoriSpawnPoint: {fileID: 3346093911632999037}
   dashForce: 5
+  cutInTimeline: {fileID: 2629490109881615500}
   chidoriHurtBox: {fileID: 305229465254507440}
 --- !u!114 &3656680821382382787
 MonoBehaviour:
@@ -668,6 +673,7 @@ MonoBehaviour:
   - {fileID: -6169461014563048303, guid: de0161bd6515e3e45a8792cfa4ab9039, type: 3}
   segmentCount: 13
   spawnDelay: 0.033
+  upHeavyCutInTimeline: {fileID: 2629490109881615500}
 --- !u!1 &665309878246370857
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +795,7 @@ RectTransform:
   m_GameObject: {fileID: 864436595182483791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalScale: {x: 150, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2083247243362333720}
@@ -797,7 +803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.4, y: 24.5}
+  m_AnchoredPosition: {x: -16.4, y: 377}
   m_SizeDelta: {x: 400, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3872330333387450706
@@ -1639,14 +1645,14 @@ RectTransform:
   m_GameObject: {fileID: 5495320532462618431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5213249473425663694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190.3, y: 17.6}
+  m_AnchoredPosition: {x: -509, y: 370.1}
   m_SizeDelta: {x: 169, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1514045874564048019

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Playables; 
+using UnityEngine.Playables; // [QUAN TRỌNG] Thêm thư viện này
 
 public class KakashiUpSkills : MonoBehaviour
 {
@@ -46,6 +46,10 @@ public class KakashiUpSkills : MonoBehaviour
     public Sprite[] dragonSprites;
     public int segmentCount = 10;
     public float spawnDelay = 0.08f;
+    
+    // [MỚI] Thêm biến Timeline cho chiêu W + I
+    public PlayableDirector upHeavyCutInTimeline; 
+
     private float upHeavyLastAttackTime = -99f;
     private bool isUpHeavyAttacking = false;
 
@@ -64,6 +68,9 @@ public class KakashiUpSkills : MonoBehaviour
     {
         if (upNormalHurtBox != null) upNormalHurtBox.SetActive(false);
         if (upLightLaunchHurtBox != null) upLightLaunchHurtBox.SetActive(false);
+        
+        // [MỚI] Dừng timeline lúc đầu
+        if (upHeavyCutInTimeline != null) upHeavyCutInTimeline.Stop();
     }
     
     // ==========================================================
@@ -185,6 +192,12 @@ public class KakashiUpSkills : MonoBehaviour
     {
         if (isUpHeavyAttacking || Time.time < upHeavyLastAttackTime + upHeavyCooldown)
             return;
+        
+        // [MỚI] Chạy Timeline ngay khi kích hoạt chiêu W+I
+        if (upHeavyCutInTimeline != null)
+        {
+            upHeavyCutInTimeline.Play();
+        }
 
         isUpHeavyAttacking = true;
         upHeavyLastAttackTime = Time.time;

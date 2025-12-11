@@ -1,5 +1,5 @@
-// Scripts/Kakashi/KakashiHeavyAttack.cs (Đã cập nhật)
 using UnityEngine;
+using UnityEngine.Playables; // [QUAN TRỌNG] Thêm thư viện này
 
 public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
 {
@@ -13,6 +13,9 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
     public Transform chidoriSpawnPoint;
     public float dashForce = 15f;
 
+    [Header("Timeline Effect")]
+    public PlayableDirector cutInTimeline; // [MỚI] Biến chứa Timeline (kéo thả vào Inspector)
+
     private Animator animator;
     private Rigidbody2D rb;
     private bool isHeavyAttacking = false;
@@ -21,8 +24,7 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
     private LegPlayer legPlayer;
     private PlayerMovement playerMovement;
 
-    // --- ĐÃ SỬA THÀNH BIẾN MỚI ---
-    private KakashiNonNormalDamageHandler sendDamageHandler; // Script "tay" để gây sát thương
+    private KakashiNonNormalDamageHandler sendDamageHandler;
 
     void Awake()
     {
@@ -47,26 +49,32 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         
         if (chidoriHurtBox != null)
         {
-            // --- LẤY SCRIPT MỚI ---
             sendDamageHandler = chidoriHurtBox.GetComponent<KakashiNonNormalDamageHandler>();
             if (sendDamageHandler == null)
             {
-                // Thêm script nếu chưa có (vì file cũ đã bị thay thế)
                 sendDamageHandler = chidoriHurtBox.AddComponent<KakashiNonNormalDamageHandler>();
             }
             
-            // --- CÀI ĐẶT MODE MỚI (QUAN TRỌNG) ---
             if (sendDamageHandler != null)
                 sendDamageHandler.attackMode = KakashiDamageMode.HeavyChidori_I;
 
             chidoriHurtBox.SetActive(false);
         }
+        
+        // [MỚI] Đảm bảo Timeline dừng lúc đầu
+        if (cutInTimeline != null) cutInTimeline.Stop();
     }
 
     public void Attack()
     {
         if (!isHeavyAttacking)
         {
+            // [MỚI] Chạy Timeline hiện "Nộ" ngay khi bấm nút
+            if (cutInTimeline != null) 
+            {
+                cutInTimeline.Play();
+            }
+
             animator.SetTrigger("HeavyAttack");
             isHeavyAttacking = true;
         }
@@ -112,13 +120,11 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         if (rb != null)
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         
-        // --- GỌI HÀM GÂY VĂNG TỪ HANDLER MỚI ---
         if (sendDamageHandler != null)
         {
             sendDamageHandler.ApplyFinalKnockback_HeavyChidori();
         }
 
-        // TẮT HURTBOX (SAU KHI GÂY VĂNG)
         if (chidoriHurtBox != null)
             chidoriHurtBox.SetActive(false);
         

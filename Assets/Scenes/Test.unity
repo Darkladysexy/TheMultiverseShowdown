@@ -460,34 +460,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kakashi
       objectReference: {fileID: 0}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: dashAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 49bb0701311e84f489a1506c12d1186f, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: heavyAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: ea5556e5883287c4dbfe9e248b6f2fb7, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: lightAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: aerialAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 402c4365e53ce2c4eb101bb9f1fbf0d6, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: upHeavyAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: ea5556e5883287c4dbfe9e248b6f2fb7, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: downHeavyAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: ffa993f5ebbae3744b94b7cd1c13d1e1, type: 3}
-    - target: {fileID: 1001654767783971880, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
-      propertyPath: downLightAttackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: f1bd888bd389d084090eba6904adf3a3, type: 3}
     - target: {fileID: 5408096016284037752, guid: 4aa693bf2c7a5164091626e1c8f4e407, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.76604605
