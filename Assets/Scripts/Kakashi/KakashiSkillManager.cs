@@ -8,6 +8,7 @@ public class KakashiSkillManager : MonoBehaviour
     private LegPlayer legPlayer;
     private PlayerMovement playerMovement; 
     private PlayerStamina playerStamina; // <<<< Đã thêm >>>>
+    private PlayerHealth playerHealth;
 
     // == DANH SÁCH TẤT CẢ CÁC KỸ NĂNG ==
     // private KakashiNormalAttack normalAttack; // J (Ground)
@@ -74,6 +75,7 @@ public class KakashiSkillManager : MonoBehaviour
 
     void Update()
     {
+        if (playerHealth != null && playerHealth.isDead) return;
         bool isGrounded = legPlayer.isGrounded;
         bool isUpHeld = Input.GetKey(keyW);
         bool isDownHeld = Input.GetKey(keyS);
