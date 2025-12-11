@@ -12,22 +12,16 @@ public class KakashiSkillManager : MonoBehaviour
     // private KakashiNormalAttack normalAttack; // J (Ground)
     private KakashiLightAttack lightAttack; // U (Ground)
     private KakashiHeavyAttack heavyAttack; // I (Ground)
-    private KakashiAerialAttack aerialAttack; // U (Air)
-
-    // Kỹ năng mới (sẽ tạo ở Bước 5)
-    private KakashiAirNormalAttack airNormalAttack; // J (Air)
-    private KakashiDownNormalAttack downNormalAttack; // S + J
-    private KakashiDownLightAttack downLightAttack; // S + U
-    private KakashiDownHeavyAttack downHeavyAttack; // S + I
-    private KakashiUpNormalAttack upNormalAttack; // W + J
-    private KakashiUpLightAttack upLightAttack; // W + U
-    private KakashiUpHeavyAttack upHeavyAttack; // W + I
     private KakashiSubstitution substitution; // O
+
+    // Kỹ năng đã gộp
+    private KakashiAirSkills airSkills;      // Air + J/U
+    private KakashiDownSkills downSkills;    // S + J/U/I
+    private KakashiUpSkills upSkills;        // W + J/U/I
 
     // == CÁC PHÍM ĐIỀU KHIỂN ==
     private KeyCode keyJ, keyU, keyI, keyO, keyW, keyS;
     
-    // Biến kiểm tra Layer (nếu cần)
     private int actionLayerIndex;
 
     void Awake()
@@ -37,24 +31,17 @@ public class KakashiSkillManager : MonoBehaviour
         legPlayer = GetComponentInChildren<LegPlayer>(); 
         playerMovement = GetComponent<PlayerMovement>();
 
-        // Lấy tất cả các component skill
-        // normalAttack = GetComponent<KakashiNormalAttack>();
+        // Lấy các component skill cũ còn giữ lại
         lightAttack = GetComponent<KakashiLightAttack>();
         heavyAttack = GetComponent<KakashiHeavyAttack>();
-        aerialAttack = GetComponent<KakashiAerialAttack>();
+        substitution = GetComponent<KakashiSubstitution>();
 
-        // Tự động thêm và lấy 8 script mới
-        airNormalAttack = GetOrAddComponent<KakashiAirNormalAttack>();
-        downNormalAttack = GetOrAddComponent<KakashiDownNormalAttack>();
-        downLightAttack = GetOrAddComponent<KakashiDownLightAttack>();
-        downHeavyAttack = GetOrAddComponent<KakashiDownHeavyAttack>();
-        upNormalAttack = GetOrAddComponent<KakashiUpNormalAttack>();
-        upLightAttack = GetOrAddComponent<KakashiUpLightAttack>();
-        upHeavyAttack = GetOrAddComponent<KakashiUpHeavyAttack>();
-        substitution = GetOrAddComponent<KakashiSubstitution>();
+        // Tự động thêm và lấy 3 script đã gộp
+        airSkills = GetOrAddComponent<KakashiAirSkills>(); 
+        downSkills = GetOrAddComponent<KakashiDownSkills>(); 
+        upSkills = GetOrAddComponent<KakashiUpSkills>(); 
     }
 
-    // Hàm trợ giúp để tự động thêm script nếu nó chưa tồn tại
     private T GetOrAddComponent<T>() where T : Component
     {
         T component = GetComponent<T>();
@@ -69,7 +56,6 @@ public class KakashiSkillManager : MonoBehaviour
     {
         actionLayerIndex = animator.GetLayerIndex("Attack Layer");
 
-        // GÁN PHÍM DỰA TRÊN TAG
         if (gameObject.CompareTag("P1"))
         {
             keyJ = KeyCode.J; keyU = KeyCode.U; keyI = KeyCode.I; 
@@ -82,18 +68,12 @@ public class KakashiSkillManager : MonoBehaviour
         }
     }
 
-    // --- HÀM UPDATE() ĐÃ ĐƯỢC SỬA ---
     void Update()
     {
-        // Không nhận input nếu đang bị stun
-        // if (playerMovement.isStun) return;
-
-        // Đọc trạng thái
         bool isGrounded = legPlayer.isGrounded;
         bool isUpHeld = Input.GetKey(keyW);
         bool isDownHeld = Input.GetKey(keyS);
         
-        // Kiểm tra xem có đang trong 1 animation tấn công không
         bool isPlayingAttackAnim = !animator.GetCurrentAnimatorStateInfo(actionLayerIndex).IsTag("NoAction");
 
         // --- 1. XỬ LÝ NÚT THẾ THÂN (O) ---
@@ -105,97 +85,57 @@ public class KakashiSkillManager : MonoBehaviour
         }
 
         // --- 2. XỬ LÝ CÁC ĐÒN TẤN CÔNG (J, U, I) ---
-        bool attackTriggeredThisFrame = false; // Dùng để quyết định có nên Thủ hay không
-
-        // Nếu đang trong animation tấn công (vd: NormalAttack1)
         if (isPlayingAttackAnim)
         {
-            // Chỉ cho phép "buffering" (xếp hàng) combo đánh thường (J)
-            // if (Input.GetKeyDown(keyJ) && !isDownHeld && !isUpHeld && isGrounded)
-            // {
-            //     normalAttack.HandleNormalAttack();
-            // }
-            
-            // Nếu đang tấn công, thì không cho phép Thủ
-            // HandleBlocking(false, isGrounded, true); // Tắt block
-            return; // Thoát ra, không kiểm tra các đòn khác
+            return; 
         }
         
-        // Nếu không đang tấn công (đang Idle, Run, Jump, Fall, hoặc Block)
-        
-        // --- Check J Key ---
+        // --- Check J Key (Normal Attack) ---
         if (Input.GetKeyDown(keyJ))
         {
-            attackTriggeredThisFrame = true; // Báo hiệu đã nhấn 1 nút
             if (isDownHeld && isGrounded) // S + J
             {
-                Debug.Log("SkillManager: Kích hoạt S+J (DownNormalAttack)");
-                downNormalAttack.Attack();
+                downSkills.DownNormal_Attack();
             }
             else if (isUpHeld && isGrounded) // W + J
             {
-                Debug.Log("SkillManager: Kích hoạt W+J (UpNormalAttack)");
-                upNormalAttack.Attack();
+                upSkills.UpNormal_Attack();
             }
             else if (!isGrounded) // Air + J
             {
-                Debug.Log("SkillManager: Kích hoạt Air+J (AirNormalAttack)");
-                airNormalAttack.Attack();
+                airSkills.AirNormal_Attack();
             }
-            // else if (isGrounded) // Ground + J (chỉ khi rảnh)
+            // else if (isGrounded) // Ground + J (Dùng cho PlayerAttack.cs)
             // {
-            //     Debug.Log("SkillManager: Kích hoạt J (NormalAttack)");
             //     normalAttack.HandleNormalAttack(); 
             // }
-            else
-                attackTriggeredThisFrame = false; // J đã được nhấn, nhưng không có hành động hợp lệ
         }
-        // --- Check U Key ---
+        // --- Check U Key (Light Attack) ---
         else if (Input.GetKeyDown(keyU))
         {
-            attackTriggeredThisFrame = true;
             if (isDownHeld && isGrounded) // S + U
-                downLightAttack.Attack();
+                downSkills.DownLight_Attack();
             else if (isUpHeld && isGrounded) // W + U
-                upLightAttack.Attack();
+                upSkills.UpLight_Attack();
             else if (!isGrounded) // Air + U
-                aerialAttack.Attack();
+                airSkills.Aerial_Attack();
             else if (isGrounded) // Ground + U
                 lightAttack.Attack();
         }
-        // --- Check I Key ---
+        // --- Check I Key (Heavy Attack) ---
         else if (Input.GetKeyDown(keyI))
         {
-            attackTriggeredThisFrame = true;
             if (isDownHeld && isGrounded) // S + I
-                downHeavyAttack.Attack();
+                downSkills.DownHeavy_Attack();
             else if (isUpHeld && isGrounded) // W + I
-                upHeavyAttack.Attack();
+                upSkills.UpHeavy_Attack();
             else if (isGrounded) // Ground + I
                 heavyAttack.Attack();
         }
-
-        // --- 3. XỬ LÝ THỦ (S) ---
-        // HandleBlocking(isDownHeld, isGrounded, attackTriggeredThisFrame);
     }
-    // --- KẾT THÚC HÀM UPDATE() ĐÃ SỬA ---
-
-
-    // void HandleBlocking(bool isDownHeld, bool isGrounded, bool attackTriggeredThisFrame)
-    // {
-    //     // Nếu giữ 'S', trên mặt đất, VÀ không nhấn J/U/I trong frame này
-    //     if (isDownHeld && isGrounded && !attackTriggeredThisFrame)
-    //     {
-    //         playerMovement.StartBlocking();
-    //     }
-    //     else
-    //     {
-    //         playerMovement.StopBlocking();
-    //     }
-    // }
 
     // =========================================================
-    // HỆ THỐNG ANIMATION EVENT (Giữ nguyên)
+    // HỆ THỐNG ANIMATION EVENT (Cập nhật)
     // =========================================================
 
     public void TriggerLightAttackStart() => lightAttack?.StartSkill();
@@ -206,80 +146,25 @@ public class KakashiSkillManager : MonoBehaviour
     public void TriggerSpawnChidori() => heavyAttack?.TriggerSpawnChidori();
     public void TriggerHeavyAttackEnd() => heavyAttack?.EndSkill();
     public void TriggerHeavyAttackCoolDown() => heavyAttack?.CoolDown();
-    public void TriggerAerialAttackStart() => aerialAttack?.StartSkill();
-    public void TriggerAerialAttackEnd() => aerialAttack?.EndSkill();
-    public void TriggerAerialAttackCoolDown() => aerialAttack?.CoolDown();
-
-    // === EVENT CHO AIR NORMAL ATTACK (J) ===
-    public void TriggerAirNormalAttackStart()
-    {
-        airNormalAttack?.StartSkill();
-    }
-
-    public void TriggerAirNormalAttackEnd()
-    {
-        airNormalAttack?.EndSkill();
-    }
-    // === THÊM EVENT CHO DOWN LIGHT ATTACK (S+U) ===
     
-    /// <summary>
-    /// Gọi bởi Animation Event tại thời điểm triệu hồi
-    /// </summary>
-    public void TriggerDownLightAttack_Spawn()
-    {
-        downLightAttack?.SpawnNinken();
-    }
-
-    /// <summary>
-    /// Gọi bởi Animation Event khi kết thúc animation
-    /// </summary>
-    public void TriggerDownLightAttack_End()
-    {
-        downLightAttack?.EndSkill();
-    }
-    // === THÊM EVENT CHO DOWN HEAVY ATTACK (S+I) ===
+    // === EVENT CHO AIR SKILLS ===
+    public void TriggerAirNormalAttackStart() => airSkills?.AirNormal_StartSkill(); 
+    public void TriggerAirNormalAttackEnd() => airSkills?.AirNormal_EndSkill(); 
+    public void TriggerAerialAttackStart() => airSkills?.Aerial_StartSkill(); 
+    public void TriggerAerialAttackEnd() => airSkills?.Aerial_EndSkill(); 
     
-    /// <summary>
-    /// Gọi bởi Animation Event tại thời điểm bắt đầu tìm địch
-    /// </summary>
-    public void TriggerDownHeavyAttack_Start()
-    {
-        downHeavyAttack?.StartSkill();
-    }
-
-    /// <summary>
-    /// Gọi bởi Animation Event khi kết thúc animation
-    /// </summary>
-    public void TriggerDownHeavyAttack_End()
-    {
-        downHeavyAttack?.EndSkill();
-    }
-    public void TriggerUpNormalAttack_Start()
-    {
-        upNormalAttack?.StartSkill();
-    }
-    public void TriggerUpNormalAttack_End()
-    {
-        upNormalAttack?.EndSkill();
-    }
-    public void TriggerUpLightAttack_Start()
-    {
-        upLightAttack?.StartSkill();
-    }
-    public void TriggerUpLightAttack_End()
-    {
-        upLightAttack?.EndSkill();
-    }
-    public void TriggerUpLightAttack_FollowUpHit() 
-    {
-        upLightAttack?.StartFollowUpHit();
-    }
-    public void TriggerUpHeavyAttack_SpawnDragon()
-    {
-        upHeavyAttack?.SpawnDragon();
-    }
-    public void TriggerUpHeavyAttack_End()
-    {
-        upHeavyAttack?.EndSkill();
-    }
+    // === EVENT CHO DOWN SKILLS ===
+    public void TriggerDownLightAttack_Spawn() => downSkills?.DownLight_SpawnNinken(); 
+    public void TriggerDownLightAttack_End() => downSkills?.DownLight_EndSkill(); 
+    public void TriggerDownHeavyAttack_Start() => downSkills?.DownHeavy_StartSkill(); 
+    public void TriggerDownHeavyAttack_End() => downSkills?.DownHeavy_EndSkill(); 
+    
+    // === EVENT CHO UP SKILLS ===
+    public void TriggerUpNormalAttack_Start() => upSkills?.UpNormal_StartSkill(); 
+    public void TriggerUpNormalAttack_End() => upSkills?.UpNormal_EndSkill(); 
+    public void TriggerUpLightAttack_Start() => upSkills?.UpLight_StartSkill(); 
+    public void TriggerUpLightAttack_End() => upSkills?.UpLight_EndSkill(); 
+    public void TriggerUpLightAttack_FollowUpHit() => upSkills?.UpLight_StartFollowUpHit(); 
+    public void TriggerUpHeavyAttack_SpawnDragon() => upSkills?.UpHeavy_SpawnDragon(); 
+    public void TriggerUpHeavyAttack_End() => upSkills?.UpHeavy_EndSkill(); 
 }

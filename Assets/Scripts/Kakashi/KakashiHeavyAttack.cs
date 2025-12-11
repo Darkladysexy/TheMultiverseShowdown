@@ -1,3 +1,4 @@
+// Scripts/Kakashi/KakashiHeavyAttack.cs (Đã cập nhật)
 using UnityEngine;
 
 public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
@@ -20,14 +21,13 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
     private LegPlayer legPlayer;
     private PlayerMovement playerMovement;
 
-    // --- THÊM BIẾN NÀY ---
-    private SendDamageKakashiHeavy sendDamageScript; // Script "tay" để gây sát thương
+    // --- ĐÃ SỬA THÀNH BIẾN MỚI ---
+    private KakashiNonNormalDamageHandler sendDamageHandler; // Script "tay" để gây sát thương
 
     void Awake()
     {
         instance = this;
         damage = 35;
-        // (Không gán KeyCode ở đây nữa)
     }
 
     void Start()
@@ -47,19 +47,22 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         
         if (chidoriHurtBox != null)
         {
-            // --- THÊM DÒNG NÀY ---
-            // Lấy script gây sát thương từ hurtbox
-            sendDamageScript = chidoriHurtBox.GetComponent<SendDamageKakashiHeavy>();
-            if (sendDamageScript == null)
+            // --- LẤY SCRIPT MỚI ---
+            sendDamageHandler = chidoriHurtBox.GetComponent<KakashiNonNormalDamageHandler>();
+            if (sendDamageHandler == null)
             {
-                Debug.LogError("LỖI: chidoriHurtBox bị thiếu script SendDamageKakashiHeavy!");
+                // Thêm script nếu chưa có (vì file cũ đã bị thay thế)
+                sendDamageHandler = chidoriHurtBox.AddComponent<KakashiNonNormalDamageHandler>();
             }
+            
+            // --- CÀI ĐẶT MODE MỚI (QUAN TRỌNG) ---
+            if (sendDamageHandler != null)
+                sendDamageHandler.attackMode = KakashiDamageMode.HeavyChidori_I;
 
             chidoriHurtBox.SetActive(false);
         }
     }
 
-    // Hàm Attack này đã được sửa, không kiểm tra input
     public void Attack()
     {
         if (!isHeavyAttacking)
@@ -69,7 +72,6 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         }
     }
     
-    // (Các hàm Trigger... giữ nguyên)
     public void TriggerChidoriEndDash()
     {
         if (rb != null)
@@ -85,17 +87,13 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         }
     }
 
-    // ============ INTERFACE IMPLEMENTATION ============
-
-    // Được gọi bởi Event "TriggerHeavyAttackStart"
     public void StartSkill()
     {
         if (playerMovement != null)
             playerMovement.Stun(true);
         
-        // --- SỬA KHỐI NÀY ---
-        if (sendDamageScript != null)
-            chidoriHurtBox.SetActive(true); // Bật Hurtbox để FixedUpdate bắt đầu chạy
+        if (chidoriHurtBox != null)
+            chidoriHurtBox.SetActive(true); 
         
         if (rb != null && playerMovement != null)
         {
@@ -106,7 +104,6 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         }
     }
 
-    // Được gọi bởi Event "TriggerHeavyAttackEnd"
     public void EndSkill()
     {
         if (playerMovement != null)
@@ -115,22 +112,18 @@ public class KakashiHeavyAttack : MonoBehaviour, InterfaceSkill
         if (rb != null)
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         
-        // --- LOGIC MỚI ---
-        // 1. GỌI HÀM GÂY VĂNG
-        if (sendDamageScript != null)
+        // --- GỌI HÀM GÂY VĂNG TỪ HANDLER MỚI ---
+        if (sendDamageHandler != null)
         {
-            sendDamageScript.ApplyFinalKnockback();
+            sendDamageHandler.ApplyFinalKnockback_HeavyChidori();
         }
 
-        // 2. TẮT HURTBOX (SAU KHI GÂY VĂNG)
+        // TẮT HURTBOX (SAU KHI GÂY VĂNG)
         if (chidoriHurtBox != null)
             chidoriHurtBox.SetActive(false);
         
         isHeavyAttacking = false;
     }
 
-    public void CoolDown()
-    {
-        // (Không cần dùng)
-    }
+    public void CoolDown() { }
 }

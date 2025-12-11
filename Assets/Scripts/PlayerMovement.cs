@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Flip(bool faceRight)
+    public void Flip(bool faceRight)
     {
         isFacingRight = faceRight;
 
