@@ -238,7 +238,11 @@ public class KakashiDownSkills : MonoBehaviour
 
         GameObject explosionGO = null;
         if (explosionPrefab != null)
-            explosionGO = Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+        {
+            // SỬA: Lấy X, Y của địch và Z của Player
+            Vector3 explosionPos = new Vector3(enemy.transform.position.x, enemy.transform.position.y, this.transform.position.z);
+            explosionGO = Instantiate(explosionPrefab, explosionPos, Quaternion.identity);
+        }
 
         int totalTicks = (int)(holdDuration / tickRate);
         int damagePerTick = downHeavyTotalDamage / totalTicks;   
